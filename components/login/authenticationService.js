@@ -3,7 +3,7 @@
 function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope) {
     this.login = function (username, password) {
         return $http({
-            url: CONFIG.API_ENDPOINT + '/' + CONFIG.AUTHENTICATION_ENDPOINT,
+            url: CONFIG.AUTHENTICATION_ENDPOINT,
             method: 'POST',
             data: {
                 'username': username,
