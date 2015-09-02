@@ -12,6 +12,10 @@
             'angular-momentjs',
             'ngSanitize'
         ])
+	.constant('CONFIG', {
+	    "API_ENDPOINT": "http://cmsv4.dev.local/api",
+	    "AUTHENTICATION_ENDPOINT": 'authenticate'
+	})
         .config([
             '$routeProvider',
             '$locationProvider',

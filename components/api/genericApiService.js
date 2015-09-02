@@ -1,8 +1,8 @@
 'use strict';
 
-function GenericApiService($http, $log) {
+function GenericApiService(CONFIG, $http, $log) {
 
-    var apiEndPoint = '/api';
+    var apiEndPoint = CONFIG.API_ENDPOINT;
 
     var printError = function (error) {
         // TODO: make a generic version of this
@@ -61,7 +61,7 @@ function GenericApiService($http, $log) {
         }).catch(function (error) {
             printError(error);
         });
-    }
+    };
 
     this.remove = function (objectIdentifier, objectId) {
         return $http.delete(apiEndPoint + '/' + objectIdentifier + '/' + objectId)
@@ -79,5 +79,5 @@ function GenericApiService($http, $log) {
         .module('cms.services')
         .service('GenericApiService', GenericApiService);
 
-        GenericApiService.$inject = [ '$http', '$log'];
+        GenericApiService.$inject = ['CONFIG', '$http', '$log'];
 }());
