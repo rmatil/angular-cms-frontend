@@ -155,6 +155,10 @@ function EventGraphService (LoggerService) {
     this.buildEventObjects = function (events) {
         var eventObjects = [];
 
+        if (undefined === events || events.length === 0) {
+            return eventObjects;
+        }
+
         events.forEach( function (elm) {
             if (!('start_date' in elm)) {
                 throw {

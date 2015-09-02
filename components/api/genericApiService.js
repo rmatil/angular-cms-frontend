@@ -16,6 +16,7 @@ function GenericApiService(CONFIG, $http, $log) {
                 return response.data;
             }).catch(function (error) {
                 printError(error);
+                return [];
             });
     };
 
@@ -25,6 +26,7 @@ function GenericApiService(CONFIG, $http, $log) {
                 return response.data;
             }).catch(function (error) {
                 printError(error);
+                return [];
             });
     };
 
@@ -34,6 +36,7 @@ function GenericApiService(CONFIG, $http, $log) {
                 return response.data;
             }).catch(function (error) {
                 printError(error);
+                return [];
             });
     };
 
@@ -47,6 +50,7 @@ function GenericApiService(CONFIG, $http, $log) {
             return response.data;
         }).catch(function (error) {
             printError(error);
+            return [];
         });
     };
 
@@ -60,6 +64,7 @@ function GenericApiService(CONFIG, $http, $log) {
             return response.data;
         }).catch(function (error) {
             printError(error);
+            return [];
         });
     };
 
@@ -69,6 +74,7 @@ function GenericApiService(CONFIG, $http, $log) {
                 return response.data;
             }).catch(function (error) {
                 printError(error);
+                return [];
             });
     }
 
