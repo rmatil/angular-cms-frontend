@@ -201,6 +201,17 @@ function NavigationService() {
                     "inMenu": true
                 }
             ]
+        },
+        "login": {
+            "backgroundColorClass": "lightyellow",
+            "topBorderClass": "lightyellow-top-border",
+            "menuArray": [
+                {
+                    "name": "Login",
+                    "link": "\/login", // must start with slashes for active menu point selection
+                    "inMenu": false
+                }
+            ]
         }
     };
 

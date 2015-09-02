@@ -10,12 +10,13 @@
             'cms.controllers',
             'ngCkeditor',
             'angular-momentjs',
-            'ngSanitize'
+            'ngSanitize',
+            'ngCookies'
         ])
-	.constant('CONFIG', {
-	    "API_ENDPOINT": "http://cmsv4.dev.local/api",
-	    "AUTHENTICATION_ENDPOINT": 'authenticate'
-	})
+        .constant('CONFIG', {
+            "API_ENDPOINT": "http://cmsv4.dev.local/api",
+            "AUTHENTICATION_ENDPOINT": 'authenticate'
+        })
         .config([
             '$routeProvider',
             '$locationProvider',
@@ -28,6 +29,12 @@
                 $routeProvider.when('/', {
                     templateUrl: 'components/dashboard/dashboard.html',
                     controller: 'DashboardController'
+                });
+
+                $routeProvider.when('/login',  {
+                    templateUrl: 'components/login/login.html',
+                    controller: 'LoginController',
+                    controllerAs: 'vm'
                 });
 
                 $routeProvider.when('/dashboard', {
@@ -143,11 +150,28 @@
                     controllerAs: 'vm'
                 });
 
+                $routeProvider.otherwise({
+                    redirectTo: '/login'
+                });
+
                 // use HTML5 history API
                 $locationProvider.html5Mode(true);
 
         }])
-        .run([ function () {
+        .run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
+            // keep user logged in after page refresh
+            $rootScope.globals = $cookieStore.get('globals') || {};
+            if ($rootScope.globals.currentUser) {
+                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
+            }
+
+            // redirect to login page if not logged in
+            $rootScope.$on('$locationChangeStart', function (event, next, current) {
+                if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                    $location.path('/login');
+                }
+            });
+
             console.log("run app");
         }]);
 

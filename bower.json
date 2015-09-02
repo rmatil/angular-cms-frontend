@@ -38,6 +38,7 @@
     "raphael": "~2.1.4",
     "jquery": "~2.1.4",
     "ckeditor": "4.3",
-    "ng-ckeditor": "~0.2.1"
+    "ng-ckeditor": "~0.2.1",
+    "angular-cookies": "~1.4.5"
   }
 }

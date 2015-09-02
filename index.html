@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- required for html5 history api usage -->
-    <base href="/cms/" />
+    <base href="/" />
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -45,8 +45,9 @@
 
 
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 
     <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
@@ -80,6 +81,7 @@
     <script src="components/user/userService.js"></script>
     <script src="components/user-group/userGroupService.js"></script>
     <script src="components/setting/settingService.js"></script>
+    <script src="components/login/authenticationService.js"></script>
 
     <!-- directives -->
     <script src="components/navigation/navigation.js"></script>
@@ -97,6 +99,7 @@
     <script src="components/media/mediaController.js"></script>
     <script src="components/user/userController.js"></script>
     <script src="components/setting/settingController.js"></script>
+    <script src="components/login/loginController.js"></script>
 
     <!-- run app -->
     <script src="components/app.js"></script>
