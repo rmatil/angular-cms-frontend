@@ -1,8 +1,6 @@
 'use strict';
 
 function LogoutDirective (AuthenticationService, $location) {
-
-
     return {
         restrict: 'E',
         isolate: true,

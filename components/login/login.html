@@ -1,9 +1,12 @@
-<form name="login" ng-submit="vm.login()">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" ng-model="vm.username" required />
+<dashboard></dashboard>
+<div id="login-container">
+    <form name="login" ng-submit="vm.login()">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" ng-model="vm.username" required />
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" ng-model="vm.password" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" ng-model="vm.password" required />
 
-    <button type="submit">Login</button>
-</form>
+        <button type="submit">Login</button>
+    </form>
+</div>
