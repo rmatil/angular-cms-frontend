@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="article in vm.articles track by article.id | filter:articleFilter | orderBy:predicate:reverse">
+            <tr ng-repeat="article in vm.articles | filter:articleFilter | orderBy:predicate:reverse track by article.id">
                 <td><a ng-href="articles/article/{{ article.id }}">{{ article.title }}</a></td>
                 <td>{{ article.category.name }}</td>
                 <td>{{ article.language.name }}</td>

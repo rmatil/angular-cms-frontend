@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="entry in vm.events track by entry.id | orderBy:'start_date' | filter:searchText">
+                    <tr ng-repeat="entry in vm.events | orderBy:'start_date' | filter:searchText track by entry.id">
                         <td><a ng-href="events/event/{{entry.id}}">{{ entry.name }}</a></td>
                         <td>{{ entry.start_date | date:"dd.MM.yyyy '@' HH:mm" }}</td>
                     </tr>
@@ -53,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="location in vm.locations track by location.id | orderBy: title | filter:searchText">
+                    <tr ng-repeat="location in vm.locations | orderBy: title | filter:searchText track by location.id">
                         <td><a ng-href="locations/location/{{location.id}}">{{ location.name }}</a></td>
                         <td>{{ location.address }}</td>
                     </tr>
