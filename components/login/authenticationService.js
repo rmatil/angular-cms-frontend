@@ -1,14 +1,15 @@
 'use strict';
 
-function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope) {
+function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope, $httpParamSerializer) {
     this.login = function (username, password) {
         return $http({
             url: CONFIG.AUTHENTICATION_ENDPOINT,
             method: 'POST',
-            data: {
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            data: $httpParamSerializer({
                 'username': username,
                 'password': password
-            }
+            })
         })
     };
 
@@ -122,6 +123,6 @@ function Base64 () {
         .service('AuthenticationService', AuthenticationService)
         .service('Base64', Base64);
 
-    AuthenticationService.$inject = ['CONFIG', 'Base64', '$http', '$cookieStore', '$rootScope'];
+    AuthenticationService.$inject = ['CONFIG', 'Base64', '$http', '$cookieStore', '$rootScope', '$httpParamSerializer'];
 
 })(angular);
