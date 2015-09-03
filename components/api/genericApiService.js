@@ -1,6 +1,6 @@
 'use strict';
 
-function GenericApiService(CONFIG, $http, $log) {
+function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
 
     var apiEndPoint = CONFIG.API_ENDPOINT;
 
@@ -11,9 +11,12 @@ function GenericApiService(CONFIG, $http, $log) {
     };
 
     this.get = function (objectIdentifier) {
+        LoadingQueue.increaseQueue(1);
         return $http.get(apiEndPoint + '/' + objectIdentifier)
             .then(function (response) {
                 return response.data;
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
             }).catch(function (error) {
                 printError(error);
                 return [];
@@ -21,9 +24,12 @@ function GenericApiService(CONFIG, $http, $log) {
     };
 
     this.getObject = function (objectIdentifier, objectId) {
+        LoadingQueue.increaseQueue(1);
         return $http.get(apiEndPoint + '/' + objectIdentifier + '/' + objectId)
             .then(function (response) {
                 return response.data;
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
             }).catch(function (error) {
                 printError(error);
                 return [];
@@ -31,9 +37,12 @@ function GenericApiService(CONFIG, $http, $log) {
     };
 
     this.getEmptyObject = function (objectIdentifier) {
+        LoadingQueue.increaseQueue(1);
         return $http.get(apiEndPoint + '/empty/' + objectIdentifier )
             .then(function (response) {
                 return response.data;
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
             }).catch(function (error) {
                 printError(error);
                 return [];
@@ -41,6 +50,7 @@ function GenericApiService(CONFIG, $http, $log) {
     };
 
     this.post = function (objectIdentifier, object) {
+        LoadingQueue.increaseQueue(1);
         return $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             url: apiEndPoint + '/' + objectIdentifier,
@@ -48,6 +58,8 @@ function GenericApiService(CONFIG, $http, $log) {
             data: object
         }).then(function (response) {
             return response.data;
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
             printError(error);
             return [];
@@ -55,6 +67,7 @@ function GenericApiService(CONFIG, $http, $log) {
     };
 
     this.put = function (objectIdentifier, object) {
+        LoadingQueue.increaseQueue(1);
         return $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             url: apiEndPoint + '/' + objectIdentifier + '/' + object.id,
@@ -62,6 +75,8 @@ function GenericApiService(CONFIG, $http, $log) {
             data: object
         }).then(function (response) {
             return response.data;
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
             printError(error);
             return [];
@@ -69,9 +84,12 @@ function GenericApiService(CONFIG, $http, $log) {
     };
 
     this.remove = function (objectIdentifier, objectId) {
+        LoadingQueue.increaseQueue(1);
         return $http.delete(apiEndPoint + '/' + objectIdentifier + '/' + objectId)
             .then(function (response) {
                 return response.data;
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
             }).catch(function (error) {
                 printError(error);
                 return [];
@@ -85,5 +103,5 @@ function GenericApiService(CONFIG, $http, $log) {
         .module('cms.services')
         .service('GenericApiService', GenericApiService);
 
-        GenericApiService.$inject = ['CONFIG', '$http', '$log'];
+        GenericApiService.$inject = ['CONFIG', 'LoadingQueue', '$http', '$log'];
 }());
