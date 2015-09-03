@@ -1,12 +1,12 @@
 <dashboard></dashboard>
+<!-- prevent clicking on dashboard -->
+<div id="login-bg"></div>
 <div id="login-container">
-    <form name="login" ng-submit="vm.login()">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" ng-model="vm.username" required />
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" ng-model="vm.password" required />
-
-        <button type="submit">Login</button>
+    <form name="login" ng-submit="vm.login()" novalidate>
+        <ul>
+            <li><input type="text" id="username" name="username" ng-model="vm.username" placeholder="Username"></li>
+            <li><input type="password" id="password" name="password" ng-model="vm.password" placeholder="Password"></li>
+            <li><input type="submit" value="Login"></li>
+        </ul>
     </form>
 </div>

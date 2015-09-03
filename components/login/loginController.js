@@ -5,12 +5,24 @@ function LoginController (AuthenticationService, $location, $timeout) {
         dashboardElem = 'dashboard',
         loginElem = '#login-container',
         navElem = 'nav',
+        navMarginBefore = {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+        },
+        dashboardMarginBefore = {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+        },
         blur = {
             "-webkit-filter": "blur(5px)",
             "-moz-filter": "blur(5px)",
             "-ms-filter": "blur(5px)",
             "filter": "blur(5px)",
-            "transition": "-webkit-filter 0.75s ease-in, -ms-filter 0.75s ease-in, -moz-filter 0.75s ease-in, filter 0.75s ease-in"
+            "transition": "-webkit-filter 0.5s ease-in, -ms-filter 0.5s ease-in, -moz-filter 0.5s ease-in, filter 0.5s ease-in"
         },
         unblur = {
             "-webkit-filter": "blur(0px)",
@@ -31,14 +43,40 @@ function LoginController (AuthenticationService, $location, $timeout) {
     }
 
     function applyBlur() {
+        // save current margin
+        dashboardMarginBefore = saveMarginBefore(dashboardElem);
+        navMarginBefore = saveMarginBefore(navElem);
+
+        $(dashboardElem).css('margin', '-5px');
+        $(navElem).css('margin', '-5px');
+
         $(dashboardElem).css('z-index', '99').css(blur);
-        $(loginElem).css('z-index', '100');
         $(navElem).css(blur);
     }
 
     function removeBlur() {
         $(dashboardElem).css(unblur);
         $(navElem).css(unblur);
+        applyMargin(dashboardElem, dashboardMarginBefore);
+        applyMargin(navElem, navMarginBefore);
+    }
+
+    function saveMarginBefore(elem) {
+        var marginBefore = {};
+
+        marginBefore.top = parseInt($(elem).css('marginTop'));
+        marginBefore.right = parseInt($(elem).css('marginRight'));
+        marginBefore.bottom = parseInt($(elem).css('marginBottom'));
+        marginBefore.left = parseInt($(elem).css('marginLeft'));
+
+        return marginBefore;
+    }
+
+    function applyMargin(elem, marginBefore) {
+        $(elem).css('marginTop', marginBefore.top);
+        $(elem).css('marginRight', marginBefore.right);
+        $(elem).css('marginBottom', marginBefore.bottom);
+        $(elem).css('marginLeft', marginBefore.left);
     }
 
     function removeLoginContainer() {
@@ -62,7 +100,7 @@ function LoginController (AuthenticationService, $location, $timeout) {
                 $timeout(function () {
 
                     $location.path('/dashboard');
-                }, 1000);
+                }, 750);
             }).catch( function (data) {
                 console.error(data);
             });

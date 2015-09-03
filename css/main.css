@@ -343,6 +343,16 @@ td {
    Login Overlay
    ========================================================================== */
 
+#login-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.05);
+}
+
 #login-container {
     position: fixed;
     top: 0;
@@ -350,7 +360,40 @@ td {
     bottom: 0;
     left: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.75);
+    max-width: 800px;
+    margin: 10% auto;
+    text-align: center;
+    min-height: 400px;
+}
+
+#login-container form {
+    margin: 15% 0;
+}
+
+#login-container ul {
+    padding: 0;
+}
+
+#login-container ul li {
+    display: block;
+}
+
+#login-container input {
+    border: 2px solid #efcf4d;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+#login-container input[type=submit] {
+    color: #fff;
+    padding: 10px;
+    background: #e7494a;
+    border: 2px solid #e7494a;
+}
+
+#login-container input.ng-invalid {
+    border: 1px solid #e7494a;
 }
 
 
