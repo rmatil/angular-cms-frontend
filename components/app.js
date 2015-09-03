@@ -150,9 +150,9 @@
                     controllerAs: 'vm'
                 });
 
-                $routeProvider.otherwise({
-                    redirectTo: '/login'
-                });
+                //$routeProvider.otherwise({
+                //    redirectTo: '/login'
+                //});
 
                 // use HTML5 history API
                 $locationProvider.html5Mode(true);

@@ -21,10 +21,8 @@ function LoadingQueue ($rootScope, $timeout) {
 
     function broadcastChange(newVal) {
         if (newVal > 0) {
-            console.log("emit start");
             $rootScope.statusIsLoading = true;
         } else {
-            console.log("emit stop");
             $timeout(function () {
                 $rootScope.statusIsLoading = false;
             }, 1000);
