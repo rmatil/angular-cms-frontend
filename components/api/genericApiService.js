@@ -12,41 +12,53 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
 
     this.get = function (objectIdentifier) {
         LoadingQueue.increaseQueue(1);
-        return $http.get(apiEndPoint + '/' + objectIdentifier)
-            .then(function (response) {
-                return response.data;
-            }).finally(function () {
-                LoadingQueue.decreaseQueue(1);
-            }).catch(function (error) {
-                printError(error);
-                return [];
-            });
+        return $http({
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            url: apiEndPoint + '/' + objectIdentifier,
+            withCredentials: true, // allows sending cookies if not on the same domain
+            method: 'GET'
+        }).then(function (response) {
+            return response.data;
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
+        }).catch(function (error) {
+            printError(error);
+            return [];
+        });
     };
 
     this.getObject = function (objectIdentifier, objectId) {
         LoadingQueue.increaseQueue(1);
-        return $http.get(apiEndPoint + '/' + objectIdentifier + '/' + objectId)
-            .then(function (response) {
-                return response.data;
-            }).finally(function () {
-                LoadingQueue.decreaseQueue(1);
-            }).catch(function (error) {
-                printError(error);
-                return [];
-            });
+        return $http({
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            url: apiEndPoint + '/' + objectIdentifier + '/' + objectId,
+            withCredentials: true, // allows sending cookies if not on the same domain
+            method: 'GET'
+        }).then(function (response) {
+            return response.data;
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
+        }).catch(function (error) {
+            printError(error);
+            return [];
+        });
     };
 
     this.getEmptyObject = function (objectIdentifier) {
         LoadingQueue.increaseQueue(1);
-        return $http.get(apiEndPoint + '/empty/' + objectIdentifier )
-            .then(function (response) {
-                return response.data;
-            }).finally(function () {
-                LoadingQueue.decreaseQueue(1);
-            }).catch(function (error) {
-                printError(error);
-                return [];
-            });
+        return $http({
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            url: apiEndPoint + '/empty/' + objectIdentifier,
+            withCredentials: true, // allows sending cookies if not on the same domain
+            method: 'GET'
+        }).then(function (response) {
+            return response.data;
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
+        }).catch(function (error) {
+            printError(error);
+            return [];
+        });
     };
 
     this.post = function (objectIdentifier, object) {
@@ -54,6 +66,7 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
         return $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             url: apiEndPoint + '/' + objectIdentifier,
+            withCredentials: true, // allows sending cookies if not on the same domain
             method: 'POST',
             data: object
         }).then(function (response) {
@@ -71,6 +84,7 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
         return $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             url: apiEndPoint + '/' + objectIdentifier + '/' + object.id,
+            withCredentials: true, // allows sending cookies if not on the same domain
             method: 'PUT',
             data: object
         }).then(function (response) {
@@ -85,15 +99,19 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
 
     this.remove = function (objectIdentifier, objectId) {
         LoadingQueue.increaseQueue(1);
-        return $http.delete(apiEndPoint + '/' + objectIdentifier + '/' + objectId)
-            .then(function (response) {
-                return response.data;
-            }).finally(function () {
-                LoadingQueue.decreaseQueue(1);
-            }).catch(function (error) {
-                printError(error);
-                return [];
-            });
+        return $http({
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            url: apiEndPoint + '/' + objectIdentifier + '/' + objectId,
+            withCredentials: true, // allows sending cookies if not on the same domain
+            method: 'DELETE'
+        }).then(function (response) {
+            return response.data;
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
+        }).catch(function (error) {
+            printError(error);
+            return [];
+        });
     }
 
 }

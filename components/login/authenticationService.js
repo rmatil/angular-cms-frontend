@@ -4,6 +4,7 @@ function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope,
     this.login = function (username, password) {
         return $http({
             url: CONFIG.AUTHENTICATION_ENDPOINT,
+            withCredentials: true, // allows sending cookies if not on the same domain
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             data: $httpParamSerializer({
