@@ -19,7 +19,7 @@ function ArticleController(ArticleService) {
     }
 }
 
-function ArticleDetailController(ArticleService, LanguageService, ArticleCategoryService, StringService, NavigationService, $routeParams, $scope, $location) {
+function ArticleDetailController(ArticleService, LanguageService, ArticleCategoryService, UserGroupService, StringService, NavigationService, $routeParams, $scope, $location) {
     var vm = this,
         articleId = $routeParams.id;
 
@@ -27,6 +27,7 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
     vm.article.content = ''; // init this to solve a problem with ckEditor
     vm.languages = [];
     vm.articleCategories = [];
+    vm.userGroups = [];
 
     activate(articleId);
 
@@ -55,6 +56,11 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
                 vm.articleCategories = data;
                 return data;
             });
+        UserGroupService.getUserGroups()
+            .then(function (data) {
+                vm.userGroups = data;
+                return data;
+            });
     }
 
     function saveArticle() {
@@ -75,7 +81,7 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
     });
 }
 
-function ArticleAddController(ArticleService, LanguageService, ArticleCategoryService, StringService, NavigationService, $scope, $location) {
+function ArticleAddController(ArticleService, LanguageService, ArticleCategoryService, UserGroupService, StringService, NavigationService, $scope, $location) {
     var vm = this,
         defaultTitle = 'new Article';
 
@@ -106,6 +112,11 @@ function ArticleAddController(ArticleService, LanguageService, ArticleCategorySe
                         if (vm.articleCategories.length > 0) {
                             vm.article.category = vm.articleCategories[0];
                         }
+                    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                        return data;
                     });
 
                 return vm.article;
@@ -138,7 +149,7 @@ function ArticleAddController(ArticleService, LanguageService, ArticleCategorySe
         .controller('ArticleAddController', ArticleAddController);
 
     ArticleController.$inject = ['ArticleService'];
-    ArticleDetailController.$inject = ['ArticleService', 'LanguageService', 'ArticleCategoryService', 'StringService', 'NavigationService', '$routeParams', '$scope', '$location'];
-    ArticleAddController.$inject = ['ArticleService', 'LanguageService', 'ArticleCategoryService', 'StringService', 'NavigationService', '$scope', '$location'];
+    ArticleDetailController.$inject = ['ArticleService', 'LanguageService', 'ArticleCategoryService', 'UserGroupService', 'StringService', 'NavigationService', '$routeParams', '$scope', '$location'];
+    ArticleAddController.$inject = ['ArticleService', 'LanguageService', 'ArticleCategoryService', 'UserGroupService', 'StringService', 'NavigationService', '$scope', '$location'];
 
 }(angular));

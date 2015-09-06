@@ -70,7 +70,7 @@
                 <dd>
                     <select ng-model="vm.page.language" ng-options="language.name for language in vm.languages track by language.id" tabindex="3" required></select>
                 </dd>
-                <dt>Restrict Access</dt>
+                <dt>Allow Access to these Roles</dt>
                 <dd>
                     <select multiple ng-model="vm.page.allowed_user_groups" ng-options="usergroup.name for usergroup in vm.userGroups track by usergroup.id" tabindex="4"></select>
                 </dd>

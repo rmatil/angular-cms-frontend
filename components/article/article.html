@@ -32,9 +32,13 @@
                 <dd>
                     <select ng-model="vm.article.language" ng-options="language.name for language in vm.languages track by language.id" tabindex="4" required></select>
                 </dd>
+                <dt>Allow Access to these Roles</dt>
+                <dd>
+                    <select multiple ng-model="vm.article.allowed_user_groups" ng-options="usergroup.name for usergroup in vm.userGroups track by usergroup.id" tabindex="5"></select>
+                </dd>
             </dl>
             <footer>
-                <button type="submit" ng-class="backgroundColorClass" tabindex="5">Save</button>
+                <button type="submit" ng-class="backgroundColorClass" tabindex="6">Save</button>
                 <delete-object objectType="articles" objectId="{{ vm.article.id }}"></delete-object>
             </footer>
         </section>
