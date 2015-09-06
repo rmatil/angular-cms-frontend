@@ -16,7 +16,7 @@ function PageController(PageService) {
     }
 }
 
-function PageDetailController(PageService, LanguageService, PageCategoryService, ArticleService, ArrayService, StringService, NavigationService, $routeParams, $scope, $location) {
+function PageDetailController(PageService, LanguageService, PageCategoryService, ArticleService, UserGroupService, ArrayService, StringService, NavigationService, $routeParams, $scope, $location) {
     var vm = this,
         pageId = $routeParams.id;
 
@@ -24,6 +24,7 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
     vm.articles = [];
     vm.languages = [];
     vm.pageCategories = [];
+    vm.userGroups = [];
 
     activate(pageId);
 
@@ -64,6 +65,11 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
         PageCategoryService.getPageCategories()
             .then(function (data) {
                 vm.pageCategories = data;
+                return data;
+            });
+        UserGroupService.getUserGroups()
+            .then(function (data) {
+                vm.userGroups = data;
                 return data;
             });
     }
@@ -113,13 +119,14 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
     });
 }
 
-function PageAddController(PageService, LanguageService, PageCategoryService, ArticleService, ArrayService, StringService, NavigationService, $scope, $location) {
+function PageAddController(PageService, LanguageService, PageCategoryService, ArticleService, UserGroupService, ArrayService, StringService, NavigationService, $scope, $location) {
     var vm = this,
         defaultTitle = 'new Page';
 
     vm.page = {};
     vm.languages = [];
     vm.pageCategories = [];
+    vm.userGroups = [];
 
     activate();
 
@@ -152,6 +159,12 @@ function PageAddController(PageService, LanguageService, PageCategoryService, Ar
                         if (vm.pageCategories.length > 0) {
                             vm.page.category = vm.pageCategories[0];
                         }
+                    });
+
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                        return data;
                     });
 
                 return data;
@@ -220,6 +233,6 @@ function PageAddController(PageService, LanguageService, PageCategoryService, Ar
         .controller('PageAddController', PageAddController);
 
     PageController.$inject = ['PageService'];
-    PageDetailController.$inject = ['PageService', 'LanguageService', 'PageCategoryService', 'ArticleService', 'ArrayService', 'StringService', 'NavigationService', '$routeParams', '$scope', '$location'];
-    PageAddController.$inject = ['PageService', 'LanguageService', 'PageCategoryService', 'ArticleService', 'ArrayService', 'StringService', 'NavigationService', '$scope', '$location'];
+    PageDetailController.$inject = ['PageService', 'LanguageService', 'PageCategoryService', 'ArticleService', 'UserGroupService', 'ArrayService', 'StringService', 'NavigationService', '$routeParams', '$scope', '$location'];
+    PageAddController.$inject = ['PageService', 'LanguageService', 'PageCategoryService', 'ArticleService', 'UserGroupService', 'ArrayService', 'StringService', 'NavigationService', '$scope', '$location'];
 })();

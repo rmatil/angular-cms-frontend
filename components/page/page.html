@@ -70,17 +70,21 @@
                 <dd>
                     <select ng-model="vm.page.language" ng-options="language.name for language in vm.languages track by language.id" tabindex="3" required></select>
                 </dd>
+                <dt>Restrict Access</dt>
+                <dd>
+                    <select multiple ng-model="vm.page.allowed_user_groups" ng-options="usergroup.name for usergroup in vm.userGroups track by usergroup.id" tabindex="4"></select>
+                </dd>
                 <dt>Publish</dt>
                 <dd>
-                    <input type="checkbox" ng-model="vm.page.is_public" name="is_public" tabindex="4">
+                    <input type="checkbox" ng-model="vm.page.is_published" name="is_published" tabindex="5">
                 </dd>
                 <dt>Generate Submenu</dt>
                 <dd>
-                    <input type="checkbox" ng-model="vm.page.has_subnavigation" name="has_subnavigation" tabindex="5">
+                    <input type="checkbox" ng-model="vm.page.has_subnavigation" name="has_subnavigation" tabindex="6">
                 </dd>
             </dl>
             <footer>
-                <button type="submit" class="darkred" tabindex="6">Save</button>
+                <button type="submit" class="darkred" tabindex="7">Save</button>
                 <delete-object objectType="pages" objectId="{{ vm.page.id }}"></delete-object>
             </footer>
         </section>
