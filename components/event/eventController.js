@@ -1,6 +1,6 @@
 'use strict';
 
-function EventDetailController (EventService, LocationService, FileService, NavigationService, $location, $routeParams) {
+function EventDetailController (EventService, LocationService, FileService, NavigationService, UserGroupService, $location, $routeParams) {
     var vm = this,
         eventId = $routeParams.id,
         startDate,
@@ -8,6 +8,7 @@ function EventDetailController (EventService, LocationService, FileService, Navi
 
     vm.event = {};
     vm.locations = [];
+    vm.userGroups = [];
     vm.files = [];
     vm.start_date = vm.end_date = moment().format('DD.MM.YYYY HH:mm');
 
@@ -29,6 +30,10 @@ function EventDetailController (EventService, LocationService, FileService, Navi
                 FileService.getFiles()
                     .then(function (data) {
                         vm.files = data;
+                    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
                     });
             });
 
@@ -62,13 +67,14 @@ function EventDetailController (EventService, LocationService, FileService, Navi
 
 }
 
-function EventAddController (EventService, LocationService, FileService, NavigationService, $location) {
+function EventAddController (EventService, LocationService, FileService, NavigationService, UserGroupService, $location) {
     var vm = this,
         startDate,
         endDate;
 
     vm.event = {};
     vm.locations = [];
+    vm.userGroups = [];
     vm.files = [];
     vm.start_date = vm.end_date = moment().format('DD.MM.YYYY HH:mm');
 
@@ -89,6 +95,10 @@ function EventAddController (EventService, LocationService, FileService, Navigat
                     .then(function (data) {
                         vm.files = data;
                     });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                    })
             });
 
         var elStart = document.getElementById('rome-calendar-start'),
@@ -129,8 +139,8 @@ function EventAddController (EventService, LocationService, FileService, Navigat
         .controller('EventAddController', EventAddController);
 
 
-    EventDetailController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', '$location', '$routeParams'];
-    EventAddController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', '$location',];
+    EventDetailController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', '$location', '$routeParams'];
+    EventAddController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', '$location',];
 
 
 })(angular);

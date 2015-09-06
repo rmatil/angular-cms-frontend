@@ -34,9 +34,13 @@
                 <dd>
                     <select ng-model="vm.event.location" ng-options="location.name for location in vm.locations track by location.id" tabindex="6" required></select>
                 </dd>
+                <dt>Allow Access to these Roles</dt>
+                <dd>
+                    <select multiple ng-model="vm.event.allowed_user_groups" ng-options="usergroup.name for usergroup in vm.userGroups track by usergroup.id" tabindex="7"></select>
+                </dd>
             </dl>
             <footer>
-                <button type="submit" ng-class="vm.backgroundColorClass" tabindex="7">Save</button>
+                <button type="submit" ng-class="vm.backgroundColorClass" tabindex="8">Save</button>
                 <delete-object objectType="events" objectId="{{ vm.event.id }}"></delete-object>
             </footer>
         </section>
