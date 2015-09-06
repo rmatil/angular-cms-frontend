@@ -24,13 +24,6 @@
             '$httpProvider',
             function ($routeProvider, $locationProvider, $provide, $httpProvider) {
 
-                console.log("App Configuration");
-
-                $routeProvider.when('/', {
-                    templateUrl: 'components/dashboard/dashboard.html',
-                    controller: 'DashboardController'
-                });
-
                 $routeProvider.when('/login',  {
                     templateUrl: 'components/login/login.html',
                     controller: 'LoginController',
@@ -150,9 +143,9 @@
                     controllerAs: 'vm'
                 });
 
-                //$routeProvider.otherwise({
-                //    redirectTo: '/login'
-                //});
+                $routeProvider.otherwise({
+                    redirectTo: '/dashboard'
+                });
 
                 // use HTML5 history API
                 $locationProvider.html5Mode(true);
@@ -172,10 +165,6 @@
                 }
             });
 
-            console.log("run app");
         }]);
-
-
-    console.log("app.config.js");
 
 })(angular);
