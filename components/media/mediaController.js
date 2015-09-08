@@ -37,7 +37,7 @@ function MediaController(FileService) {
 
 }
 
-function MediaAddController(FileService, Upload, NavigationService, $location, $scope) {
+function MediaAddController(FileService, Upload, NavigationService, CONFIG, LoggerService, $location, $scope) {
     var vm = this;
 
     // holds all selected files (from drop zone or select button)
@@ -65,7 +65,7 @@ function MediaAddController(FileService, Upload, NavigationService, $location, $
                 var file = files[i];
                 if (!file.$error) {
                     Upload.upload({
-                        url: '/api/files',
+                        url: CONFIG.API_ENDPOINT + '/files',
                         method: 'POST',
                         fields: {
                             "description": vm.fileDescription
@@ -73,10 +73,11 @@ function MediaAddController(FileService, Upload, NavigationService, $location, $
                         file: file
                     }).progress(function (evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                        LoggerService.debug('progress: ' + progressPercentage + '% ' + evt.config.file.name);
                         vm.percent[evt.config.file.name] = progressPercentage;
                     }).success(function (data, status, headers, config) {
-                        console.log('file: ' + config.file.name + ', Response: ' + JSON.stringify(data))
+                        LoggerService.debug('Saved file: ' + config.file.name);
+                        LoggerService.debug(data);
                     });
                 }
             }
@@ -109,7 +110,7 @@ function MediaDetailController(FileService, NavigationService, $location, $route
         .controller('MediaDetailController', MediaDetailController);
 
     MediaController.$inject = ['FileService'];
-    MediaAddController.$inject = ['FileService', 'Upload', 'NavigationService', '$location', '$scope'];
+    MediaAddController.$inject = ['FileService', 'Upload', 'NavigationService', 'CONFIG', 'LoggerService', '$location', '$scope'];
     MediaDetailController.$inject = ['FileService', 'NavigationService', '$location', '$routeParams'];
 
 })(angular);
