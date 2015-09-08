@@ -3,7 +3,7 @@
 function MediaController(FileService) {
     var vm = this;
 
-    vm.files = [];
+    vm.files = undefined;
 
     activate();
 

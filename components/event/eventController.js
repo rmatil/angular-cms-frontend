@@ -7,9 +7,9 @@ function EventDetailController (EventService, LocationService, FileService, Navi
         endDate;
 
     vm.event = {};
-    vm.locations = [];
-    vm.userGroups = [];
-    vm.files = [];
+    vm.locations = undefined;
+    vm.userGroups = undefined;
+    vm.files = undefined;
     vm.start_date = vm.end_date = moment().format('DD.MM.YYYY HH:mm');
 
     activate();
@@ -73,9 +73,9 @@ function EventAddController (EventService, LocationService, FileService, Navigat
         endDate;
 
     vm.event = {};
-    vm.locations = [];
-    vm.userGroups = [];
-    vm.files = [];
+    vm.locations = undefined;
+    vm.userGroups = undefined;
+    vm.files = undefined;
     vm.start_date = vm.end_date = moment().format('DD.MM.YYYY HH:mm');
 
     activate();

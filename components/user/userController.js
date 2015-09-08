@@ -21,7 +21,7 @@ function UserDetailController (UserService, UserGroupService, NavigationService,
         userId = $routeParams.id;
 
     vm.user = {};
-    vm.userGroups = [];
+    vm.userGroups = undefined;
 
     activate();
 
@@ -52,7 +52,7 @@ function UserAddController (UserService, UserGroupService, NavigationService, $l
     var vm = this;
 
     vm.user = {};
-    vm.userGroups = [];
+    vm.userGroups = undefined;
 
     vm.saveUser = function () {
         saveUser();

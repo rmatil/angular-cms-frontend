@@ -25,9 +25,9 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
 
     vm.article = {};
     vm.article.content = ''; // init this to solve a problem with ckEditor
-    vm.languages = [];
-    vm.articleCategories = [];
-    vm.userGroups = [];
+    vm.languages = undefined;
+    vm.articleCategories = undefined;
+    vm.userGroups = undefined;
 
     activate(articleId);
 

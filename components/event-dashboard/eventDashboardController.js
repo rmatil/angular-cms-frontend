@@ -3,12 +3,12 @@
 function EventDashboardController (EventService, EventGraphService, LocationService) {
     var vm = this;
 
-    vm.events = [];
-    vm.locations = [];
+    vm.events = undefined;
+    vm.locations = undefined;
 
-    vm.beforeEvents = [];
-    vm.nextEvent = [];
-    vm.afterEvents = [];
+    vm.beforeEvents = undefined;
+    vm.nextEvent = {};
+    vm.afterEvents = undefined;
 
     activate();
 
