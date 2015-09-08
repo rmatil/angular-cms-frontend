@@ -10,4 +10,15 @@ angular.module('cms.directives')
             scope: true,
             templateUrl: "components/status-bar/statusBar.html"
         };
-    }]);
+    }])
+    .directive('currentDate', function () {
+        return {
+            restrict: 'E',
+            isolate: true,
+            link: function ($scope, $elm, $attrs) {
+                $scope.currentDate = new Date();
+            },
+            scope: true,
+            template: '{{ currentDate | date:"dd.MM.yyyy" }}'
+        };
+    });

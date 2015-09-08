@@ -1,6 +1,6 @@
 <ul class="status-bar">
     <li ng-if="statusIsLoading"><img height="15" alt="loading" src="img/loading.gif"></li>
-    <li><i class="fa fa-user"></i> Raphael</li>
-    <li><i class="fa fa-calendar"></i> 27. 08. 2015</li>
+    <li><i class="fa fa-user"></i> {{ globals.currentUser.username }}</li>
+    <li><i class="fa fa-calendar"></i> <current-date></current-date> </li>
     <li><logout></logout></li>
 </ul>
