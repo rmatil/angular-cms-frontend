@@ -12,7 +12,8 @@
             'angular-momentjs',
             'ngSanitize',
             'ngCookies',
-            'gToast'
+            'gToast',
+            'angular-loading-bar'
         ])
         .constant('CONFIG', {
             "API_ENDPOINT": "http://cmsv4.dev.local/api",
@@ -23,7 +24,8 @@
             '$locationProvider',
             '$provide',
             '$httpProvider',
-            function ($routeProvider, $locationProvider, $provide, $httpProvider) {
+            'cfpLoadingBarProvider',
+            function ($routeProvider, $locationProvider, $provide, $httpProvider, cfpLoadingBarProvider) {
 
                 $routeProvider.when('/login',  {
                     templateUrl: 'components/login/login.html',
@@ -151,7 +153,11 @@
                 // use HTML5 history API
                 $locationProvider.html5Mode(true);
 
-        }])
+                // angular-loading-bar
+                cfpLoadingBarProvider.includeSpinner = false;
+
+
+            }])
         .run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
             // keep user logged in after page refresh
             $rootScope.globals = $cookieStore.get('globals') || {};

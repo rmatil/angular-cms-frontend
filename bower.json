@@ -40,6 +40,7 @@
     "ckeditor": "4.3",
     "ng-ckeditor": "~0.2.1",
     "angular-cookies": "~1.4.5",
-    "gToast": "~0.1.2"
+    "gToast": "~0.1.2",
+    "angular-loading-bar": "~0.8.0"
   }
 }
