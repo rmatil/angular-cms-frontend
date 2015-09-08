@@ -1,17 +1,14 @@
 'use strict';
 
-function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
+function GenericApiService(CONFIG, LoadingQueue, gToast, LoggerService, $http) {
 
     var apiEndPoint = CONFIG.API_ENDPOINT;
 
     var printError = function (error) {
-        // TODO: make a generic version of this
-        // TODO: set log level for information to debug in $logProvider
-        $log.error('[' + error.config.method + '] ' + error.status + ' "' + error.statusText + '" "' + error.config.url + '"');
+        LoggerService.error('[' + error.config.method + '] ' + error.status + ' ' + error.config.url + ' "' + error.data.message + '"');
     };
 
     this.get = function (objectIdentifier) {
-        LoadingQueue.increaseQueue(1);
         return $http({
             headers: {'Content-Type': 'application/json; charset=UTF-8'},
             url: apiEndPoint + '/' + objectIdentifier,
@@ -19,11 +16,12 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
             method: 'GET'
         }).then(function (response) {
             return response.data;
-        }).finally(function () {
-            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
+            gToast.open(error.data.error + ': ' + error.data.message);
             printError(error);
             return [];
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         });
     };
 
@@ -36,11 +34,12 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
             method: 'GET'
         }).then(function (response) {
             return response.data;
-        }).finally(function () {
-            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
+            gToast.open(error.data.error + ': ' + error.data.message);
             printError(error);
             return [];
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         });
     };
 
@@ -53,11 +52,12 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
             method: 'GET'
         }).then(function (response) {
             return response.data;
-        }).finally(function () {
-            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
+            gToast.open(error.data.error + ': ' + error.data.message);
             printError(error);
             return [];
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         });
     };
 
@@ -70,12 +70,14 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
             method: 'POST',
             data: object
         }).then(function (response) {
+            gToast.open("Created");
             return response.data;
-        }).finally(function () {
-            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
+            gToast.open(error.data.error + ': ' + error.data.message);
             printError(error);
             return [];
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         });
     };
 
@@ -88,12 +90,14 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
             method: 'PUT',
             data: object
         }).then(function (response) {
+            gToast.open("Updated");
             return response.data;
-        }).finally(function () {
-            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
+            gToast.open(error.data.error + ': ' + error.data.message);
             printError(error);
             return [];
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         });
     };
 
@@ -105,12 +109,14 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
             withCredentials: true, // allows sending cookies if not on the same domain
             method: 'DELETE'
         }).then(function (response) {
+            gToast.open("Removed");
             return response.data;
-        }).finally(function () {
-            LoadingQueue.decreaseQueue(1);
         }).catch(function (error) {
+            gToast.open(error.data.error + ': ' + error.data.message);
             printError(error);
             return [];
+        }).finally(function () {
+            LoadingQueue.decreaseQueue(1);
         });
     }
 
@@ -121,5 +127,5 @@ function GenericApiService(CONFIG, LoadingQueue, $http, $log) {
         .module('cms.services')
         .service('GenericApiService', GenericApiService);
 
-        GenericApiService.$inject = ['CONFIG', 'LoadingQueue', '$http', '$log'];
+        GenericApiService.$inject = ['CONFIG', 'LoadingQueue', 'gToast', 'LoggerService', '$http'];
 }());

@@ -11,7 +11,8 @@
             'ngCkeditor',
             'angular-momentjs',
             'ngSanitize',
-            'ngCookies'
+            'ngCookies',
+            'gToast'
         ])
         .constant('CONFIG', {
             "API_ENDPOINT": "http://cmsv4.dev.local/api",

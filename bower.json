@@ -39,6 +39,7 @@
     "jquery": "~2.1.4",
     "ckeditor": "4.3",
     "ng-ckeditor": "~0.2.1",
-    "angular-cookies": "~1.4.5"
+    "angular-cookies": "~1.4.5",
+    "gToast": "~0.1.2"
   }
 }

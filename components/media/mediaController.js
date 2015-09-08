@@ -37,7 +37,7 @@ function MediaController(FileService) {
 
 }
 
-function MediaAddController(FileService, Upload, NavigationService, CONFIG, LoggerService, $location, $scope) {
+function MediaAddController(FileService, Upload, NavigationService, CONFIG, LoggerService, gToast, $location, $scope) {
     var vm = this;
 
     // holds all selected files (from drop zone or select button)
@@ -78,6 +78,9 @@ function MediaAddController(FileService, Upload, NavigationService, CONFIG, Logg
                     }).success(function (data, status, headers, config) {
                         LoggerService.debug('Saved file: ' + config.file.name);
                         LoggerService.debug(data);
+                    }).error(function (data, status, headers, config) {
+                        gToast.open(data.error + ': ' + data.message);
+                        LoggerService.error(data.error + ': ' + data.message);
                     });
                 }
             }
@@ -110,7 +113,7 @@ function MediaDetailController(FileService, NavigationService, $location, $route
         .controller('MediaDetailController', MediaDetailController);
 
     MediaController.$inject = ['FileService'];
-    MediaAddController.$inject = ['FileService', 'Upload', 'NavigationService', 'CONFIG', 'LoggerService', '$location', '$scope'];
+    MediaAddController.$inject = ['FileService', 'Upload', 'NavigationService', 'CONFIG', 'LoggerService', 'gToast', '$location', '$scope'];
     MediaDetailController.$inject = ['FileService', 'NavigationService', '$location', '$routeParams'];
 
 })(angular);
