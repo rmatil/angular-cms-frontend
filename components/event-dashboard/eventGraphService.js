@@ -108,6 +108,12 @@ function EventGraphService (LoggerService) {
         eventsBefore = classifiedEvents.eventsBefore;
         eventsAfter = classifiedEvents.eventsAfter;
 
+        if (false === nextEvent) {
+            // no upcoming event available
+            nextEvent = {};
+            nextEvent.date = moment();
+        }
+
         // classify events and remove all which are more than the half of the month before the next event
         eventsBefore = eventsBefore.filter(function (elm) {
             return elm.date.isAfter(moment(nextEvent.date).subtract(middleOfMonth.date(), 'days'));
