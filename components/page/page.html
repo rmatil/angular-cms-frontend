@@ -82,9 +82,13 @@
                 <dd>
                     <input type="checkbox" ng-model="vm.page.has_subnavigation" name="has_subnavigation" tabindex="6">
                 </dd>
+                <dt>This is the Start Homepage</dt>
+                <dd>
+                    <input type="checkbox" ng-model="vm.page.is_start_page" name="is_start_page" tabindex="7">
+                </dd>
             </dl>
             <footer>
-                <button type="submit" class="darkred" tabindex="7">Save</button>
+                <button type="submit" class="darkred" tabindex="8">Save</button>
                 <delete-object objectType="pages" objectId="{{ vm.page.id }}"></delete-object>
             </footer>
         </section>
