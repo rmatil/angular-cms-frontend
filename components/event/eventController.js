@@ -1,6 +1,6 @@
 'use strict';
 
-function EventDetailController (EventService, LocationService, FileService, NavigationService, UserGroupService, $location, $routeParams) {
+function EventDetailController (EventService, LocationService, FileService, NavigationService, UserGroupService, StringService, $scope, $location, $routeParams) {
     var vm = this,
         eventId = $routeParams.id,
         startDate,
@@ -65,9 +65,18 @@ function EventDetailController (EventService, LocationService, FileService, Navi
         EventService.putEvent(vm.event);
     }
 
+    $scope.$watch('vm.event.name', function (currentVal, newVal) {
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
+
+        vm.event.url_name = StringService.buildUrlString(currentVal);
+    });
+
 }
 
-function EventAddController (EventService, LocationService, FileService, NavigationService, UserGroupService, $location) {
+function EventAddController (EventService, LocationService, FileService, NavigationService, UserGroupService, StringService, $scope, $location) {
     var vm = this,
         startDate,
         endDate;
@@ -130,6 +139,15 @@ function EventAddController (EventService, LocationService, FileService, Navigat
         console.log(vm.event.end_date);
         EventService.postEvent(vm.event);
     }
+
+    $scope.$watch('vm.event.name', function (currentVal, newVal) {
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
+
+        vm.event.url_name = StringService.buildUrlString(currentVal);
+    });
 }
 
 (function(angular) {
@@ -139,8 +157,8 @@ function EventAddController (EventService, LocationService, FileService, Navigat
         .controller('EventAddController', EventAddController);
 
 
-    EventDetailController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', '$location', '$routeParams'];
-    EventAddController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', '$location',];
+    EventDetailController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', 'StringService', '$scope', '$location', '$routeParams'];
+    EventAddController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', 'StringService', '$scope', '$location'];
 
 
 })(angular);
