@@ -37,7 +37,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
     return gulp.src(
         [
-            'bower_components/angular/angular.js',
+            'bower_components/angular/angular.min.js',
             'bower_components/angular-sanitize/angular-sanitize.min.js',
             'bower_components/angular-route/angular-route.min.js',
             'bower_components/angular-cookies/angular-cookies.min.js',
@@ -80,4 +80,21 @@ gulp.task('copyfiles', function () {
 // Default task
 gulp.task('default', function () {
     gulp.start('styles', 'scripts', 'copyfiles');
+});
+
+// Watch
+gulp.task('watch', function () {
+
+    // Watch .css files
+    gulp.watch('css/*.css', ['styles']);
+
+    // Watch .js files
+    gulp.watch('components/**/*.js', ['scripts']);
+
+    // Create LiveReload server
+    //livereload.listen();
+    //
+    //// Watch any files in dist/, reload on change
+    //gulp.watch(['dist/**']).on('change', livereload.changed);
+
 });
