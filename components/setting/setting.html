@@ -11,8 +11,16 @@
 
         <section>
             <dl>
-                <dt ng-repeat-start="setting in vm.settings">{{ setting.name }}</dt>
-                <dd ng-repeat-end>{{ setting.value }}</dd>
+                <dt><label for="website-name">Website Name</label></dt>
+                <dd><input type="text" id="website-name" ng-model="vm.settings.website_name.value"></dd>
+                <dt><label for="website-sender-email">Website Sender Email</label></dt>
+                <dd><input type="text" id="website-sender-email" ng-model="vm.settings.website_email.value"></dd>
+                <dt><label for="website-reply-to-email">Website Reply-To Email</label></dt>
+                <dd><input type="text" id="website-reply-to-email" ng-model="vm.settings.website_reply_to_email.value"></dd>
+                <dt><label for="website-url">Website URL</label></dt>
+                <dd><input type="text" id="website-url" ng-model="vm.settings.website_url.value"></dd>
+                <dt><label for="website-debug-mode">Debug Mode</label></dt>
+                <dd><input type="checkbox" id="website-debug-mode" ng-model="vm.settings.debug_mode.value" ng-true-value="'1'" ng-false-value="'0'"></dd>
             </dl>
 
         </section>

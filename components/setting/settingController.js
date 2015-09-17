@@ -7,12 +7,24 @@ function SettingController(SettingService, NavigationService, $location) {
 
     activate();
 
+    vm.saveSettings = function () {
+        saveSettings();
+    };
+
     function activate() {
         vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
         SettingService.getSettings()
             .then(function (data) {
                 vm.settings = data;
             });
+    }
+
+    function saveSettings() {
+        for (var key in vm.settings) {
+            if (vm.settings.hasOwnProperty(key)) {
+                SettingService.putSetting(vm.settings[key]);
+            }
+        }
     }
 
 }
