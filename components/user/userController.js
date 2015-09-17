@@ -66,6 +66,7 @@ function UserAddController (UserService, UserGroupService, NavigationService, $l
             .then(function (data) {
                 vm.user = data;
                 vm.user.registration_date = moment().format('YYYY-MM-DDTHH:mm:ssZZ');
+                vm.user.last_login_date = moment().format('YYYY-MM-DDTHH:mm:ssZZ');
 
                 UserGroupService.getUserGroups()
                     .then(function (data) {
