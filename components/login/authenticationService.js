@@ -1,6 +1,8 @@
 'use strict';
 
 function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope, $httpParamSerializer) {
+    var that = this;
+
     this.login = function (username, password) {
         return $http({
             url: CONFIG.AUTHENTICATION_ENDPOINT,
@@ -12,6 +14,18 @@ function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope,
                 'password': password
             })
         })
+    };
+
+    this.resendLoginRequest = function () {
+        var username = '',
+            password = '';
+
+        if ($rootScope.globals.hasOwnProperty('currentUser')) {
+            username = $rootScope.globals.currentUser.username;
+            password = $rootScope.globals.currentUser.password;
+        }
+
+        return that.login(username, password);
     };
 
     this.setCredentials = function (username, password) {
