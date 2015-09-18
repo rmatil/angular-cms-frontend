@@ -13,7 +13,8 @@
             'ngSanitize',
             'ngCookies',
             'gToast',
-            'angular-loading-bar'
+            'angular-loading-bar',
+            'ui.codemirror'
         ])
         .constant('CONFIG', {
             "API_ENDPOINT": "http://cmsv4.dev.local/api",

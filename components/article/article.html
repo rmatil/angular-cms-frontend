@@ -9,7 +9,7 @@
             <i class="fa fa-file-text-o"></i> <page-name></page-name>
         </h1>
         <input type="text" ng-model="vm.article.title" value="{{ vm.article.title }}" placeholder="Title" tabindex="1" required>
-        <textarea ckeditor ng-model="vm.article.content" value="{{ vm.article.content }}" tabindex="2">{{ vm.article.content }}</textarea>
+        <ui-codemirror ui-codemirror-opts="vm.editorOptions" ng-model="vm.article.content"></ui-codemirror>
     </article>
 
     <aside>

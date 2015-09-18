@@ -28,6 +28,12 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
     vm.languages = undefined;
     vm.articleCategories = undefined;
     vm.userGroups = undefined;
+    vm.editorOptions = {
+        mode: "html",
+        tabSize: 2,
+        indentWithTabs: false,
+        lineNumbers: true
+    };
 
     activate(articleId);
 

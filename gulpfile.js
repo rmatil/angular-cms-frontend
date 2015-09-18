@@ -22,7 +22,9 @@ gulp.task('styles', function () {
             'bower_components/ng-ckeditor/ng-ckeditor.css',
             'bower_components/rome/dist/rome.min.css',
             'bower_components/gToast/build/gToast.css',
-            'bower_components/angular-loading-bar/build/loading-bar.min.css'
+            'bower_components/angular-loading-bar/build/loading-bar.min.css',
+            'bower_components/codemirror/lib/codemirror.css',
+            'css/codemirror.css'
         ]
     ).pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(concat('main.css'))
@@ -30,13 +32,14 @@ gulp.task('styles', function () {
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest('build/css'))
-    .pipe(notify({message: 'Styles task complete'}));
 });
 
 // Scripts
 gulp.task('scripts', function () {
     return gulp.src(
         [
+            'bower_components/codemirror/lib/codemirror.js',
+            'bower_components/codemirror/mode/html/html.js',
             'bower_components/angular/angular.min.js',
             'bower_components/angular-sanitize/angular-sanitize.min.js',
             'bower_components/angular-route/angular-route.min.js',
@@ -49,6 +52,8 @@ gulp.task('scripts', function () {
             'bower_components/rome/dist/rome.standalone.min.js',
             'bower_components/gToast/build/gToast.js',
             'bower_components/angular-loading-bar/build/loading-bar.min.js',
+
+            'bower_components/angular-ui-codemirror/ui-codemirror.js',
 
             'components/app.modules.js',
             'components/*/*Service.js',
@@ -68,7 +73,6 @@ gulp.task('scripts', function () {
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('build/js'))
-    .pipe(notify({message: 'Scripts task complete'}));
 });
 
 // Copy fonts from a module outside of our project (like Bower)
@@ -80,6 +84,7 @@ gulp.task('copyfiles', function () {
 // Default task
 gulp.task('default', function () {
     gulp.start('styles', 'scripts', 'copyfiles');
+
 });
 
 // Watch
