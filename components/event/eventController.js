@@ -16,27 +16,6 @@ function EventDetailController (EventService, LocationService, FileService, Navi
 
     function activate () {
         vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-        EventService.getEvent(eventId)
-            .then(function (data) {
-                vm.event = data;
-
-                vm.start_date = moment(vm.event.start_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
-                vm.end_date = moment(vm.event.end_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
-
-                LocationService.getLocations()
-                    .then(function (data) {
-                        vm.locations = data;
-                    });
-                FileService.getFiles()
-                    .then(function (data) {
-                        vm.files = data;
-                    });
-                UserGroupService.getUserGroups()
-                    .then(function (data) {
-                        vm.userGroups = data;
-                    });
-            });
-
         var elStart = document.getElementById('rome-calendar-start'),
             elEnd = document.getElementById('rome-calendar-end'),
             optionsStart = {
@@ -52,6 +31,32 @@ function EventDetailController (EventService, LocationService, FileService, Navi
 
         startDate = rome(elStart, optionsStart);
         endDate = rome(elEnd, optionsEnd);
+
+        EventService.getEvent(eventId)
+            .then(function (data) {
+                vm.event = data;
+
+                vm.start_date = moment(vm.event.start_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
+                vm.end_date = moment(vm.event.end_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
+
+                startDate.setValue(vm.start_date);
+                startDate.refresh();
+                endDate.setValue(vm.end_date);
+                endDate.refresh();
+
+                LocationService.getLocations()
+                    .then(function (data) {
+                        vm.locations = data;
+                    });
+                FileService.getFiles()
+                    .then(function (data) {
+                        vm.files = data;
+                    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                    });
+            });
     }
 
 
@@ -60,8 +65,8 @@ function EventDetailController (EventService, LocationService, FileService, Navi
     };
 
     function saveEvent () {
-        vm.event.start_date = startDate.getMoment().format("YYYY-MM-DDTHH:mm:ssZZ");
-        vm.event.end_date = endDate.getMoment().format("YYYY-MM-DDTHH:mm:ssZZ");
+        vm.event.start_date = startDate.getMoment().utc().format(moment.ISO_8601());
+        vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
         EventService.putEvent(vm.event);
     }
 
@@ -133,10 +138,8 @@ function EventAddController (EventService, LocationService, FileService, Navigat
     };
 
     function saveEvent () {
-        vm.event.start_date = startDate.getMoment().format("YYYY-MM-DDTHH:mm:ssZZ");
-        vm.event.end_date = endDate.getMoment().format("YYYY-MM-DDTHH:mm:ssZZ");
-        console.log(vm.event.start_date);
-        console.log(vm.event.end_date);
+        vm.event.start_date = startDate.getMoment().utc().format(moment.ISO_8601());
+        vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
         EventService.postEvent(vm.event);
     }
 
