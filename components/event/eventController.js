@@ -91,6 +91,7 @@ function EventAddController (EventService, LocationService, FileService, Navigat
     vm.userGroups = undefined;
     vm.files = undefined;
     vm.start_date = vm.end_date = moment().format('DD.MM.YYYY HH:mm');
+    vm.end_date = moment().add(95, 'm').format('DD.MM.YYYY HH:mm'); // add 95 minutes
 
     activate();
 
