@@ -15,6 +15,4 @@
         .module('cms.directives', [ function () {} ]);
 
 
-    console.log("app.module.js");
-
 })(angular);
