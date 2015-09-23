@@ -17,8 +17,8 @@
             'ui.codemirror'
         ])
         .constant('CONFIG', {
-            "API_ENDPOINT": "http://cmsv4.dev.local/api",
-            "AUTHENTICATION_ENDPOINT": 'http://cmsv4.dev.local/authenticate'
+	    "API_ENDPOINT": "",
+	    "AUTHENTICATION_ENDPOINT": '/authentication/authenticate.json'
         })
         .config([
             '$routeProvider',
