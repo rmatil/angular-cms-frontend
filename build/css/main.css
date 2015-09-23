@@ -1,0 +1,2031 @@
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  box-sizing: content-box; /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    color: #8c8c8c;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+
+a {
+    color: #8c8c8c;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 200;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    background: #222222;
+}
+
+nav a {
+    text-decoration: none;
+    display: block;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    display: block;
+    height: 2em;
+    padding: 0.4em 0.8em;
+    margin: 0.4em 0;
+    line-height: 2em;
+}
+
+nav ul li,
+nav ul li a {
+    color: #8c8c8c;;
+}
+
+nav ul li:hover,
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+main {
+    margin: 0 0 0 13em;
+    padding: 0 0 1em 0;
+}
+
+.content-nav {
+    position: fixed;
+    right: 0;
+    left: 13em;
+    top: 3em;
+    height: 4em;
+    line-height: 4em;
+    margin: 0;
+    background: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 10;
+}
+
+ul.content-nav li {
+    display: inline-block;
+    margin: 0 0.5em;
+    padding: 0 0.5em;
+}
+
+ul.content-nav li a {
+    text-decoration: none;
+}
+
+.status-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 13em;
+    margin: 0;
+    padding: 0 2em;
+    height: 3em;
+    line-height: 3em;
+    z-index: 10;
+    text-align: right;
+    color: #000000;
+    background: #f8f8f8;
+}
+
+ul.status-bar li {
+    display: inline-block;
+    padding: 0 0.5em;
+}
+
+ul.status-bar li i {
+    padding: 0 0.2em 0 0;
+}
+
+
+article {
+    position: relative;
+    top: 10em;
+    margin: 0 0 0 3.5em;
+    float: left;
+    clear: left;
+    width: 65%;
+}
+
+article input:first-of-type {
+    margin: 0 0 1em 0;
+}
+
+article dl {
+    margin: 0;
+    background: #ffffff;
+    width: 100%;
+}
+
+article dl dt {
+    padding: 5px 10px;
+    float: left;
+    clear:left;
+    min-width: 10%;
+    text-align: right;
+}
+
+article dl dd {
+    padding: 5px 10px;
+    color: #222222;
+    float: left;
+    width: 40%;
+}
+
+aside {
+    position: relative;
+    top: 10em;
+    margin: 5.5em 0 0 3.5em;
+    float: left;
+    width: 25%;
+}
+
+aside header {
+    padding: 0 0.8em;
+    color: #8c8c8c;
+}
+
+aside h1 {
+    font-size: 1.3em;
+    padding: 0.5em 0;
+    margin: 0;
+}
+
+aside section {
+    margin: 0 0 1em 0;
+}
+
+aside dl {
+    margin: 0;
+    padding: 0.8em;
+    background: #ffffff;
+}
+
+aside dl dt {
+    display: block;
+    float: left;
+    clear: left;
+}
+
+aside dl dd {
+    display: block;
+    text-align: right;
+    color: #222222;
+}
+
+aside footer {
+    padding: 0.8em;
+    background: #ffffff;
+    border-top: 1px solid #e5e5e5;
+}
+
+input {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-shadow: none;
+    padding: 0.2em 0;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date],
+input[type=time],
+input[type=search] {
+    text-indent: 0;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    padding: 0.9em;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: 0;
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+}
+
+th {
+    padding: 0.9em 0 0.9em 0.5em;
+    text-align: left;
+}
+
+td {
+    padding: 0.9em 0 0.9em 0.5em;
+}
+
+.table {
+    display: table;
+}
+
+.table-cell {
+    display: table-cell;
+}
+
+#map-canvas {
+    height: 500px;
+}
+
+/* ==========================================================================
+   Login Overlay
+   ========================================================================== */
+
+#login-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#login-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    max-width: 800px;
+    margin: 10% auto;
+    text-align: center;
+    min-height: 400px;
+}
+
+#login-container form {
+    margin: 15% 0;
+}
+
+#login-container ul {
+    padding: 0;
+}
+
+#login-container ul li {
+    display: block;
+}
+
+#login-container input {
+    border: 2px solid #efcf4d;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+#login-container input[type=submit] {
+    color: #fff;
+    padding: 10px;
+    background: #e7494a;
+    border: 2px solid #e7494a;
+}
+
+#login-container input.ng-invalid {
+    border: 1px solid #e7494a;
+}
+
+
+/* ==========================================================================
+   Progress Bar
+   ========================================================================== */
+
+.progress-bar {
+    margin: 10px 0;
+    width: 100%;
+    background: #e5e5e5;
+    position: relative;
+    height: 20px;
+}
+
+.progress-bar-percentage {
+    background-color: #DFF2BF;
+    color: #4F8A10;
+    border: 1px solid #4F8A10;
+    padding: 5px 0;
+    text-align: center;
+    line-height: 10px;
+    height: 8px;
+}
+
+.progress-bar-percentage span {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.drop-box {
+    background: #ffffff;
+    border: 2px dashed #dddddd;
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    padding-top: 25px;
+    cursor: pointer;
+}
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.nav-active {
+    margin: 3em 0;
+    text-align: center;
+    height: 4em;
+    line-height: 4em;
+    overflow: hidden;
+}
+
+.nav-icon {
+    display: inline;
+    margin: 0 0 0 0.5em;
+}
+
+.nav-text {
+    display: inline;
+    margin: 0 0 0 1.4em;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-10 {
+    width: 10%;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.width-33 {
+    width: 33%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/*
+ * Hide visually and from screen readers:
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+/* ==========================================================================
+   Dashboard Boxes
+   ========================================================================== */
+
+.dashboard-box {
+    background: #f8f8f8;
+    display: inline-table;
+}
+
+.dashboard-box-30 {
+    width: 30em;
+}
+
+.dashboard-box-50 {
+    width: 50em;
+}
+
+.dashboard-body-box {
+    background: #fff;
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    line-height: 24px;
+}
+
+.dashboard-body-box a {
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.dashboard-body-box a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Media Queries for phones
+   Note: declaration must occur after the overwritten styles
+   ========================================================================== */
+
+@media only screen and (max-width: 1000px) {
+
+    nav {
+	width: 4em;
+    }
+
+    main {
+	margin: 0 0 0 4em;
+    }
+
+    .content-nav {
+	left:4em;
+    }
+
+    .status-bar {
+	left: 4em;
+    }
+
+    .nav-active,
+    .nav-text {
+	visibility: hidden;
+    }
+
+    .dashboard-box-30 {
+	width: 20em;
+    }
+
+    .dashboard-box-50 {
+	width: 20em;
+    }
+
+}
+
+@media only screen and (max-width: 1200px) {
+    article {
+	width: 55%;
+	margin: 0;
+	padding: 0 3.5em;
+
+    }
+
+    aside {
+	margin: 5.5em 0 0 0;
+    }
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /*Style adjustments for viewports that meet the condition*/
+}
+
+@media print,
+    (-webkit-min-device-pixel-ratio: 1.25),
+    (min-resolution: 1.25dppx),
+    (min-resolution: 120dpi) {
+	/* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+	background: transparent !important;
+	color: #000 !important; /* Black prints faster:
+				   http://www.sanbeiji.com/archives/953 */
+	box-shadow: none !important;
+	text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+	text-decoration: underline;
+    }
+
+    a[href]:after {
+	content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+	content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+	content: "";
+    }
+
+    pre,
+    blockquote {
+	border: 1px solid #999;
+	page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+	display: table-header-group;
+    }
+
+    tr,
+    img {
+	page-break-inside: avoid;
+    }
+
+    img {
+	max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+	orphans: 3;
+	widows: 3;
+    }
+
+    h2,
+    h3 {
+	page-break-after: avoid;
+    }
+}
+
+/* ==========================================================================
+   Color definitions
+   ========================================================================== */
+
+.lighred-color {
+    color: #e7494a;
+}
+
+.darkred-color {
+    color: #c22727;
+}
+
+input.ng-invalid {
+    border: 1px dashed #e7494a;
+}
+
+.lightgreen-color {
+    color: #2ecc71;
+}
+
+.darkgreen-color {
+    color: #27ae60;
+}
+
+.lightred-right-border {
+    border-right: 2px solid #e7494a;
+}
+
+.darkred-right-border {
+    border-right: 2px solid  #c22727;
+}
+
+.lightblue-right-border {
+    border-right: 2px solid  #3498db;
+}
+
+.darkblue-right-border {
+    border-right: 2px solid  #2980b9;
+}
+
+.lightpurple-right-border {
+    border-right: 2px solid #9b59b6;
+}
+
+.darkpurple-right-border  {
+    border-right: 2px solid #8e44ad;
+}
+
+.lightyellow-right-border  {
+    border-right: 2px solid  #efcf4d;
+}
+
+.darkyellow-right-border{
+    border-right: 2px solid  #f2ac3e;
+}
+
+.lightgreen-right-border {
+    border-right: 2px solid  #2ecc71;
+}
+
+.darkgreen-right-border  {
+    border-right: 2px solid  #27ae60;
+}
+
+.darkpink-right-border {
+    border-right: 2px solid #c227ae;
+}
+
+.lightpink-right-border {
+    border-right: 2px solid #ee51da;
+}
+
+/* left */
+.lightred-left-border {
+    border-left: 2px solid #e7494a;
+}
+
+.darkred-left-border {
+    border-left: 2px solid  #c22727;
+}
+
+.lightblue-left-border {
+    border-left: 2px solid  #3498db;
+}
+
+.darkblue-left-border {
+    border-left: 2px solid  #2980b9;
+}
+
+.lightpurple-left-border {
+    border-left: 2px solid #9b59b6;
+}
+
+.darkpurple-left-border  {
+    border-left: 2px solid #8e44ad;
+}
+
+.lightyellow-left-border  {
+    border-left: 2px solid  #efcf4d;
+}
+
+.darkyellow-left-border{
+    border-left: 2px solid  #f2ac3e;
+}
+
+.lightgreen-left-border {
+    border-left: 2px solid  #2ecc71;
+}
+
+.darkgreen-left-border  {
+    border-left: 2px solid  #27ae60;
+}
+
+.darkpink-left-border {
+    border-left: 2px solid #c227ae;
+}
+
+.lightpink-left-border {
+    border-left: 2px solid #ee51da;
+}
+
+/* 3px top-borders */
+.lightred-top-border {
+    border-top: 3px solid #e7494a;
+}
+
+.darkred-top-border {
+    border-top: 3px solid  #c22727;
+}
+
+.lightblue-top-border {
+    border-top: 3px solid  #3498db;
+}
+
+.darkblue-top-border {
+    border-top: 3px solid  #2980b9;
+}
+
+.lightpurple-top-border {
+    border-top: 3px solid #9b59b6;
+}
+
+.darkpurple-top-border  {
+    border-top: 3px solid #8e44ad;
+}
+
+.lightyellow-top-border  {
+    border-top: 3px solid  #efcf4d;
+}
+
+.darkyellow-top-border{
+    border-top: 3px solid  #f2ac3e;
+}
+
+.lightgreen-top-border {
+    border-top: 3px solid  #2ecc71;
+}
+
+.darkgreen-top-border  {
+    border-top: 3px solid  #27ae60;
+}
+
+.darkpink-top-border {
+    border-top: 3px solid #c227ae;
+}
+
+.lightpink-top-border {
+    border-top: 3px solid #ee51da;
+}
+
+
+/* 3px left-borders for navigation */
+nav ul li.darkred-border {
+    border-left: 3px solid #c22727;
+}
+
+nav ul li.lightyellow-border {
+    border-left: 3px solid #efcf4d;
+}
+
+nav ul li.darkblue-border {
+    border-left: 3px solid #2980b9;
+}
+
+nav ul li.darkpurple-border {
+    border-left: 3px solid #8e44ad;
+}
+
+nav ul li.darkyellow-border {
+    border-left: 3px solid #f2ac3e;
+}
+
+nav ul li.darkgreen-border {
+    border-left: 3px solid #27ae60;
+}
+
+nav ul li.darkpink-border {
+    border-left: 3px solid #c227ae;
+}
+
+/* background-colors incl. padding. also used navigation hover */
+.lightred, nav ul li.lightred-border:hover {
+    background-color: #e7494a;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.darkred, nav ul li.darkred-border:hover  {
+    background-color: #c22727;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.lightblue, nav ul li.lightblue-border:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.darkblue, nav ul li.darkblue-border:hover  {
+    background-color: #2980b9;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.lightpurple, nav ul li.lightpurple-border:hover  {
+    background-color: #9b59b6;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.darkpurple, nav ul li.darkpurple-border:hover  {
+    background-color: #8e44ad;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.lightyellow, nav ul li.lightyellow-border:hover  {
+    background-color: #efcf4d;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.darkyellow, nav ul li.darkyellow-border:hover  {
+    background-color: #f2ac3e;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.lightgreen, nav ul li.lightgreen-border:hover  {
+    background-color: #2ecc71;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.darkgreen, nav ul li.darkgreen-border:hover  {
+    background-color: #27ae60;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.lightpink, nav ul li.lightpink-border:hover {
+    background-color: #ee51da;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.darkpink, nav ul li.darkpink-border:hover {
+    background-color: #c227ae;
+    color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Buttons */
+
+button.delete {
+    color: #000;
+    border: 2px solid #000;
+    background: #ffffff;
+}
+
+button.delete:hover,
+button.delete:active {
+    color: #fff;
+    background: #d8000c;
+    border: 2px solid #d8000c;
+}
+
+button.lightred {
+    background: #fff;
+    color: #e7494a;
+    border: 2px solid #e7494a;
+}
+
+button.lightred:hover,
+button.lightred:active {
+    color: #fff;;
+    background: #e7494a;
+}
+
+button.darkred {
+    background: #fff;
+    color: #c22727;
+    border: 2px solid  #c22727;
+}
+
+button.darkred:hover,
+button.darkred:active {
+    color: #fff;
+    background: #c22727;
+}
+
+button.lightblue {
+    background: #fff;
+    color: #3498db;
+    border: 2px solid #3498db;
+}
+
+button.lightblue:hover,
+button.lightblue:active {
+    color: #fff;
+    background: #3498db;
+}
+
+button.darkblue {
+    background: #fff;
+    color: #2980b9;
+    border: 2px solid  #2980b9;
+}
+
+button.darkblue:hover,
+button.darkblue:active {
+    color: #fff;
+    background: #2980b9;
+}
+
+button.lightpurple {
+    background: #fff;
+    color: #9b59b6;
+    border: 2px solid #9b59b6;
+}
+
+button.lightpurple:hover,
+button.lightpurple:active {
+    color: #fff;
+    background: #9b59b6;
+}
+
+button.darkpurple  {
+    background: #fff;
+    color: #8e44ad;
+    border: 2px solid #8e44ad;
+}
+
+button.darkpurple:hover,
+button.darkpurple.active {
+    color: #fff;
+    background: #8e44ad;
+}
+
+button.lightyellow  {
+    background: #fff;
+    color: #efcf4d;
+    border: 2px solid  #efcf4d;
+}
+
+button.lightyellow:hover,
+button.lightyellow:active {
+    color: #fff;
+    background: #efcf4d;
+}
+
+button.darkyellow {
+    background: #fff;
+    color: #f2ac3e;
+    border: 2px solid  #f2ac3e;
+}
+
+button.darkyellow:hover,
+button.darkyellow:active {
+    color: #fff;
+    background: #f2ac3e;
+}
+
+button.lightgreen {
+    background: #fff;
+    color: #2ecc71;
+    border: 2px solid  #2ecc71;
+}
+
+button.lightgreen:hover,
+button.lightgreen:active {
+    color: #fff;
+    background: #2ecc71;
+}
+
+button.darkgreen {
+    background: #fff;
+    color: #27ae60;
+    border: 2px solid  #27ae60;
+}
+
+button.darkgreen:hover,
+button.darkgreen.active {
+    color: #fff;
+    background: #27ae60;
+}
+
+button.darkpink {
+    background: #fff;
+    color: #c227ae;
+    border: 2px solid #c227ae;
+}
+
+button.darkpink:hover,
+button.darkpink:active {
+    background: #c227ae;
+    color: #fff;
+}
+
+button.lightpink {
+    background: #fff;
+    color: #ee51da;
+    border: 2px solid #ee51da;
+}
+
+button.lightpink:hover,
+button.lightpink:active {
+    color: #fff;
+    background: #ee51da;
+}
+
+
+
+.ng-ckeditor{border:0 none}
+/* rome@v2.1.22, MIT licensed. https://github.com/bevacqua/rome */
+.rd-container{display:none;border:1px solid #333;background-color:#fff;padding:10px;text-align:center}.rd-container-attachment{position:absolute}.rd-month{display:inline-block;margin-right:25px}.rd-month:last-child{margin-right:0}.rd-back,.rd-next{cursor:pointer;border:none;outline:0;background:0 0;padding:0;margin:0}.rd-back[disabled],.rd-next[disabled]{cursor:default}.rd-back{float:left}.rd-next{float:right}.rd-back:before{display:block;content:'\2190'}.rd-next:before{display:block;content:'\2192'}.rd-day-body{cursor:pointer;text-align:center}.rd-day-selected,.rd-time-option:hover,.rd-time-selected{cursor:pointer;background-color:#333;color:#fff}.rd-day-next-month,.rd-day-prev-month{color:#999}.rd-day-disabled{cursor:default;color:#fcc}.rd-time{position:relative;display:inline-block;margin-top:5px;min-width:80px}.rd-time-list{display:none;position:absolute;overflow-y:scroll;max-height:160px;left:0;right:0;background-color:#fff;color:#333}.rd-time-option,.rd-time-selected{padding:5px}.rd-day-concealed{visibility:hidden}
+/* line 28, ../sass/_toast.scss */
+.gtoast {
+  position: absolute;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+  z-index: 99;
+  top: 30px;
+  left: 0px;
+  font-weight: bold; }
+
+/* line 32, ../sass/_toast.scss */
+.gtoast-dialog {
+  text-align: center;
+  display: inline-block;
+  z-index: 100; }
+
+/* line 1, ../sass/_theme.scss */
+.gtoast-default-theme {
+  font-size: 80%;
+  line-height: 100%;
+  box-sizing: border-box; }
+  /* line 9, ../sass/_theme.scss */
+  .gtoast-default-theme.gtoast-dialog,
+  .gtoast-default-theme .gtoast-dialog {
+    border: solid 1px #f0c36d;
+    background: #f9edbe;
+    padding: 10px 16px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    -box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+
+#loading-bar,#loading-bar-spinner{pointer-events:none;-webkit-pointer-events:none;transition:350ms linear all}#loading-bar-spinner.ng-enter,#loading-bar-spinner.ng-leave.ng-leave-active,#loading-bar.ng-enter,#loading-bar.ng-leave.ng-leave-active{opacity:0}#loading-bar-spinner.ng-enter.ng-enter-active,#loading-bar-spinner.ng-leave,#loading-bar.ng-enter.ng-enter-active,#loading-bar.ng-leave{opacity:1}#loading-bar .bar{transition:width 350ms;background:#29d;position:fixed;z-index:10002;top:0;left:0;width:100%;height:2px;border-bottom-right-radius:1px;border-top-right-radius:1px}#loading-bar .peg{position:absolute;width:70px;right:0;top:0;height:2px;opacity:.45;-ms-box-shadow:#29d 1px 0 6px 1px;box-shadow:#29d 1px 0 6px 1px;border-radius:100%}#loading-bar-spinner{display:block;position:fixed;z-index:10002;top:10px;left:10px}#loading-bar-spinner .spinner-icon{width:14px;height:14px;border:2px solid transparent;border-top-color:#29d;border-left-color:#29d;border-radius:50%;-webkit-animation:loading-bar-spinner 400ms linear infinite;animation:loading-bar-spinner 400ms linear infinite}@-webkit-keyframes loading-bar-spinner{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading-bar-spinner{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+/* BASICS */
+
+.CodeMirror {
+  /* Set height, width, borders, and global font properties here */
+  font-family: monospace;
+  height: 300px;
+  color: black;
+}
+
+/* PADDING */
+
+.CodeMirror-lines {
+  padding: 4px 0; /* Vertical padding around content */
+}
+.CodeMirror pre {
+  padding: 0 4px; /* Horizontal padding of content */
+}
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  background-color: white; /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+  white-space: nowrap;
+}
+.CodeMirror-linenumbers {}
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  color: #999;
+  white-space: nowrap;
+}
+
+.CodeMirror-guttermarker { color: black; }
+.CodeMirror-guttermarker-subtle { color: #999; }
+
+/* CURSOR */
+
+.CodeMirror-cursor {
+  border-left: 1px solid black;
+  border-right: none;
+  width: 0;
+}
+/* Shown when moving in bi-directional text */
+.CodeMirror div.CodeMirror-secondarycursor {
+  border-left: 1px solid silver;
+}
+.cm-fat-cursor .CodeMirror-cursor {
+  width: auto;
+  border: 0;
+  background: #7e7;
+}
+.cm-fat-cursor div.CodeMirror-cursors {
+  z-index: 1;
+}
+
+.cm-animate-fat-cursor {
+  width: auto;
+  border: 0;
+  -webkit-animation: blink 1.06s steps(1) infinite;
+  animation: blink 1.06s steps(1) infinite;
+  background-color: #7e7;
+}
+@-webkit-keyframes blink {
+  0% {}
+  50% { background-color: transparent; }
+  100% {}
+}
+@keyframes blink {
+  0% {}
+  50% { background-color: transparent; }
+  100% {}
+}
+
+/* Can style cursor different in overwrite (non-insert) mode */
+.CodeMirror-overwrite .CodeMirror-cursor {}
+
+.cm-tab { display: inline-block; text-decoration: inherit; }
+
+.CodeMirror-ruler {
+  border-left: 1px solid #ccc;
+  position: absolute;
+}
+
+/* DEFAULT THEME */
+
+.cm-s-default .cm-header {color: blue;}
+.cm-s-default .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-default .cm-keyword {color: #708;}
+.cm-s-default .cm-atom {color: #219;}
+.cm-s-default .cm-number {color: #164;}
+.cm-s-default .cm-def {color: #00f;}
+.cm-s-default .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-default .cm-property,
+.cm-s-default .cm-operator {}
+.cm-s-default .cm-variable-2 {color: #05a;}
+.cm-s-default .cm-variable-3 {color: #085;}
+.cm-s-default .cm-comment {color: #a50;}
+.cm-s-default .cm-string {color: #a11;}
+.cm-s-default .cm-string-2 {color: #f50;}
+.cm-s-default .cm-meta {color: #555;}
+.cm-s-default .cm-qualifier {color: #555;}
+.cm-s-default .cm-builtin {color: #30a;}
+.cm-s-default .cm-bracket {color: #997;}
+.cm-s-default .cm-tag {color: #170;}
+.cm-s-default .cm-attribute {color: #00c;}
+.cm-s-default .cm-hr {color: #999;}
+.cm-s-default .cm-link {color: #00c;}
+
+.cm-s-default .cm-error {color: #f00;}
+.cm-invalidchar {color: #f00;}
+
+.CodeMirror-composing { border-bottom: 2px solid; }
+
+/* Default styles for common addons */
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
+.CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
+.CodeMirror-activeline-background {background: #e8f2ff;}
+
+/* STOP */
+
+/* The rest of this file contains styles related to the mechanics of
+   the editor. You probably shouldn't touch them. */
+
+.CodeMirror {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.CodeMirror-scroll {
+  overflow: scroll !important; /* Things will break if this is overridden */
+  /* 30px is the magic margin used to hide the element's real scrollbars */
+  /* See overflow: hidden in .CodeMirror */
+  margin-bottom: -30px; margin-right: -30px;
+  padding-bottom: 30px;
+  height: 100%;
+  outline: none; /* Prevent dragging from highlighting the element */
+  position: relative;
+}
+.CodeMirror-sizer {
+  position: relative;
+  border-right: 30px solid transparent;
+}
+
+/* The fake, visible scrollbars. Used to force redraw during scrolling
+   before actuall scrolling happens, thus preventing shaking and
+   flickering artifacts. */
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  position: absolute;
+  z-index: 6;
+  display: none;
+}
+.CodeMirror-vscrollbar {
+  right: 0; top: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.CodeMirror-hscrollbar {
+  bottom: 0; left: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.CodeMirror-scrollbar-filler {
+  right: 0; bottom: 0;
+}
+.CodeMirror-gutter-filler {
+  left: 0; bottom: 0;
+}
+
+.CodeMirror-gutters {
+  position: absolute; left: 0; top: 0;
+  z-index: 3;
+}
+.CodeMirror-gutter {
+  white-space: normal;
+  height: 100%;
+  display: inline-block;
+  margin-bottom: -30px;
+  /* Hack to make IE7 behave */
+  *zoom:1;
+  *display:inline;
+}
+.CodeMirror-gutter-wrapper {
+  position: absolute;
+  z-index: 4;
+  background: none !important;
+  border: none !important;
+}
+.CodeMirror-gutter-background {
+  position: absolute;
+  top: 0; bottom: 0;
+  z-index: 4;
+}
+.CodeMirror-gutter-elt {
+  position: absolute;
+  cursor: default;
+  z-index: 4;
+}
+.CodeMirror-gutter-wrapper {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+
+.CodeMirror-lines {
+  cursor: text;
+  min-height: 1px; /* prevents collapsing before first draw */
+}
+.CodeMirror pre {
+  /* Reset some styles that the rest of the page might have set */ border-radius: 0;
+  border-width: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  line-height: inherit;
+  color: inherit;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+}
+.CodeMirror-wrap pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.CodeMirror-linebackground {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 0;
+}
+
+.CodeMirror-linewidget {
+  position: relative;
+  z-index: 2;
+  overflow: auto;
+}
+
+.CodeMirror-widget {}
+
+.CodeMirror-code {
+  outline: none;
+}
+
+/* Force content-box sizing for the elements where we expect it */
+.CodeMirror-scroll,
+.CodeMirror-sizer,
+.CodeMirror-gutter,
+.CodeMirror-gutters,
+.CodeMirror-linenumber {
+  box-sizing: content-box;
+}
+
+.CodeMirror-measure {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.CodeMirror-cursor { position: absolute; }
+.CodeMirror-measure pre { position: static; }
+
+div.CodeMirror-cursors {
+  visibility: hidden;
+  position: relative;
+  z-index: 3;
+}
+div.CodeMirror-dragcursors {
+  visibility: visible;
+}
+
+.CodeMirror-focused div.CodeMirror-cursors {
+  visibility: visible;
+}
+
+.CodeMirror-selected { background: #d9d9d9; }
+.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+.CodeMirror-crosshair { cursor: crosshair; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
+.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
+
+.cm-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, .4);
+}
+
+/* IE7 hack to prevent it from returning funny offsetTops on the spans */
+.CodeMirror span { *vertical-align: text-bottom; }
+
+/* Used to force a border model for a node */
+.cm-force-border { padding-right: .1px; }
+
+@media print {
+  /* Hide the cursor when printing */
+  .CodeMirror div.CodeMirror-cursors {
+    visibility: hidden;
+  }
+}
+
+/* See issue #2901 */
+.cm-tab-wrap-hack:after { content: ''; }
+
+/* Help users use markselection to safely style text background */
+span.CodeMirror-selectedtext { background: none; }
+
+.CodeMirror {
+    background: #fff;
+    color: #8c8c8c;
+    border: 1px solid #e5e5e5;
+}
+div.CodeMirror-selected { background: #e0e0e0; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #e0e0e0; }
+.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #e0e0e0; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #e0e0e0; }
+.CodeMirror-gutters {
+    background: #f5f5f5;
+    border-right: 0px;
+}
+.CodeMirror-guttermarker { color: #ac4142; }
+.CodeMirror-guttermarker-subtle { color: #b0b0b0; }
+
+.CodeMirror-linenumber {
+    color: #b0b0b0;
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+.CodeMirror-cursor { border-left: 1px solid #8c8c8c; }
+
+span.cm-comment { color: #8f5536; }
+span.cm-atom { color: #aa759f; }
+span.cm-number { color: #aa759f; }
+
+span.cm-property, span.cm-attribute { color: #90a959; }
+span.cm-keyword { color: #ac4142; }
+span.cm-string { color: #f4bf75; }
+
+span.cm-variable { color: #90a959; }
+span.cm-variable-2 { color: #6a9fb5; }
+span.cm-def { color: #d28445; }
+span.cm-bracket { color: #202020; }
+span.cm-tag { color: #ac4142; }
+span.cm-link { color: #aa759f; }
+span.cm-error { background: #ac4142; color: #505050; }
+
+.CodeMirror-activeline-background { background: #DDDCDC; }
+.CodeMirror-matchingbracket { text-decoration: underline; color: white !important; }
