@@ -17,8 +17,8 @@
             'ui.codemirror'
         ])
         .constant('CONFIG', {
-	    "API_ENDPOINT": "",
-	    "AUTHENTICATION_ENDPOINT": '/authentication/authenticate.json'
+            "API_ENDPOINT": "",
+            "AUTHENTICATION_ENDPOINT": ''
         })
         .config([
             '$routeProvider',
@@ -161,17 +161,25 @@
             }])
         .run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
             // keep user logged in after page refresh
-            $rootScope.globals = $cookieStore.get('globals') || {};
-            if ($rootScope.globals.currentUser) {
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
-            }
+            //$rootScope.globals = $cookieStore.get('globals') || {};
+            //if ($rootScope.globals.currentUser) {
+            //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
+            //}
+            //
+            //// redirect to login page if not logged in
+            //$rootScope.$on('$locationChangeStart', function (event, next, current) {
+            //    if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+            //        $location.path('/login');
+            //    }
+            //});
 
-            // redirect to login page if not logged in
-            $rootScope.$on('$locationChangeStart', function (event, next, current) {
-                if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-                    $location.path('/login');
+            $rootScope.globals = {
+                currentUser: {
+                    'username': 'testUser',
+                    'password': 'testPass',
+                    'authData': ''
                 }
-            });
+            };
 
         }]);
 

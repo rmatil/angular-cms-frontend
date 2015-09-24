@@ -9454,16 +9454,16 @@ uiCodemirrorDirective.$inject = ["$timeout", "uiCodemirrorConfig"];
 (function(angular) {
 
     angular
-	.module('cms', [ function () {} ]);
+        .module('cms', [ function () {} ]);
 
     angular
-	.module('cms.controllers', [ function () {} ]);
+        .module('cms.controllers', [ function () {} ]);
 
     angular
-	.module('cms.services', [ function () {} ]);
+        .module('cms.services', [ function () {} ]);
 
     angular
-	.module('cms.directives', [ function () {} ]);
+        .module('cms.directives', [ function () {} ]);
 
 
 })(angular);
@@ -9474,142 +9474,142 @@ function GenericApiService(CONFIG, LoadingQueue, gToast, LoggerService, Authenti
     var apiEndPoint = CONFIG.API_ENDPOINT;
 
     var printError = function (error) {
-	LoggerService.error('[' + error.config.method + '] ' + error.status + ' ' + error.config.url + ' "' + error.data.message + '"');
+        LoggerService.error('[' + error.config.method + '] ' + error.status + ' ' + error.config.url + ' "' + error.data.message + '"');
     };
 
     this.get = function (objectIdentifier) {
-	return AuthenticationService.resendLoginRequest().then(function () {
-	    return $http({
-		headers: {'Content-Type': 'application/json; charset=UTF-8'},
-		url: apiEndPoint + '/' + objectIdentifier,
-		withCredentials: true, // allows sending cookies if not on the same domain
-		method: 'GET'
-	    }).then(function (response) {
-		return response.data;
-	    }).catch(function (error) {
-		gToast.open(error.data.error + ': ' + error.data.message);
-		printError(error);
-		return [];
-	    }).finally(function () {
-		LoadingQueue.decreaseQueue(1);
-	    });
-	});
+        return AuthenticationService.resendLoginRequest().then(function () {
+            return $http({
+                headers: {'Content-Type': 'application/json; charset=UTF-8'},
+                url: apiEndPoint + '/' + objectIdentifier,
+                withCredentials: true, // allows sending cookies if not on the same domain
+                method: 'GET'
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                gToast.open(error.data.error + ': ' + error.data.message);
+                printError(error);
+                return [];
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
+            });
+        });
     };
 
     this.getObject = function (objectIdentifier, objectId) {
-	LoadingQueue.increaseQueue(1);
+        LoadingQueue.increaseQueue(1);
 
-	return AuthenticationService.resendLoginRequest().then(function () {
-	    return $http({
-		headers: {'Content-Type': 'application/json; charset=UTF-8'},
-		url: apiEndPoint + '/' + objectIdentifier + '/' + objectId,
-		withCredentials: true, // allows sending cookies if not on the same domain
-		method: 'GET'
-	    }).then(function (response) {
-		return response.data;
-	    }).catch(function (error) {
-		gToast.open(error.data.error + ': ' + error.data.message);
-		printError(error);
-		return [];
-	    }).finally(function () {
-		LoadingQueue.decreaseQueue(1);
-	    });
-	});
+        return AuthenticationService.resendLoginRequest().then(function () {
+            return $http({
+                headers: {'Content-Type': 'application/json; charset=UTF-8'},
+                url: apiEndPoint + '/' + objectIdentifier + '/' + objectId,
+                withCredentials: true, // allows sending cookies if not on the same domain
+                method: 'GET'
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                gToast.open(error.data.error + ': ' + error.data.message);
+                printError(error);
+                return [];
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
+            });
+        });
     };
 
     this.getEmptyObject = function (objectIdentifier) {
-	LoadingQueue.increaseQueue(1);
-	return AuthenticationService.resendLoginRequest().then(function () {
-	    return $http({
-		headers: {'Content-Type': 'application/json; charset=UTF-8'},
-		url: apiEndPoint + '/empty/' + objectIdentifier,
-		withCredentials: true, // allows sending cookies if not on the same domain
-		method: 'GET'
-	    }).then(function (response) {
-		return response.data;
-	    }).catch(function (error) {
-		gToast.open(error.data.error + ': ' + error.data.message);
-		printError(error);
-		return [];
-	    }).finally(function () {
-		LoadingQueue.decreaseQueue(1);
-	    });
-	});
+        LoadingQueue.increaseQueue(1);
+        return AuthenticationService.resendLoginRequest().then(function () {
+            return $http({
+                headers: {'Content-Type': 'application/json; charset=UTF-8'},
+                url: apiEndPoint + '/empty/' + objectIdentifier,
+                withCredentials: true, // allows sending cookies if not on the same domain
+                method: 'GET'
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                gToast.open(error.data.error + ': ' + error.data.message);
+                printError(error);
+                return [];
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
+            });
+        });
     };
 
     this.post = function (objectIdentifier, object) {
-	LoadingQueue.increaseQueue(1);
-	return AuthenticationService.resendLoginRequest().then(function () {
-	    return $http({
-		headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-		url: apiEndPoint + '/' + objectIdentifier,
-		withCredentials: true, // allows sending cookies if not on the same domain
-		method: 'POST',
-		data: object
-	    }).then(function (response) {
-		gToast.open("Created");
-		return response.data;
-	    }).catch(function (error) {
-		gToast.open(error.data.error + ': ' + error.data.message);
-		printError(error);
-		return [];
-	    }).finally(function () {
-		LoadingQueue.decreaseQueue(1);
-	    });
-	});
+        LoadingQueue.increaseQueue(1);
+        return AuthenticationService.resendLoginRequest().then(function () {
+            return $http({
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                url: apiEndPoint + '/' + objectIdentifier,
+                withCredentials: true, // allows sending cookies if not on the same domain
+                method: 'POST',
+                data: object
+            }).then(function (response) {
+                gToast.open("Created");
+                return response.data;
+            }).catch(function (error) {
+                gToast.open(error.data.error + ': ' + error.data.message);
+                printError(error);
+                return [];
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
+            });
+        });
     };
 
     this.put = function (objectIdentifier, object) {
-	LoadingQueue.increaseQueue(1);
-	AuthenticationService.resendLoginRequest().then(function () {
-	    return $http({
-		headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-		url: apiEndPoint + '/' + objectIdentifier + '/' + object.id,
-		withCredentials: true, // allows sending cookies if not on the same domain
-		method: 'PUT',
-		data: object
-	    }).then(function (response) {
-		gToast.open("Updated");
-		return response.data;
-	    }).catch(function (error) {
-		gToast.open(error.data.error + ': ' + error.data.message);
-		printError(error);
-		return [];
-	    }).finally(function () {
-		LoadingQueue.decreaseQueue(1);
-	    });
-	});
+        LoadingQueue.increaseQueue(1);
+        AuthenticationService.resendLoginRequest().then(function () {
+            return $http({
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                url: apiEndPoint + '/' + objectIdentifier + '/' + object.id,
+                withCredentials: true, // allows sending cookies if not on the same domain
+                method: 'PUT',
+                data: object
+            }).then(function (response) {
+                gToast.open("Updated");
+                return response.data;
+            }).catch(function (error) {
+                gToast.open(error.data.error + ': ' + error.data.message);
+                printError(error);
+                return [];
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
+            });
+        });
     };
 
     this.remove = function (objectIdentifier, objectId) {
-	LoadingQueue.increaseQueue(1);
-	AuthenticationService.resendLoginRequest().then(function () {
-	    return $http({
-		headers: {'Content-Type': 'application/json; charset=UTF-8'},
-		url: apiEndPoint + '/' + objectIdentifier + '/' + objectId,
-		withCredentials: true, // allows sending cookies if not on the same domain
-		method: 'DELETE'
-	    }).then(function (response) {
-		gToast.open("Removed");
-		return response.data;
-	    }).catch(function (error) {
-		gToast.open(error.data.error + ': ' + error.data.message);
-		printError(error);
-		return [];
-	    }).finally(function () {
-		LoadingQueue.decreaseQueue(1);
-	    });
-	});
+        LoadingQueue.increaseQueue(1);
+        AuthenticationService.resendLoginRequest().then(function () {
+            return $http({
+                headers: {'Content-Type': 'application/json; charset=UTF-8'},
+                url: apiEndPoint + '/' + objectIdentifier + '/' + objectId,
+                withCredentials: true, // allows sending cookies if not on the same domain
+                method: 'DELETE'
+            }).then(function (response) {
+                gToast.open("Removed");
+                return response.data;
+            }).catch(function (error) {
+                gToast.open(error.data.error + ': ' + error.data.message);
+                printError(error);
+                return [];
+            }).finally(function () {
+                LoadingQueue.decreaseQueue(1);
+            });
+        });
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('GenericApiService', GenericApiService);
+        .module('cms.services')
+        .service('GenericApiService', GenericApiService);
 
-	GenericApiService.$inject = ['CONFIG', 'LoadingQueue', 'gToast', 'LoggerService', 'AuthenticationService', '$http'];
+        GenericApiService.$inject = ['CONFIG', 'LoadingQueue', 'gToast', 'LoggerService', 'AuthenticationService', '$http'];
 }());
 'use strict';
 
@@ -9618,35 +9618,35 @@ function ArticleService(GenericApiService, $log) {
     var ARTICLES = 'articles';
 
     this.getArticles = function () {
-	return GenericApiService.get(ARTICLES);
+        return GenericApiService.get(ARTICLES);
     };
 
     this.getArticle = function (articleId) {
-	return GenericApiService.getObject(ARTICLES, articleId);
+        return GenericApiService.getObject(ARTICLES, articleId);
     };
 
     this.getEmptyArticle = function () {
-	return GenericApiService.getEmptyObject(ARTICLES);
+        return GenericApiService.getEmptyObject(ARTICLES);
     }
 
     this.postArticle = function (article) {
-	return GenericApiService.post(ARTICLES, article);
+        return GenericApiService.post(ARTICLES, article);
     };
 
     this.putArticle = function (article) {
-	return GenericApiService.put(ARTICLES, article);
+        return GenericApiService.put(ARTICLES, article);
     };
 
     this.deleteArticle = function (articleId) {
-	return GenericApiService.remove(ARTICLES, articleId);
+        return GenericApiService.remove(ARTICLES, articleId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('ArticleService', ArticleService);
+        .module('cms.services')
+        .service('ArticleService', ArticleService);
 
     ArticleService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -9657,35 +9657,35 @@ function ArticleCategoryService(GenericApiService, $log) {
     var ARTICLE_CATEGORY = 'article-categories';
 
     this.getArticleCategories = function () {
-	return GenericApiService.get(ARTICLE_CATEGORY);
+        return GenericApiService.get(ARTICLE_CATEGORY);
     };
 
     this.getArticleCategory = function (articleCategoryId) {
-	return GenericApiService.getObject(ARTICLE_CATEGORY, articleCategoryId);
+        return GenericApiService.getObject(ARTICLE_CATEGORY, articleCategoryId);
     };
 
     this.getEmptyArticleCategory = function () {
-	return GenericApiService.getEmptyObject(ARTICLE_CATEGORY);
+        return GenericApiService.getEmptyObject(ARTICLE_CATEGORY);
     }
 
     this.postArticleCategory = function (articleCategory) {
-	return GenericApiService.post(ARTICLE_CATEGORY, articleCategory);
+        return GenericApiService.post(ARTICLE_CATEGORY, articleCategory);
     };
 
     this.putArticleCategory = function (articleCategory) {
-	return GenericApiService.put(ARTICLE_CATEGORY, articleCategory);
+        return GenericApiService.put(ARTICLE_CATEGORY, articleCategory);
     };
 
     this.deleteArticleCategory = function (articleCategoryId) {
-	return GenericApiService.remove(ARTICLE_CATEGORY, articleCategoryId);
+        return GenericApiService.remove(ARTICLE_CATEGORY, articleCategoryId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('ArticleCategoryService', ArticleCategoryService);
+        .module('cms.services')
+        .service('ArticleCategoryService', ArticleCategoryService);
 
     ArticleCategoryService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -9696,35 +9696,35 @@ function EventService(GenericApiService, $log) {
     var EVENTS = 'events';
 
     this.getEvents = function () {
-	return GenericApiService.get(EVENTS);
+        return GenericApiService.get(EVENTS);
     };
 
     this.getEvent = function (eventId) {
-	return GenericApiService.getObject(EVENTS, eventId);
+        return GenericApiService.getObject(EVENTS, eventId);
     };
 
     this.getEmptyEvent = function () {
-	return GenericApiService.getEmptyObject(EVENTS);
+        return GenericApiService.getEmptyObject(EVENTS);
     }
 
     this.postEvent = function (event) {
-	return GenericApiService.post(EVENTS, event);
+        return GenericApiService.post(EVENTS, event);
     };
 
     this.putEvent = function (event) {
-	return GenericApiService.put(EVENTS, event);
+        return GenericApiService.put(EVENTS, event);
     };
 
     this.deleteEvent = function (eventId) {
-	return GenericApiService.remove(EVENTS, eventId);
+        return GenericApiService.remove(EVENTS, eventId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('EventService', EventService);
+        .module('cms.services')
+        .service('EventService', EventService);
 
     EventService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -9733,17 +9733,17 @@ function EventService(GenericApiService, $log) {
 
 function EventGraphService (LoggerService) {
     var that = this,
-	compareEventFn = function (firstEvent, secondEvent) {
-	    if (firstEvent.date.isBefore(secondEvent.date)) {
-		return -1;
-	    }
+        compareEventFn = function (firstEvent, secondEvent) {
+            if (firstEvent.date.isBefore(secondEvent.date)) {
+                return -1;
+            }
 
-	    if (firstEvent.date.isAfter(secondEvent.date)) {
-		return 1;
-	    }
+            if (firstEvent.date.isAfter(secondEvent.date)) {
+                return 1;
+            }
 
-	    return 0;
-	};
+            return 0;
+        };
 
     /**
      * Draws a circle on the given (x,y) position with the given radius.
@@ -9757,13 +9757,13 @@ function EventGraphService (LoggerService) {
      * @param paper A Raphaël.js paper
      */
     this.drawCircle = function (xPos, yPos, circleRadius, attrs, paper) {
-	var circle = paper.circle(xPos, yPos, circleRadius);
+        var circle = paper.circle(xPos, yPos, circleRadius);
 
-	for (var idx in attrs) {
-	    if (attrs.hasOwnProperty(idx)) {
-		circle.attr(idx, attrs[idx]);
-	    }
-	}
+        for (var idx in attrs) {
+            if (attrs.hasOwnProperty(idx)) {
+                circle.attr(idx, attrs[idx]);
+            }
+        }
     };
 
     /**
@@ -9778,13 +9778,13 @@ function EventGraphService (LoggerService) {
      * @param paper A Raphaël.js paper
      */
     this.drawLine = function (xStartPos, xEndPos, yStartPos, yEndPos, attrs, paper) {
-	var line = paper.path( ["M", xStartPos, yStartPos, "L", xEndPos, yEndPos, "Z"] );
+        var line = paper.path( ["M", xStartPos, yStartPos, "L", xEndPos, yEndPos, "Z"] );
 
-	for (var idx in attrs) {
-	    if (attrs.hasOwnProperty(idx)) {
-		line.attr(idx, attrs[idx]);
-	    }
-	}
+        for (var idx in attrs) {
+            if (attrs.hasOwnProperty(idx)) {
+                line.attr(idx, attrs[idx]);
+            }
+        }
     };
 
     /**
@@ -9801,115 +9801,115 @@ function EventGraphService (LoggerService) {
      * @param activeCircleAttrs
      */
     this.drawEvents = function (xStartPos, xEndPos, yPos, circleRadius, activeCircleRadius, paper, events, circleAttrs, activeCircleAttrs) {
-	if (events.length < 1) {
-	    return;
-	}
+        if (events.length < 1) {
+            return;
+        }
 
-	events.sort(compareEventFn);
+        events.sort(compareEventFn);
 
-	var now = moment(), // number of days in the current month
-	    nrOfDays = moment().endOf('month').date(), // Returns the number of the last day in the month
-	    middleOfMonth = moment(now).date(Math.round((nrOfDays / 2) - 1)), // the day in the middle of the month
-	    width = xEndPos - xStartPos, // the width of the line
-	    spaceWidth = Math.floor(width / nrOfDays), // amount of space between each circle (excl. circle radius)
-	    nextEvent = false, // will be an object containing the next event
-	    eventsBefore = [], // events before next event
-	    eventsAfter = [],
-	    drawEvent = function (elm) {
-		LoggerService.debug("BeforeEvent " + elm.date.format("DD.MM.YYYY HH:mm:ss"));
-		LoggerService.debug("Diff to 1st day of month: " + (Math.abs(moment(now).subtract(now.date(), 'days').diff(elm.date, 'days'))));
-		LoggerService.debug("Diff between nextEvent and middleOfMonth " + Math.abs(nextEvent.date.diff(middleOfMonth, 'days')));
-		LoggerService.debug("Calculated offset for multiplication" + (Math.abs(moment(now).subtract(now.date(), 'days').diff(elm.date, 'days')) - Math.abs(nextEvent.date.diff(middleOfMonth, 'days'))));
+        var now = moment(), // number of days in the current month
+            nrOfDays = moment().endOf('month').date(), // Returns the number of the last day in the month
+            middleOfMonth = moment(now).date(Math.round((nrOfDays / 2) - 1)), // the day in the middle of the month
+            width = xEndPos - xStartPos, // the width of the line
+            spaceWidth = Math.floor(width / nrOfDays), // amount of space between each circle (excl. circle radius)
+            nextEvent = false, // will be an object containing the next event
+            eventsBefore = [], // events before next event
+            eventsAfter = [],
+            drawEvent = function (elm) {
+                LoggerService.debug("BeforeEvent " + elm.date.format("DD.MM.YYYY HH:mm:ss"));
+                LoggerService.debug("Diff to 1st day of month: " + (Math.abs(moment(now).subtract(now.date(), 'days').diff(elm.date, 'days'))));
+                LoggerService.debug("Diff between nextEvent and middleOfMonth " + Math.abs(nextEvent.date.diff(middleOfMonth, 'days')));
+                LoggerService.debug("Calculated offset for multiplication" + (Math.abs(moment(now).subtract(now.date(), 'days').diff(elm.date, 'days')) - Math.abs(nextEvent.date.diff(middleOfMonth, 'days'))));
 
-		that.drawCircle(
-		    (
-			Math.abs(moment(now).subtract(now.date(), 'days').diff(elm.date, 'days')) - // days from 1st to elm
-			Math.abs(nextEvent.date.diff(middleOfMonth, 'days')) // diff in days between middle of month & elm.date
-		    ) * spaceWidth - circleRadius,
-		    25,
-		    circleRadius,
-		    circleAttrs,
-		    paper
-		);
-	    }; // events after next event
+                that.drawCircle(
+                    (
+                        Math.abs(moment(now).subtract(now.date(), 'days').diff(elm.date, 'days')) - // days from 1st to elm
+                        Math.abs(nextEvent.date.diff(middleOfMonth, 'days')) // diff in days between middle of month & elm.date
+                    ) * spaceWidth - circleRadius,
+                    25,
+                    circleRadius,
+                    circleAttrs,
+                    paper
+                );
+            }; // events after next event
 
-	var classifiedEvents = that.getClassifiedEvents(events);
-	nextEvent = classifiedEvents.nextEvent;
-	eventsBefore = classifiedEvents.eventsBefore;
-	eventsAfter = classifiedEvents.eventsAfter;
+        var classifiedEvents = that.getClassifiedEvents(events);
+        nextEvent = classifiedEvents.nextEvent;
+        eventsBefore = classifiedEvents.eventsBefore;
+        eventsAfter = classifiedEvents.eventsAfter;
 
-	if (false === nextEvent) {
-	    // no upcoming event available
-	    nextEvent = {};
-	    nextEvent.date = moment();
-	}
+        if (false === nextEvent) {
+            // no upcoming event available
+            nextEvent = {};
+            nextEvent.date = moment();
+        }
 
-	// classify events and remove all which are more than the half of the month before the next event
-	eventsBefore = eventsBefore.filter(function (elm) {
-	    return elm.date.isAfter(moment(nextEvent.date).subtract(middleOfMonth.date(), 'days'));
-	});
-	// classify after-events and remove all which are more than the half of the month after the next event
-	eventsAfter = eventsAfter.filter(function (elm) {
-	    return elm.date.isBefore(moment(nextEvent.date).add(middleOfMonth.date(), 'days'));
-	});
+        // classify events and remove all which are more than the half of the month before the next event
+        eventsBefore = eventsBefore.filter(function (elm) {
+            return elm.date.isAfter(moment(nextEvent.date).subtract(middleOfMonth.date(), 'days'));
+        });
+        // classify after-events and remove all which are more than the half of the month after the next event
+        eventsAfter = eventsAfter.filter(function (elm) {
+            return elm.date.isBefore(moment(nextEvent.date).add(middleOfMonth.date(), 'days'));
+        });
 
-	LoggerService.debug("Next event " + nextEvent.date.format("DD.MM.YYYY HH:mm:ss"));
-	LoggerService.debug("Middle of month: " + middleOfMonth.format('DD.MM.YYYY HH:mm:ss'));
+        LoggerService.debug("Next event " + nextEvent.date.format("DD.MM.YYYY HH:mm:ss"));
+        LoggerService.debug("Middle of month: " + middleOfMonth.format('DD.MM.YYYY HH:mm:ss'));
 
-	// draw next event
-	that.drawCircle(
-	    Math.floor(width / 2) - activeCircleRadius,
-	    yPos,
-	    activeCircleRadius,
-	    activeCircleAttrs,
-	    paper
-	);
+        // draw next event
+        that.drawCircle(
+            Math.floor(width / 2) - activeCircleRadius,
+            yPos,
+            activeCircleRadius,
+            activeCircleAttrs,
+            paper
+        );
 
-	// draw all events before
-	eventsBefore.forEach(drawEvent);
-	// draw all events after
-	eventsAfter.forEach(drawEvent);
+        // draw all events before
+        eventsBefore.forEach(drawEvent);
+        // draw all events after
+        eventsAfter.forEach(drawEvent);
     };
 
     this.drawGraph = function (containerId, events, circleAttrs, activeCircleAttrs, lineAttrs) {
-	var container = document.getElementById(containerId),
-	    containerWidth = container.offsetWidth,
-	    containerHeight = container.offsetHeight || 50,
-	    circleYPos = Math.floor(containerHeight / 2),
-	    circleRadius = 3,
-	    activeCircleRadius = 5,
-	    eventObjects = [],
-	    paper = Raphael(container, containerWidth, containerHeight);
+        var container = document.getElementById(containerId),
+            containerWidth = container.offsetWidth,
+            containerHeight = container.offsetHeight || 50,
+            circleYPos = Math.floor(containerHeight / 2),
+            circleRadius = 3,
+            activeCircleRadius = 5,
+            eventObjects = [],
+            paper = Raphael(container, containerWidth, containerHeight);
 
 
-	eventObjects = that.buildEventObjects(events);
+        eventObjects = that.buildEventObjects(events);
 
-	that.drawLine(0, containerWidth, circleYPos, circleYPos, lineAttrs, paper);
-	that.drawEvents(0, containerWidth, circleYPos, circleRadius, activeCircleRadius, paper, eventObjects, circleAttrs, activeCircleAttrs);
+        that.drawLine(0, containerWidth, circleYPos, circleYPos, lineAttrs, paper);
+        that.drawEvents(0, containerWidth, circleYPos, circleRadius, activeCircleRadius, paper, eventObjects, circleAttrs, activeCircleAttrs);
     };
 
     this.buildEventObjects = function (events) {
-	var eventObjects = [];
+        var eventObjects = [];
 
-	if (undefined === events || events.length === 0) {
-	    return eventObjects;
-	}
+        if (undefined === events || events.length === 0) {
+            return eventObjects;
+        }
 
-	events.forEach( function (elm) {
-	    if (!('start_date' in elm)) {
-		throw {
-		    "err": "The event must contain a field named 'start_date'",
-		    "obj": elm
-		};
-	    }
+        events.forEach( function (elm) {
+            if (!('start_date' in elm)) {
+                throw {
+                    "err": "The event must contain a field named 'start_date'",
+                    "obj": elm
+                };
+            }
 
-	    var eventDate = moment(elm.start_date, moment.ISO_8601);
-	    var ev = {"date": eventDate, "event": elm};
+            var eventDate = moment(elm.start_date, moment.ISO_8601);
+            var ev = {"date": eventDate, "event": elm};
 
-	    eventObjects.push(ev);
-	});
+            eventObjects.push(ev);
+        });
 
-	return eventObjects;
+        return eventObjects;
     };
 
     /**
@@ -9919,32 +9919,32 @@ function EventGraphService (LoggerService) {
      * @returns {{eventsBefore: Array, nextEvent: boolean, eventsAfter: Array}}
      */
     this.getClassifiedEvents = function (events) {
-	var classifiedEvents = {
-		"eventsBefore": [],
-		"nextEvent": false,
-		"eventsAfter": []
-	    },
-	    now = moment();
+        var classifiedEvents = {
+                "eventsBefore": [],
+                "nextEvent": false,
+                "eventsAfter": []
+            },
+            now = moment();
 
-	events.forEach(function (elm) {
-	    if (elm.date.isAfter(now) && false === classifiedEvents.nextEvent) {
-		// this is the upcoming event
-		classifiedEvents.nextEvent = elm;
-	    } else if (elm.date.isAfter(now) && false !== classifiedEvents.nextEvent) {
-		classifiedEvents.eventsAfter.push(elm);
-	    } else {
-		classifiedEvents.eventsBefore.push(elm);
-	    }
-	});
+        events.forEach(function (elm) {
+            if (elm.date.isAfter(now) && false === classifiedEvents.nextEvent) {
+                // this is the upcoming event
+                classifiedEvents.nextEvent = elm;
+            } else if (elm.date.isAfter(now) && false !== classifiedEvents.nextEvent) {
+                classifiedEvents.eventsAfter.push(elm);
+            } else {
+                classifiedEvents.eventsBefore.push(elm);
+            }
+        });
 
-	return classifiedEvents;
+        return classifiedEvents;
     };
 }
 
 (function (angular) {
     angular
-	.module('cms.services')
-	.service('EventGraphService', EventGraphService);
+        .module('cms.services')
+        .service('EventGraphService', EventGraphService);
 
     EventGraphService.$inject = ['LoggerService'];
 
@@ -9956,35 +9956,35 @@ function LanguageService(GenericApiService, $log) {
     var LANGUAGES = 'languages';
 
     this.getLanguages = function () {
-	return GenericApiService.get(LANGUAGES);
+        return GenericApiService.get(LANGUAGES);
     };
 
     this.getLanguage = function (languageId) {
-	return GenericApiService.getObject(LANGUAGES, languageId);
+        return GenericApiService.getObject(LANGUAGES, languageId);
     };
 
     this.getEmptyLanguage = function () {
-	return GenericApiService.getEmptyObject(LANGUAGES);
+        return GenericApiService.getEmptyObject(LANGUAGES);
     }
 
     this.postLanguage = function (language) {
-	return GenericApiService.post(LANGUAGES, language);
+        return GenericApiService.post(LANGUAGES, language);
     };
 
     this.putLanguage = function (language) {
-	return GenericApiService.put(LANGUAGES, language);
+        return GenericApiService.put(LANGUAGES, language);
     };
 
     this.deleteLanguage = function (languageId) {
-	return GenericApiService.remove(LANGUAGES, languageId);
+        return GenericApiService.remove(LANGUAGES, languageId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('LanguageService', LanguageService);
+        .module('cms.services')
+        .service('LanguageService', LanguageService);
 
     LanguageService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -9995,35 +9995,35 @@ function LocationService(GenericApiService, $log) {
     var LOCATIONS = 'locations';
 
     this.getLocations = function () {
-	return GenericApiService.get(LOCATIONS);
+        return GenericApiService.get(LOCATIONS);
     };
 
     this.getLocation = function (locationId) {
-	return GenericApiService.getObject(LOCATIONS, locationId);
+        return GenericApiService.getObject(LOCATIONS, locationId);
     };
 
     this.getEmptyLocation = function () {
-	return GenericApiService.getEmptyObject(LOCATIONS);
+        return GenericApiService.getEmptyObject(LOCATIONS);
     }
 
     this.postLocation = function (location) {
-	return GenericApiService.post(LOCATIONS, location);
+        return GenericApiService.post(LOCATIONS, location);
     };
 
     this.putLocation = function (location) {
-	return GenericApiService.put(LOCATIONS, location);
+        return GenericApiService.put(LOCATIONS, location);
     };
 
     this.deleteLocation = function (locationId) {
-	return GenericApiService.remove(LOCATIONS, locationId);
+        return GenericApiService.remove(LOCATIONS, locationId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('LocationService', LocationService);
+        .module('cms.services')
+        .service('LocationService', LocationService);
 
     LocationService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -10031,21 +10031,21 @@ function LocationService(GenericApiService, $log) {
 
 function MapService ($q) {
     var that = this,
-	geoCoder = new google.maps.Geocoder(),
-	infoWindow = new google.maps.InfoWindow(), // infowindow used to display address
-	marker, // google maps Marker object
-	map, // map instance
-	mapOptions ={
-	    zoom: 12,
-	    mapTypeId: 'roadmap',
-	    panControl: false,
-	    zoomControl: true,
-	    scaleControl: false,
-	    streetViewControl: false
-	},
-	curInputTime = 0, // time of input
-	lastInputTime = 0, // time of last input
-	inputTimeDiff = 0;
+        geoCoder = new google.maps.Geocoder(),
+        infoWindow = new google.maps.InfoWindow(), // infowindow used to display address
+        marker, // google maps Marker object
+        map, // map instance
+        mapOptions ={
+            zoom: 12,
+            mapTypeId: 'roadmap',
+            panControl: false,
+            zoomControl: true,
+            scaleControl: false,
+            streetViewControl: false
+        },
+        curInputTime = 0, // time of input
+        lastInputTime = 0, // time of last input
+        inputTimeDiff = 0;
 
     /**
      * Initalizes a Google Map object in the container. Uses
@@ -10057,24 +10057,24 @@ function MapService ($q) {
      * @param address
      */
     this.initMap = function (containerId, lat, lng, address) {
-	var mapContainer = document.getElementById(containerId),
-	    latlng = new google.maps.LatLng(lat, lng);
+        var mapContainer = document.getElementById(containerId),
+            latlng = new google.maps.LatLng(lat, lng);
 
-	if (mapContainer.offsetHeight < 10) {
-	    // set a height for the container
-	    mapContainer.style.height = "250px";
-	}
+        if (mapContainer.offsetHeight < 10) {
+            // set a height for the container
+            mapContainer.style.height = "250px";
+        }
 
-	mapOptions['center'] = latlng;
+        mapOptions['center'] = latlng;
 
-	// necessary to set height of map-canvas -> see main.css
-	map = new google.maps.Map(mapContainer, mapOptions);
-	marker = new google.maps.Marker({
-	    position: latlng,
-	    map: map
-	});
-	infoWindow.setContent(address);
-	infoWindow.open(map, marker);
+        // necessary to set height of map-canvas -> see main.css
+        map = new google.maps.Map(mapContainer, mapOptions);
+        marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+        });
+        infoWindow.setContent(address);
+        infoWindow.open(map, marker);
     };
 
     /**
@@ -10083,14 +10083,14 @@ function MapService ($q) {
      * @returns {number} The difference
      */
     this.calcInputSpeedDiff = function () {
-	curInputTime = new Date().getTime();
-	if (lastInputTime !== 0) {
-	    inputTimeDiff = curInputTime - lastInputTime;
-	}
+        curInputTime = new Date().getTime();
+        if (lastInputTime !== 0) {
+            inputTimeDiff = curInputTime - lastInputTime;
+        }
 
-	lastInputTime = curInputTime;
+        lastInputTime = curInputTime;
 
-	return inputTimeDiff;
+        return inputTimeDiff;
     };
 
     /**
@@ -10100,11 +10100,11 @@ function MapService ($q) {
      * @returns {{lat: Number, lng: Number, formattedAddress: String}} Returns an object containing the lat-long-pair and the formatted address
      */
     this.setMapToAddress = function (address) {
-	return that.getPositionForAddress(address)
-	    .then(function (ret) {
-		that.setMapToPosition(ret.lat, ret.lng);
-		return ret;
-	    });
+        return that.getPositionForAddress(address)
+            .then(function (ret) {
+                that.setMapToPosition(ret.lat, ret.lng);
+                return ret;
+            });
     };
 
     /**
@@ -10115,31 +10115,31 @@ function MapService ($q) {
      * @returns {*} A promise which is resolved once the map is updated
      */
     this.setMapToPosition = function (lat, lng) {
-	// get a promise
-	var $defer = $q.defer();
-	var latlng = new google.maps.LatLng(lat, lng);
-	geoCoder.geocode({'latLng': latlng}, function (results, status) {
-	    if (status === google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
-		    map.setZoom(16);
-		    map.setCenter(latlng);
-		    marker = new google.maps.Marker({
-			position: latlng,
-			map: map
-		    });
-		    infoWindow.setContent(results[1].formatted_address);
-		    infoWindow.open(map, marker);
-		    // map has updated -> resolve promise
-		    $defer.resolve();
-		} else {
-		    $defer.reject('No results found');
-		}
-	    } else {
-		$defer.reject('Geocoder failed tue to: ' + status);
-	    }
-	});
+        // get a promise
+        var $defer = $q.defer();
+        var latlng = new google.maps.LatLng(lat, lng);
+        geoCoder.geocode({'latLng': latlng}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    map.setZoom(16);
+                    map.setCenter(latlng);
+                    marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map
+                    });
+                    infoWindow.setContent(results[1].formatted_address);
+                    infoWindow.open(map, marker);
+                    // map has updated -> resolve promise
+                    $defer.resolve();
+                } else {
+                    $defer.reject('No results found');
+                }
+            } else {
+                $defer.reject('Geocoder failed tue to: ' + status);
+            }
+        });
 
-	return $defer.promise;
+        return $defer.promise;
     };
 
     /**
@@ -10149,30 +10149,30 @@ function MapService ($q) {
      * @returns {object} A promise which is resolved once the position is fetched
      */
     this.getPositionForAddress = function (address) {
-	var $defer = $q.defer();
-	var parsedResult;
-	geoCoder.geocode({ address : address }, function (result, status) {
+        var $defer = $q.defer();
+        var parsedResult;
+        geoCoder.geocode({ address : address }, function (result, status) {
 
-	    if (status === google.maps.GeocoderStatus.OK) {
-		parsedResult = {
-		    lat: result[0].geometry.location.lat(),
-		    lng: result[0].geometry.location.lng(),
-		    formattedAddress: result[0].formatted_address
-		};
-		$defer.resolve(parsedResult);
-	    } else {
-		$defer.reject('No results found for the given address');
-	    }
-	});
+            if (status === google.maps.GeocoderStatus.OK) {
+                parsedResult = {
+                    lat: result[0].geometry.location.lat(),
+                    lng: result[0].geometry.location.lng(),
+                    formattedAddress: result[0].formatted_address
+                };
+                $defer.resolve(parsedResult);
+            } else {
+                $defer.reject('No results found for the given address');
+            }
+        });
 
-	return $defer.promise;
+        return $defer.promise;
     };
 }
 
 (function (angular) {
     angular
-	.module('cms.services')
-	.service('MapService', MapService);
+        .module('cms.services')
+        .service('MapService', MapService);
 
     MapService.$inject = ['$q'];
 
@@ -10183,49 +10183,192 @@ function LoggerService () {
     var that = this;
 
     this.levels = {
-	"debug": 0,
-	"info": 1,
-	"warn": 2,
-	"error": 3
+        "debug": 0,
+        "info": 1,
+        "warn": 2,
+        "error": 3
     };
 
     this.logLevel = '0';
 
     this.debug = function (obj) {
-	if (this.levels.debug >= this.logLevel) {
-	    console.debug(obj);
-	}
+        if (this.levels.debug >= this.logLevel) {
+            console.debug(obj);
+        }
     };
 
     this.info = function (obj) {
-	if (this.levels.info >= this.logLevel) {
-	    console.log(obj);
-	}
+        if (this.levels.info >= this.logLevel) {
+            console.log(obj);
+        }
     };
 
     this.warn = function (obj) {
-	if (this.levels.warn >= this.logLevel) {
-	    console.warn(obj);
-	}
+        if (this.levels.warn >= this.logLevel) {
+            console.warn(obj);
+        }
     };
 
     this.error = function (obj) {
-	if (this.levels.error >= this.logLevel) {
-	    console.error(obj);
-	}
+        if (this.levels.error >= this.logLevel) {
+            console.error(obj);
+        }
     };
 
     this.setLogLevel = function (level) {
-	that.logLevel = level;
+        that.logLevel = level;
     };
 }
 
 (function(angular) {
     angular
-	.module('cms.services')
-	.service('LoggerService', LoggerService);
+        .module('cms.services')
+        .service('LoggerService', LoggerService);
 
 }(angular));
+'use strict';
+
+function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope, $httpParamSerializer) {
+    var that = this;
+
+    this.login = function (username, password) {
+        return $http({
+            url: CONFIG.AUTHENTICATION_ENDPOINT,
+            withCredentials: true, // allows sending cookies if not on the same domain
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            data: $httpParamSerializer({
+                'username': username,
+                'password': password
+            })
+        })
+    };
+
+    this.resendLoginRequest = function () {
+        var username = '',
+            password = '';
+
+        if ($rootScope.globals.hasOwnProperty('currentUser')) {
+            username = $rootScope.globals.currentUser.username;
+            password = $rootScope.globals.currentUser.password;
+        }
+
+        return that.login(username, password);
+    };
+
+    this.setCredentials = function (username, password) {
+        var authData = Base64.encode(username + ":" + password);
+
+        $rootScope.globals = {
+            currentUser: {
+                'username': username,
+                'password': password,
+                'authData': authData
+            }
+        };
+
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + authData;
+        $cookieStore.put('globals', $rootScope.globals);
+    };
+
+    this.clearCredentials = function () {
+        $rootScope.globals = {};
+        $cookieStore.remove('globals');
+        $http.defaults.headers.common.Authorization = 'Basic ';
+    };
+}
+
+function Base64 () {
+    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+    return {
+        encode: function (input) {
+            var output = "";
+            var chr1, chr2, chr3 = "";
+            var enc1, enc2, enc3, enc4 = "";
+            var i = 0;
+
+            do {
+                chr1 = input.charCodeAt(i++);
+                chr2 = input.charCodeAt(i++);
+                chr3 = input.charCodeAt(i++);
+
+                enc1 = chr1 >> 2;
+                enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+                enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+                enc4 = chr3 & 63;
+
+                if (isNaN(chr2)) {
+                    enc3 = enc4 = 64;
+                } else if (isNaN(chr3)) {
+                    enc4 = 64;
+                }
+
+                output = output +
+                    keyStr.charAt(enc1) +
+                    keyStr.charAt(enc2) +
+                    keyStr.charAt(enc3) +
+                    keyStr.charAt(enc4);
+                chr1 = chr2 = chr3 = "";
+                enc1 = enc2 = enc3 = enc4 = "";
+            } while (i < input.length);
+
+            return output;
+        },
+
+        decode: function (input) {
+            var output = "";
+            var chr1, chr2, chr3 = "";
+            var enc1, enc2, enc3, enc4 = "";
+            var i = 0;
+
+            // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+            var base64test = /[^A-Za-z0-9\+\/\=]/g;
+            if (base64test.exec(input)) {
+                window.alert("There were invalid base64 characters in the input text.\n" +
+                    "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
+                    "Expect errors in decoding.");
+            }
+            input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+            do {
+                enc1 = keyStr.indexOf(input.charAt(i++));
+                enc2 = keyStr.indexOf(input.charAt(i++));
+                enc3 = keyStr.indexOf(input.charAt(i++));
+                enc4 = keyStr.indexOf(input.charAt(i++));
+
+                chr1 = (enc1 << 2) | (enc2 >> 4);
+                chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+                chr3 = ((enc3 & 3) << 6) | enc4;
+
+                output = output + String.fromCharCode(chr1);
+
+                if (enc3 != 64) {
+                    output = output + String.fromCharCode(chr2);
+                }
+                if (enc4 != 64) {
+                    output = output + String.fromCharCode(chr3);
+                }
+
+                chr1 = chr2 = chr3 = "";
+                enc1 = enc2 = enc3 = enc4 = "";
+
+            } while (i < input.length);
+
+            return output;
+        }
+    };
+}
+
+(function (angular) {
+    angular
+        .module('cms.services')
+        .service('AuthenticationService', AuthenticationService)
+        .service('Base64', Base64);
+
+    AuthenticationService.$inject = ['CONFIG', 'Base64', '$http', '$cookieStore', '$rootScope', '$httpParamSerializer'];
+
+})(angular);
 'use strict';
 
 function FileService(GenericApiService, $log) {
@@ -10233,27 +10376,27 @@ function FileService(GenericApiService, $log) {
     var FILES = 'files';
 
     this.getFiles = function () {
-	return GenericApiService.get(FILES);
+        return GenericApiService.get(FILES);
     };
 
     this.getFile = function (locationId) {
-	return GenericApiService.getObject(FILES, locationId);
+        return GenericApiService.getObject(FILES, locationId);
     };
 
     this.postFile = function (location) {
-	return GenericApiService.post(FILES, location);
+        return GenericApiService.post(FILES, location);
     };
 
     this.deleteFile = function (locationId) {
-	return GenericApiService.remove(FILES, locationId);
+        return GenericApiService.remove(FILES, locationId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('FileService', FileService);
+        .module('cms.services')
+        .service('FileService', FileService);
 
     FileService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -10262,216 +10405,216 @@ function FileService(GenericApiService, $log) {
 function NavigationService() {
 
     var that = this,
-	menuArray = {
-	"dashboard": {
-	    "backgroundColorClass": "lightyellow",
-	    "topBorderClass": "lightyellow-top-border",
-	    "menuArray": [
-		{
-		    "name": "Dashboard",
-		    "link": "\/dashboard", // must start with slashes for active menu point selection
-		    "inMenu": true
-		}
-	    ]
-	},
-	"articles": {
-	    "backgroundColorClass": "darkred",
-	    "topBorderClass": "lightred-top-border",
-	    "menuArray": [
-		{
-		    "name": "Article Overview",
-		    "link": "articles\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add Article",
-		    "link": "articles\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Article",
-		    "link": "articles\/article\/:id",
-		    "inMenu": false
-		},
-		{
-		    "name": "Page Overview",
-		    "link": "pages\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add Page",
-		    "link": "pages\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Page",
-		    "link": "pages\/page\/:id",
-		    "inMenu": false
-		}
-	    ]
-	},
-	"pages": {
-	    "backgroundColorClass": "darkred",
-	    "topBorderClass": "lightred-top-border",
-	    "menuArray": [
-		{
-		    "name": "Article Overview",
-		    "link": "articles\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add Article",
-		    "link": "articles\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Article",
-		    "link": "articles\/article\/:id",
-		    "inMenu": false
-		},
-		{
-		    "name": "Page Overview",
-		    "link": "pages\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add Page",
-		    "link": "pages\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Page",
-		    "link": "pages\/page\/:id",
-		    "inMenu": false
-		}
-	    ]
-	},
-	"events": {
-	    "backgroundColorClass": "darkpink",
-	    "topBorderClass": "lightpink-top-border",
-	    "menuArray": [
-		{
-		    "name": "Event Dashboard",
-		    "link": "events\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add Event",
-		    "link": "events\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Event",
-		    "link": "events\/event\/:id",
-		    "inMenu": false
-		},
-		{
-		    "name": "Add Location",
-		    "link": "locations\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Location",
-		    "link": "locations\/location\/:id",
-		    "inMenu": false
-		}
-	    ]
-	},
-	"locations": {
-	    "backgroundColorClass": "darkpink",
-	    "topBorderClass": "lightpink-top-border",
-	    "menuArray": [
-		{
-		    "name": "Event Dashboard",
-		    "link": "events\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add Event",
-		    "link": "events\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Event",
-		    "link": "events\/event\/:id",
-		    "inMenu": false
-		},
-		{
-		    "name": "Add Location",
-		    "link": "locations\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit Location",
-		    "link": "locations\/location\/:id",
-		    "inMenu": false
-		}
-	    ]
-	},
-	"files": {
-	    "backgroundColorClass": "darkpurple",
-	    "topBorderClass": "lightpurple-top-border",
-	    "menuArray": [
-		{
-		    "name": "Media Overview",
-		    "link": "files\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add File",
-		    "link": "files\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "View File",
-		    "link": "files\/file\/:id",
-		    "inMenu": false
-		}
-	    ]
-	},
-	"users": {
-	    "backgroundColorClass": "darkblue",
-	    "topBorderClass": "lightblue-top-border",
-	    "menuArray": [
-		{
-		    "name": "User Overview",
-		    "link": "users\/list",
-		    "inMenu": true
-		},
-		{
-		    "name": "Add user",
-		    "link": "users\/add",
-		    "inMenu": true
-		},
-		{
-		    "name": "Edit user",
-		    "link": "users\/user\/:id",
-		    "inMenu": false
-		}
-	    ]
-	},
-	"settings": {
-	    "backgroundColorClass": "darkgreen",
-	    "topBorderClass": "lightgreen-top-border",
-	    "menuArray": [
-		{
-		    "name": "Setting Overview",
-		    "link": "settings\/list",
-		    "inMenu": true
-		}
-	    ]
-	},
-	"login": {
-	    "backgroundColorClass": "lightyellow",
-	    "topBorderClass": "lightyellow-top-border",
-	    "menuArray": [
-		{
-		    "name": "Login",
-		    "link": "\/login", // must start with slashes for active menu point selection
-		    "inMenu": false
-		}
-	    ]
-	}
+        menuArray = {
+        "dashboard": {
+            "backgroundColorClass": "lightyellow",
+            "topBorderClass": "lightyellow-top-border",
+            "menuArray": [
+                {
+                    "name": "Dashboard",
+                    "link": "\/dashboard", // must start with slashes for active menu point selection
+                    "inMenu": true
+                }
+            ]
+        },
+        "articles": {
+            "backgroundColorClass": "darkred",
+            "topBorderClass": "lightred-top-border",
+            "menuArray": [
+                {
+                    "name": "Article Overview",
+                    "link": "articles\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add Article",
+                    "link": "articles\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Article",
+                    "link": "articles\/article\/:id",
+                    "inMenu": false
+                },
+                {
+                    "name": "Page Overview",
+                    "link": "pages\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add Page",
+                    "link": "pages\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Page",
+                    "link": "pages\/page\/:id",
+                    "inMenu": false
+                }
+            ]
+        },
+        "pages": {
+            "backgroundColorClass": "darkred",
+            "topBorderClass": "lightred-top-border",
+            "menuArray": [
+                {
+                    "name": "Article Overview",
+                    "link": "articles\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add Article",
+                    "link": "articles\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Article",
+                    "link": "articles\/article\/:id",
+                    "inMenu": false
+                },
+                {
+                    "name": "Page Overview",
+                    "link": "pages\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add Page",
+                    "link": "pages\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Page",
+                    "link": "pages\/page\/:id",
+                    "inMenu": false
+                }
+            ]
+        },
+        "events": {
+            "backgroundColorClass": "darkpink",
+            "topBorderClass": "lightpink-top-border",
+            "menuArray": [
+                {
+                    "name": "Event Dashboard",
+                    "link": "events\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add Event",
+                    "link": "events\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Event",
+                    "link": "events\/event\/:id",
+                    "inMenu": false
+                },
+                {
+                    "name": "Add Location",
+                    "link": "locations\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Location",
+                    "link": "locations\/location\/:id",
+                    "inMenu": false
+                }
+            ]
+        },
+        "locations": {
+            "backgroundColorClass": "darkpink",
+            "topBorderClass": "lightpink-top-border",
+            "menuArray": [
+                {
+                    "name": "Event Dashboard",
+                    "link": "events\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add Event",
+                    "link": "events\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Event",
+                    "link": "events\/event\/:id",
+                    "inMenu": false
+                },
+                {
+                    "name": "Add Location",
+                    "link": "locations\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit Location",
+                    "link": "locations\/location\/:id",
+                    "inMenu": false
+                }
+            ]
+        },
+        "files": {
+            "backgroundColorClass": "darkpurple",
+            "topBorderClass": "lightpurple-top-border",
+            "menuArray": [
+                {
+                    "name": "Media Overview",
+                    "link": "files\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add File",
+                    "link": "files\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "View File",
+                    "link": "files\/file\/:id",
+                    "inMenu": false
+                }
+            ]
+        },
+        "users": {
+            "backgroundColorClass": "darkblue",
+            "topBorderClass": "lightblue-top-border",
+            "menuArray": [
+                {
+                    "name": "User Overview",
+                    "link": "users\/list",
+                    "inMenu": true
+                },
+                {
+                    "name": "Add user",
+                    "link": "users\/add",
+                    "inMenu": true
+                },
+                {
+                    "name": "Edit user",
+                    "link": "users\/user\/:id",
+                    "inMenu": false
+                }
+            ]
+        },
+        "settings": {
+            "backgroundColorClass": "darkgreen",
+            "topBorderClass": "lightgreen-top-border",
+            "menuArray": [
+                {
+                    "name": "Setting Overview",
+                    "link": "settings\/list",
+                    "inMenu": true
+                }
+            ]
+        },
+        "login": {
+            "backgroundColorClass": "lightyellow",
+            "topBorderClass": "lightyellow-top-border",
+            "menuArray": [
+                {
+                    "name": "Login",
+                    "link": "\/login", // must start with slashes for active menu point selection
+                    "inMenu": false
+                }
+            ]
+        }
     };
 
     /**
@@ -10481,11 +10624,11 @@ function NavigationService() {
      * @returns { object|null }
      */
      this.getMenuProperty = function (menuName) {
-	if (menuName in menuArray) {
-	    return menuArray[menuName];
-	}
+        if (menuName in menuArray) {
+            return menuArray[menuName];
+        }
 
-	return null;
+        return null;
     };
 
     /**
@@ -10495,13 +10638,13 @@ function NavigationService() {
      * @returns {string} The class of the background color
      */
     this.getBackgroundColorClass = function (currentUrl) {
-	var subNav = that.getSubNavigation(currentUrl, false);
+        var subNav = that.getSubNavigation(currentUrl, false);
 
-	if (null !== subNav) {
-	    return subNav.backgroundColorClass;
-	}
+        if (null !== subNav) {
+            return subNav.backgroundColorClass;
+        }
 
-	return '';
+        return '';
     };
 
     /**
@@ -10512,33 +10655,33 @@ function NavigationService() {
      * @returns { object }
      */
     this.getSubNavigation = function (currentUrl, isInMenuCheck) {
-	var routeElements = currentUrl.split("/");
+        var routeElements = currentUrl.split("/");
 
-	for (var property in routeElements) {
-	    if (routeElements.hasOwnProperty(property) && routeElements[property].length > 0) {
-		if (routeElements[property] in menuArray) {
-		    var subNav = {},
-			entries = [];
+        for (var property in routeElements) {
+            if (routeElements.hasOwnProperty(property) && routeElements[property].length > 0) {
+                if (routeElements[property] in menuArray) {
+                    var subNav = {},
+                        entries = [];
 
-		    for (var key in menuArray[routeElements[property]].menuArray) {
-			if (menuArray[routeElements[property]].menuArray.hasOwnProperty(key)) {
-			    if ((true === isInMenuCheck && true === menuArray[routeElements[property]].menuArray[key].inMenu) ||
-				false === isInMenuCheck) {
-				entries.push(menuArray[routeElements[property]].menuArray[key]);
-			    }
+                    for (var key in menuArray[routeElements[property]].menuArray) {
+                        if (menuArray[routeElements[property]].menuArray.hasOwnProperty(key)) {
+                            if ((true === isInMenuCheck && true === menuArray[routeElements[property]].menuArray[key].inMenu) ||
+                                false === isInMenuCheck) {
+                                entries.push(menuArray[routeElements[property]].menuArray[key]);
+                            }
 
-			}
-		    }
+                        }
+                    }
 
-		    subNav.menuArray = entries;
-		    subNav.topBorderClass = menuArray[routeElements[property]].topBorderClass;
-		    subNav.backgroundColorClass = menuArray[routeElements[property]].backgroundColorClass;
-		    return subNav;
-		}
-	    }
-	}
+                    subNav.menuArray = entries;
+                    subNav.topBorderClass = menuArray[routeElements[property]].topBorderClass;
+                    subNav.backgroundColorClass = menuArray[routeElements[property]].backgroundColorClass;
+                    return subNav;
+                }
+            }
+        }
 
-	return null;
+        return null;
     };
 
     /**
@@ -10549,241 +10692,59 @@ function NavigationService() {
      * @returns {string} A string representing the found name. Is empty if not found
      */
     this.getPageName = function (currentUrl) {
-	var subNav = that.getSubNavigation(currentUrl, false);
+        var subNav = that.getSubNavigation(currentUrl, false);
 
-	if (!('menuArray' in subNav)) {
-	    return '';
-	}
+        if (!('menuArray' in subNav)) {
+            return '';
+        }
 
-	// last two elements must match, e.g. 'article/add'
-	var routeElements = currentUrl.split("/");
+        // last two elements must match, e.g. 'article/add'
+        var routeElements = currentUrl.split("/");
 
-	if (routeElements.length < 2) {
-	    // we can not handle this route
-	    return '';
-	}
+        if (routeElements.length < 2) {
+            // we can not handle this route
+            return '';
+        }
 
-	var route = routeElements[routeElements.length - 2] + "/" + routeElements[routeElements.length -1];
+        var route = routeElements[routeElements.length - 2] + "/" + routeElements[routeElements.length -1];
 
-	for (var entry in subNav.menuArray) {
-	    if (subNav.menuArray.hasOwnProperty(entry) &&
-		subNav.menuArray[entry].hasOwnProperty('link') &&
-		subNav.menuArray[entry].hasOwnProperty('name')) {
+        for (var entry in subNav.menuArray) {
+            if (subNav.menuArray.hasOwnProperty(entry) &&
+                subNav.menuArray[entry].hasOwnProperty('link') &&
+                subNav.menuArray[entry].hasOwnProperty('name')) {
 
-		if (route === subNav.menuArray[entry].link ) {
-		    // simple route
-		    return subNav.menuArray[entry].name;
-		}
+                if (route === subNav.menuArray[entry].link ) {
+                    // simple route
+                    return subNav.menuArray[entry].name;
+                }
 
-		if (subNav.menuArray[entry].link.indexOf(':id') === (subNav.menuArray[entry].link.length - 3)) {
-		    // link in menuArray ends with :id
-		    // does current route end with an id?
-		    var regEx = new RegExp("\\d+");
-		    var lastRouteElement = routeElements[routeElements.length - 1];
-		    var secondLastRouteElement = routeElements[routeElements.length - 2];
-		    var menuArrayRouteElements = subNav.menuArray[entry].link.split("/");
+                if (subNav.menuArray[entry].link.indexOf(':id') === (subNav.menuArray[entry].link.length - 3)) {
+                    // link in menuArray ends with :id
+                    // does current route end with an id?
+                    var regEx = new RegExp("\\d+");
+                    var lastRouteElement = routeElements[routeElements.length - 1];
+                    var secondLastRouteElement = routeElements[routeElements.length - 2];
+                    var menuArrayRouteElements = subNav.menuArray[entry].link.split("/");
 
-		    if (true === regEx.test(lastRouteElement) &&
-			menuArrayRouteElements[menuArrayRouteElements.length -2 ] === secondLastRouteElement) {
-			return subNav.menuArray[entry].name;
-		    }
-		}
+                    if (true === regEx.test(lastRouteElement) &&
+                        menuArrayRouteElements[menuArrayRouteElements.length -2 ] === secondLastRouteElement) {
+                        return subNav.menuArray[entry].name;
+                    }
+                }
 
-	    }
-	}
+            }
+        }
 
-	return '';
+        return '';
     };
 
 }
 (function () {
     angular
-	.module('cms.services')
-	.service('NavigationService', NavigationService);
+        .module('cms.services')
+        .service('NavigationService', NavigationService);
 }());
 
-'use strict';
-
-function AuthenticationService (CONFIG, Base64, $http, $cookieStore, $rootScope, $httpParamSerializer) {
-    var that = this;
-
-    this.login = function (username, password) {
-	return $http({
-	    url: CONFIG.AUTHENTICATION_ENDPOINT,
-	    withCredentials: true, // allows sending cookies if not on the same domain
-	    method: 'POST',
-	    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-	    data: $httpParamSerializer({
-		'username': username,
-		'password': password
-	    })
-	})
-    };
-
-    this.resendLoginRequest = function () {
-	var username = '',
-	    password = '';
-
-	if ($rootScope.globals.hasOwnProperty('currentUser')) {
-	    username = $rootScope.globals.currentUser.username;
-	    password = $rootScope.globals.currentUser.password;
-	}
-
-	return that.login(username, password);
-    };
-
-    this.setCredentials = function (username, password) {
-	var authData = Base64.encode(username + ":" + password);
-
-	$rootScope.globals = {
-	    currentUser: {
-		'username': username,
-		'password': password,
-		'authData': authData
-	    }
-	};
-
-	$http.defaults.headers.common['Authorization'] = 'Basic ' + authData;
-	$cookieStore.put('globals', $rootScope.globals);
-    };
-
-    this.clearCredentials = function () {
-	$rootScope.globals = {};
-	$cookieStore.remove('globals');
-	$http.defaults.headers.common.Authorization = 'Basic ';
-    };
-}
-
-function Base64 () {
-    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-    return {
-	encode: function (input) {
-	    var output = "";
-	    var chr1, chr2, chr3 = "";
-	    var enc1, enc2, enc3, enc4 = "";
-	    var i = 0;
-
-	    do {
-		chr1 = input.charCodeAt(i++);
-		chr2 = input.charCodeAt(i++);
-		chr3 = input.charCodeAt(i++);
-
-		enc1 = chr1 >> 2;
-		enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-		enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-		enc4 = chr3 & 63;
-
-		if (isNaN(chr2)) {
-		    enc3 = enc4 = 64;
-		} else if (isNaN(chr3)) {
-		    enc4 = 64;
-		}
-
-		output = output +
-		    keyStr.charAt(enc1) +
-		    keyStr.charAt(enc2) +
-		    keyStr.charAt(enc3) +
-		    keyStr.charAt(enc4);
-		chr1 = chr2 = chr3 = "";
-		enc1 = enc2 = enc3 = enc4 = "";
-	    } while (i < input.length);
-
-	    return output;
-	},
-
-	decode: function (input) {
-	    var output = "";
-	    var chr1, chr2, chr3 = "";
-	    var enc1, enc2, enc3, enc4 = "";
-	    var i = 0;
-
-	    // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
-	    var base64test = /[^A-Za-z0-9\+\/\=]/g;
-	    if (base64test.exec(input)) {
-		window.alert("There were invalid base64 characters in the input text.\n" +
-		    "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
-		    "Expect errors in decoding.");
-	    }
-	    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-
-	    do {
-		enc1 = keyStr.indexOf(input.charAt(i++));
-		enc2 = keyStr.indexOf(input.charAt(i++));
-		enc3 = keyStr.indexOf(input.charAt(i++));
-		enc4 = keyStr.indexOf(input.charAt(i++));
-
-		chr1 = (enc1 << 2) | (enc2 >> 4);
-		chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-		chr3 = ((enc3 & 3) << 6) | enc4;
-
-		output = output + String.fromCharCode(chr1);
-
-		if (enc3 != 64) {
-		    output = output + String.fromCharCode(chr2);
-		}
-		if (enc4 != 64) {
-		    output = output + String.fromCharCode(chr3);
-		}
-
-		chr1 = chr2 = chr3 = "";
-		enc1 = enc2 = enc3 = enc4 = "";
-
-	    } while (i < input.length);
-
-	    return output;
-	}
-    };
-}
-
-(function (angular) {
-    angular
-	.module('cms.services')
-	.service('AuthenticationService', AuthenticationService)
-	.service('Base64', Base64);
-
-    AuthenticationService.$inject = ['CONFIG', 'Base64', '$http', '$cookieStore', '$rootScope', '$httpParamSerializer'];
-
-})(angular);
-'use strict';
-
-function PageService(GenericApiService, $log) {
-
-    var PAGES = 'pages';
-
-    this.getPages = function () {
-	return GenericApiService.get(PAGES);
-    };
-
-    this.getPage = function (articleId) {
-	return GenericApiService.getObject(PAGES, articleId);
-    };
-
-    this.getEmptyPage = function () {
-	return GenericApiService.getEmptyObject(PAGES);
-    };
-
-    this.postPage = function (article) {
-	return GenericApiService.post(PAGES, article);
-    };
-
-    this.putPage = function (article) {
-	return GenericApiService.put(PAGES, article);
-    };
-
-    this.deletePage = function (articleId) {
-	return GenericApiService.remove(PAGES, articleId);
-    }
-
-}
-
-(function () {
-    angular
-	.module('cms.services')
-	.service('PageService', PageService);
-
-    PageService.$inject = [ 'GenericApiService', '$log'];
-}());
 'use strict';
 
 function PageCategoryService(GenericApiService, $log) {
@@ -10791,37 +10752,76 @@ function PageCategoryService(GenericApiService, $log) {
     var PAGE_CATEGORY = 'page-categories';
 
     this.getPageCategories = function () {
-	return GenericApiService.get(PAGE_CATEGORY);
+        return GenericApiService.get(PAGE_CATEGORY);
     };
 
     this.getPageCategory = function (pageCategoryId) {
-	return GenericApiService.getObject(PAGE_CATEGORY, pageCategoryId);
+        return GenericApiService.getObject(PAGE_CATEGORY, pageCategoryId);
     };
 
     this.getEmptyPageCategory = function () {
-	return GenericApiService.getEmptyObject(PAGE_CATEGORY);
+        return GenericApiService.getEmptyObject(PAGE_CATEGORY);
     };
 
     this.postPageCategory = function (pageCategory) {
-	return GenericApiService.post(PAGE_CATEGORY, pageCategory);
+        return GenericApiService.post(PAGE_CATEGORY, pageCategory);
     };
 
     this.putPageCategory = function (pageCategory) {
-	return GenericApiService.put(PAGE_CATEGORY, pageCategory);
+        return GenericApiService.put(PAGE_CATEGORY, pageCategory);
     };
 
     this.deletePageCategory = function (pageCategoryId) {
-	return GenericApiService.remove(PAGE_CATEGORY, pageCategoryId);
+        return GenericApiService.remove(PAGE_CATEGORY, pageCategoryId);
     };
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('PageCategoryService', PageCategoryService);
+        .module('cms.services')
+        .service('PageCategoryService', PageCategoryService);
 
     PageCategoryService.$inject = [ 'GenericApiService', '$log'];
+}());
+'use strict';
+
+function PageService(GenericApiService, $log) {
+
+    var PAGES = 'pages';
+
+    this.getPages = function () {
+        return GenericApiService.get(PAGES);
+    };
+
+    this.getPage = function (articleId) {
+        return GenericApiService.getObject(PAGES, articleId);
+    };
+
+    this.getEmptyPage = function () {
+        return GenericApiService.getEmptyObject(PAGES);
+    };
+
+    this.postPage = function (article) {
+        return GenericApiService.post(PAGES, article);
+    };
+
+    this.putPage = function (article) {
+        return GenericApiService.put(PAGES, article);
+    };
+
+    this.deletePage = function (articleId) {
+        return GenericApiService.remove(PAGES, articleId);
+    }
+
+}
+
+(function () {
+    angular
+        .module('cms.services')
+        .service('PageService', PageService);
+
+    PageService.$inject = [ 'GenericApiService', '$log'];
 }());
 'use strict';
 
@@ -10830,35 +10830,35 @@ function SettingService(GenericApiService, $log) {
     var SETTINGS = 'settings';
 
     this.getSettings = function () {
-	return GenericApiService.get(SETTINGS);
+        return GenericApiService.get(SETTINGS);
     };
 
     this.getSetting = function (settingId) {
-	return GenericApiService.getObject(SETTINGS, settingId);
+        return GenericApiService.getObject(SETTINGS, settingId);
     };
 
     this.getEmptySetting = function () {
-	return GenericApiService.getEmptyObject(SETTINGS);
+        return GenericApiService.getEmptyObject(SETTINGS);
     };
 
     this.postSetting = function (setting) {
-	return GenericApiService.post(SETTINGS, setting);
+        return GenericApiService.post(SETTINGS, setting);
     };
 
     this.putSetting = function (setting) {
-	return GenericApiService.put(SETTINGS, setting);
+        return GenericApiService.put(SETTINGS, setting);
     };
 
     this.deleteSetting = function (settingId) {
-	return GenericApiService.remove(SETTINGS, settingId);
+        return GenericApiService.remove(SETTINGS, settingId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('SettingService', SettingService);
+        .module('cms.services')
+        .service('SettingService', SettingService);
 
     SettingService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -10869,35 +10869,35 @@ function UserService(GenericApiService, $log) {
     var USERS = 'users';
 
     this.getUsers = function () {
-	return GenericApiService.get(USERS);
+        return GenericApiService.get(USERS);
     };
 
     this.getUser = function (userId) {
-	return GenericApiService.getObject(USERS, userId);
+        return GenericApiService.getObject(USERS, userId);
     };
 
     this.getEmptyUser = function () {
-	return GenericApiService.getEmptyObject(USERS);
+        return GenericApiService.getEmptyObject(USERS);
     };
 
     this.postUser = function (user) {
-	return GenericApiService.post(USERS, user);
+        return GenericApiService.post(USERS, user);
     };
 
     this.putUser = function (user) {
-	return GenericApiService.put(USERS, user);
+        return GenericApiService.put(USERS, user);
     };
 
     this.deleteUser = function (userId) {
-	return GenericApiService.remove(USERS, userId);
+        return GenericApiService.remove(USERS, userId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('UserService', UserService);
+        .module('cms.services')
+        .service('UserService', UserService);
 
     UserService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -10908,35 +10908,35 @@ function UserGroupService(GenericApiService, $log) {
     var USER_GROUPS = 'usergroups';
 
     this.getUserGroups = function () {
-	return GenericApiService.get(USER_GROUPS);
+        return GenericApiService.get(USER_GROUPS);
     };
 
     this.getUserGroup = function (userGroupId) {
-	return GenericApiService.getObject(USER_GROUPS, userGroupId);
+        return GenericApiService.getObject(USER_GROUPS, userGroupId);
     };
 
     this.getEmptyUserGroup = function () {
-	return GenericApiService.getEmptyObject(USER_GROUPS);
+        return GenericApiService.getEmptyObject(USER_GROUPS);
     };
 
     this.postUserGroup = function (userGroup) {
-	return GenericApiService.post(USER_GROUPS, userGroup);
+        return GenericApiService.post(USER_GROUPS, userGroup);
     };
 
     this.putUserGroup = function (userGroup) {
-	return GenericApiService.put(USER_GROUPS, userGroup);
+        return GenericApiService.put(USER_GROUPS, userGroup);
     };
 
     this.deleteUserGroup = function (userGroupId) {
-	return GenericApiService.remove(USER_GROUPS, userGroupId);
+        return GenericApiService.remove(USER_GROUPS, userGroupId);
     }
 
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('UserGroupService', UserGroupService);
+        .module('cms.services')
+        .service('UserGroupService', UserGroupService);
 
     UserGroupService.$inject = [ 'GenericApiService', '$log'];
 }());
@@ -10951,11 +10951,11 @@ function ArrayService() {
      * @returns {article} All articles which are present in the first but not in the second array
      */
     this.arrayDiff = function (first, second) {
-	return first.filter(function (valInFirst) {
-	    return second.filter(function (valInSecond) {
-		    return valInSecond.id === valInFirst.id
-		}).length === 0;
-	});
+        return first.filter(function (valInFirst) {
+            return second.filter(function (valInSecond) {
+                    return valInSecond.id === valInFirst.id
+                }).length === 0;
+        });
     };;
 
     /**
@@ -10967,19 +10967,19 @@ function ArrayService() {
      * @returns {number} The index on which the element is located
      */
     this.arrayFind = function (haystack, id) {
-	for (var i=0; i<haystack.length; i++) {
-	    if (haystack[i].hasOwnProperty('id') && haystack[i].id === id) {
-		return i;
-	    }
-	}
-	return -1;
+        for (var i=0; i<haystack.length; i++) {
+            if (haystack[i].hasOwnProperty('id') && haystack[i].id === id) {
+                return i;
+            }
+        }
+        return -1;
     };
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('ArrayService', ArrayService);
+        .module('cms.services')
+        .service('ArrayService', ArrayService);
 }());
 
 
@@ -10996,18 +10996,18 @@ function StringService() {
      * @returns {string} The cleaned string
      */
     this.buildUrlString = function (val) {
-	if (!val) {
-	    return '';
-	}
+        if (!val) {
+            return '';
+        }
 
-	return val.replace(/[\x7f-\xff]/g, '').replace(/[ \t\r\n\v\f]/g, '-').toLowerCase();
+        return val.replace(/[\x7f-\xff]/g, '').replace(/[ \t\r\n\v\f]/g, '-').toLowerCase();
     };
 }
 
 (function () {
     angular
-	.module('cms.services')
-	.service('StringService', StringService);
+        .module('cms.services')
+        .service('StringService', StringService);
 }());
 
 
@@ -11018,36 +11018,36 @@ function LoadingQueue ($rootScope, $timeout) {
     var queueSize = 0;
 
     this.increaseQueue = function (size) {
-	queueSize += size;
-	broadcastChange(queueSize);
+        queueSize += size;
+        broadcastChange(queueSize);
     };
 
     this.decreaseQueue = function (size) {
-	queueSize = Math.max(0, queueSize - size);
-	broadcastChange(queueSize);
+        queueSize = Math.max(0, queueSize - size);
+        broadcastChange(queueSize);
     };
 
     // clear queue size when switching view
     $rootScope.$on('$routeChangeStart', function () {
-	queueSize = 0;
+        queueSize = 0;
     });
 
     function broadcastChange(newVal) {
-	if (newVal > 0) {
-	    $rootScope.statusIsLoading = true;
-	} else {
-	    $timeout(function () {
-		$rootScope.statusIsLoading = false;
-	    }, 1000);
-	}
+        if (newVal > 0) {
+            $rootScope.statusIsLoading = true;
+        } else {
+            $timeout(function () {
+                $rootScope.statusIsLoading = false;
+            }, 1000);
+        }
     }
 
 }
 
 (function (angular) {
     angular
-	.module('cms.services')
-	.service('LoadingQueue', LoadingQueue);
+        .module('cms.services')
+        .service('LoadingQueue', LoadingQueue);
 
     LoadingQueue.$inject = ['$rootScope', '$timeout'];
 
@@ -11057,135 +11057,135 @@ function LoadingQueue ($rootScope, $timeout) {
 
 angular.module('cms.directives')
     .directive('currentSite', ['NavigationService', '$location', function (NavigationService, $location) {
-	return {
-	    restrict: 'E',
-	    isolated: true,
-	    scope: true,
-	    link: function ($scope, $elm, $attrs) {
+        return {
+            restrict: 'E',
+            isolated: true,
+            scope: true,
+            link: function ($scope, $elm, $attrs) {
 
-		updateActivePoint();
+                updateActivePoint();
 
-		$scope.$on('$locationChangeStart', function(event) {
-		    updateActivePoint();
-		});
+                $scope.$on('$locationChangeStart', function(event) {
+                    updateActivePoint();
+                });
 
-		function updateActivePoint () {
-		    $scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-		    $scope.pageName = NavigationService.getPageName($location.path());
-		}
-	    },
-	    template: '<div ng-class="backgroundColorClass">{{ pageName }}</div>'
-	};
+                function updateActivePoint () {
+                    $scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+                    $scope.pageName = NavigationService.getPageName($location.path());
+                }
+            },
+            template: '<div ng-class="backgroundColorClass">{{ pageName }}</div>'
+        };
     }])
     .directive('cmsNav', ['$location', function ($location) {
-	return {
-	    restrict: 'E',
-	    isolate: true,
-	    link: function ($scope, $elm, $attrs) {},
-	    scope: true,
-	    templateUrl: "components/navigation/navigation.html"
-	};
+        return {
+            restrict: 'E',
+            isolate: true,
+            link: function ($scope, $elm, $attrs) {},
+            scope: true,
+            templateUrl: "components/navigation/navigation.html"
+        };
     }])
     .directive('contentNav', ['NavigationService', '$location', function (NavigationService, $location) {
-	return {
-	    restrict: 'E',
-	    isolate: true,
-	    link: function ($scope, $elm, $attrs) {
-		var submenuProperties = NavigationService.getSubNavigation($location.path(), true);
-		if (null !== submenuProperties) {
-		    $scope.subNavigation = submenuProperties;
-		}
-	    },
-	    scope: true,
-	    templateUrl: "components/navigation/content-navigation.html"
-	};
+        return {
+            restrict: 'E',
+            isolate: true,
+            link: function ($scope, $elm, $attrs) {
+                var submenuProperties = NavigationService.getSubNavigation($location.path(), true);
+                if (null !== submenuProperties) {
+                    $scope.subNavigation = submenuProperties;
+                }
+            },
+            scope: true,
+            templateUrl: "components/navigation/content-navigation.html"
+        };
     }])
     .directive('pageName', ['NavigationService', '$location', function (NavigationService, $location) {
-	return {
-	    restrict: 'E',
-	    isolate: true,
-	    link: function ($scope, $elm, $attrs) {
-		$scope.pageName = NavigationService.getPageName($location.path());
-	    },
-	    scope: true,
-	    template: '{{ pageName }}'
-	};
+        return {
+            restrict: 'E',
+            isolate: true,
+            link: function ($scope, $elm, $attrs) {
+                $scope.pageName = NavigationService.getPageName($location.path());
+            },
+            scope: true,
+            template: '{{ pageName }}'
+        };
     }]);
 'use strict';
 
 
 angular.module('cms.directives')
     .directive('statusBar', ['$location', function ($location) {
-	return {
-	    restrict: 'E',
-	    isolate: true,
-	    link: function ($scope, $elm, $attrs) {},
-	    scope: true,
-	    templateUrl: "components/status-bar/statusBar.html"
-	};
+        return {
+            restrict: 'E',
+            isolate: true,
+            link: function ($scope, $elm, $attrs) {},
+            scope: true,
+            templateUrl: "components/status-bar/statusBar.html"
+        };
     }])
     .directive('currentDate', function () {
-	return {
-	    restrict: 'E',
-	    isolate: true,
-	    link: function ($scope, $elm, $attrs) {
-		$scope.currentDate = new Date();
-	    },
-	    scope: true,
-	    template: '{{ currentDate | date:"dd.MM.yyyy" }}'
-	};
+        return {
+            restrict: 'E',
+            isolate: true,
+            link: function ($scope, $elm, $attrs) {
+                $scope.currentDate = new Date();
+            },
+            scope: true,
+            template: '{{ currentDate | date:"dd.MM.yyyy" }}'
+        };
     });
 'use strict';
 
 function EventGraphDirective (EventService, EventGraphService, LoggerService) {
     var circleAttrs = {
-	    "fill": "#ee51da",
-	    "stroke": "#ee51da",
-	    "stroke-width": "1"
-	},
-	activeCircleAttrs = {
-	    "fill": "#8c8c8c",
-	    "stroke": "#8c8c8c",
-	    "stroke-width": "1"
-	},
-	lineAttrs = {
-	    "stroke": "#ee51da",
-	    "stroke-width": "1"
-	},
-	containerId = 'event-graph-container',
-	events = [];
+            "fill": "#ee51da",
+            "stroke": "#ee51da",
+            "stroke-width": "1"
+        },
+        activeCircleAttrs = {
+            "fill": "#8c8c8c",
+            "stroke": "#8c8c8c",
+            "stroke-width": "1"
+        },
+        lineAttrs = {
+            "stroke": "#ee51da",
+            "stroke-width": "1"
+        },
+        containerId = 'event-graph-container',
+        events = [];
 
 
     return {
-	restrict: 'E',
-	isolate: true,
-	link: function ($scope, $elm, $attrs) {
+        restrict: 'E',
+        isolate: true,
+        link: function ($scope, $elm, $attrs) {
 
-	    EventService.getEvents()
-		.then(function (data) {
-		    EventGraphService.drawGraph(containerId, data, circleAttrs, activeCircleAttrs, lineAttrs);
-		    events = data;
-		});
+            EventService.getEvents()
+                .then(function (data) {
+                    EventGraphService.drawGraph(containerId, data, circleAttrs, activeCircleAttrs, lineAttrs);
+                    events = data;
+                });
 
-	    // redraw whole graph on resize of element or window
-	    var fn = function () {
-		// remove graph first
-		var cont = document.getElementById(containerId);
-		while (cont.firstChild) {
-		    cont.removeChild(cont.firstChild);
-		}
+            // redraw whole graph on resize of element or window
+            var fn = function () {
+                // remove graph first
+                var cont = document.getElementById(containerId);
+                while (cont.firstChild) {
+                    cont.removeChild(cont.firstChild);
+                }
 
-		EventGraphService.drawGraph(containerId, events, circleAttrs, activeCircleAttrs, lineAttrs);
-	    };
-	    window.addEventListener('resize', fn, true);
+                EventGraphService.drawGraph(containerId, events, circleAttrs, activeCircleAttrs, lineAttrs);
+            };
+            window.addEventListener('resize', fn, true);
 
-	    $elm.on('$destroy', function () {
-		window.removeEventListener('resize', fn);
-	    });
+            $elm.on('$destroy', function () {
+                window.removeEventListener('resize', fn);
+            });
 
-	},
-	scope: true,
-	template: '<div id="event-graph-container" class="width-100"></div>'
+        },
+        scope: true,
+        template: '<div id="event-graph-container" class="width-100"></div>'
     };
 }
 
@@ -11193,7 +11193,7 @@ function EventGraphDirective (EventService, EventGraphService, LoggerService) {
 (function (angular) {
 
     angular.module('cms.directives')
-	.directive('eventGraph', EventGraphDirective);
+        .directive('eventGraph', EventGraphDirective);
 
     EventGraphDirective.$inject = ['EventService', 'EventGraphService', 'LoggerService'];
 
@@ -11204,47 +11204,47 @@ function EventGraphDirective (EventService, EventGraphService, LoggerService) {
 
 function DeleteObject ($interval, $timeout, GenericApiService, $location) {
     return {
-	restrict: 'E',
-	scope: true,
-	template: '<button type="button" class="delete">{{ deleteMsg }}</button>',
-	link: function (scope, elem, attrs) {
-	    var decreasePromise,
-		resetPromise,
-		timeToRemoval = 6; // 6 seconds until removal gets initiated
+        restrict: 'E',
+        scope: true,
+        template: '<button type="button" class="delete">{{ deleteMsg }}</button>',
+        link: function (scope, elem, attrs) {
+            var decreasePromise,
+                resetPromise,
+                timeToRemoval = 6; // 6 seconds until removal gets initiated
 
-	    scope.deleteMsg = 'Remove';
+            scope.deleteMsg = 'Remove';
 
-	    elem.bind("click", function () {
-		if (elem.val() === "started") {
-		    elem.val("stopped");
-		    $interval.cancel(decreasePromise);
-		    scope.deleteMsg = 'Aborted';
+            elem.bind("click", function () {
+                if (elem.val() === "started") {
+                    elem.val("stopped");
+                    $interval.cancel(decreasePromise);
+                    scope.deleteMsg = 'Aborted';
 
-		    resetPromise = $timeout(function () {
-			scope.deleteMsg = 'Remove';
-		    }, 800);
+                    resetPromise = $timeout(function () {
+                        scope.deleteMsg = 'Remove';
+                    }, 800);
 
-		} else {
-		    elem.val("started");
+                } else {
+                    elem.val("started");
 
-		    $timeout.cancel(resetPromise);
+                    $timeout.cancel(resetPromise);
 
-		    decreasePromise = $interval(function (ctr) {
-			scope.deleteMsg = 'Remove [' + (timeToRemoval - ctr - 1) + ']';
-		    }, 1000, timeToRemoval);
+                    decreasePromise = $interval(function (ctr) {
+                        scope.deleteMsg = 'Remove [' + (timeToRemoval - ctr - 1) + ']';
+                    }, 1000, timeToRemoval);
 
-		    decreasePromise.then(function () {
-			scope.deleteMsg = 'Removed';
-			GenericApiService.remove(attrs.objecttype, attrs.objectid);
-		    });
-		}
-	    });
+                    decreasePromise.then(function () {
+                        scope.deleteMsg = 'Removed';
+                        GenericApiService.remove(attrs.objecttype, attrs.objectid);
+                    });
+                }
+            });
 
-	    elem.on('$destroy', function () {
-		$timeout.cancel(resetPromise);
-		$interval.cancel(decreasePromise);
-	    });
-	}
+            elem.on('$destroy', function () {
+                $timeout.cancel(resetPromise);
+                $interval.cancel(decreasePromise);
+            });
+        }
     };
 }
 
@@ -11252,8 +11252,8 @@ function DeleteObject ($interval, $timeout, GenericApiService, $location) {
 (function (angular) {
 
     angular
-	.module('cms.directives')
-	.directive('deleteObject', DeleteObject);
+        .module('cms.directives')
+        .directive('deleteObject', DeleteObject);
 
     DeleteObject.$inject = ['$interval', '$timeout', 'GenericApiService', '$location'];
 
@@ -11262,23 +11262,23 @@ function DeleteObject ($interval, $timeout, GenericApiService, $location) {
 
 function LogoutDirective (AuthenticationService, $location) {
     return {
-	restrict: 'E',
-	isolate: true,
-	link: function ($scope, $elm, $attrs) {
-	    $scope.logout = function () {
-		AuthenticationService.clearCredentials();
-		$location.path('/login');
-	    };
-	},
-	scope: true,
-	template: '<span ng-click="logout()" class="cursor-pointer"><i class="fa fa-sign-out"></i>Logout</span>'
+        restrict: 'E',
+        isolate: true,
+        link: function ($scope, $elm, $attrs) {
+            $scope.logout = function () {
+                AuthenticationService.clearCredentials();
+                $location.path('/login');
+            };
+        },
+        scope: true,
+        template: '<span ng-click="logout()" class="cursor-pointer"><i class="fa fa-sign-out"></i>Logout</span>'
     };
 }
 
 (function (angular) {
     angular
-	.module('cms.directives')
-	.directive('logout', LogoutDirective);
+        .module('cms.directives')
+        .directive('logout', LogoutDirective);
 
     LogoutDirective.$inject = ['AuthenticationService', '$location'];
 
@@ -11287,20 +11287,20 @@ function LogoutDirective (AuthenticationService, $location) {
 
 function DashboardDirective () {
     return {
-	restrict: 'E',
-	isolate: true,
-	link: function ($scope, $elm, $attrs) {
+        restrict: 'E',
+        isolate: true,
+        link: function ($scope, $elm, $attrs) {
 
-	},
-	scope: true,
-	templateUrl: 'components/dashboard/dashboard-template.html'
+        },
+        scope: true,
+        templateUrl: 'components/dashboard/dashboard-template.html'
     };
 }
 
 (function (angular) {
     angular
-	.module('cms.directives')
-	.directive('dashboard', DashboardDirective);
+        .module('cms.directives')
+        .directive('dashboard', DashboardDirective);
 
 })(angular);
 
@@ -11316,18 +11316,18 @@ function ArticleController(ArticleService) {
 
 
     function activate () {
-	ArticleService.getArticles()
-	    .then(function (data) {
-		vm.articles = data;
-		return vm.data;
-	    });
+        ArticleService.getArticles()
+            .then(function (data) {
+                vm.articles = data;
+                return vm.data;
+            });
 
     }
 }
 
 function ArticleDetailController(ArticleService, LanguageService, ArticleCategoryService, UserGroupService, StringService, NavigationService, $routeParams, $scope, $location) {
     var vm = this,
-	articleId = $routeParams.id;
+        articleId = $routeParams.id;
 
     vm.article = {};
     vm.article.content = ''; // init this to solve a problem with ckEditor
@@ -11335,67 +11335,67 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
     vm.articleCategories = undefined;
     vm.userGroups = undefined;
     vm.editorOptions = {
-	mode: "html",
-	tabSize: 2,
-	indentWithTabs: false,
-	lineNumbers: true
+        mode: "html",
+        tabSize: 2,
+        indentWithTabs: false,
+        lineNumbers: true
     };
 
     activate(articleId);
 
     vm.saveArticle = function() {
-	saveArticle()
+        saveArticle()
     };
 
     vm.deleteArticle = function() {
-	deleteArticle();
+        deleteArticle();
     };
 
     function activate(articleId) {
-	$scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	ArticleService.getArticle(articleId)
-	    .then(function (data) {
-		vm.article = data;
-		return data;
-	    });
-	LanguageService.getLanguages()
-	    .then(function (data) {
-		vm.languages = data;
-		return data;
-	    });
-	ArticleCategoryService.getArticleCategories()
-	    .then(function (data) {
-		vm.articleCategories = data;
-		return data;
-	    });
-	UserGroupService.getUserGroups()
-	    .then(function (data) {
-		vm.userGroups = data;
-		return data;
-	    });
+        $scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        ArticleService.getArticle(articleId)
+            .then(function (data) {
+                vm.article = data;
+                return data;
+            });
+        LanguageService.getLanguages()
+            .then(function (data) {
+                vm.languages = data;
+                return data;
+            });
+        ArticleCategoryService.getArticleCategories()
+            .then(function (data) {
+                vm.articleCategories = data;
+                return data;
+            });
+        UserGroupService.getUserGroups()
+            .then(function (data) {
+                vm.userGroups = data;
+                return data;
+            });
     }
 
     function saveArticle() {
-	ArticleService.putArticle(vm.article);
+        ArticleService.putArticle(vm.article);
     }
 
     function deleteArticle() {
-	ArticleService.deleteArticle(vm.article.id);
+        ArticleService.deleteArticle(vm.article.id);
     }
 
     $scope.$watch('vm.article.title', function (currentVal, newVal) {
-	if (undefined === currentVal ||
-	    '' === currentVal) {
-	    return;
-	}
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
 
-	vm.article.url_name = StringService.buildUrlString(currentVal);
+        vm.article.url_name = StringService.buildUrlString(currentVal);
     });
 }
 
 function ArticleAddController(ArticleService, LanguageService, ArticleCategoryService, UserGroupService, StringService, NavigationService, $scope, $location) {
     var vm = this,
-	defaultTitle = 'new Article';
+        defaultTitle = 'new Article';
 
     vm.article = {};
     vm.article.content = ''; // init this to solve a problem with ckEditor
@@ -11403,62 +11403,62 @@ function ArticleAddController(ArticleService, LanguageService, ArticleCategorySe
     activate();
 
     function activate() {
-	$scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	ArticleService.getEmptyArticle()
-	    .then(function (data) {
-		vm.article = data;
-		vm.article.title = defaultTitle;
+        $scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        ArticleService.getEmptyArticle()
+            .then(function (data) {
+                vm.article = data;
+                vm.article.title = defaultTitle;
 
-		LanguageService.getLanguages()
-		    .then(function (data) {
-			vm.languages = data;
-			// assign first language as default
-			if (vm.languages.length > 0) {
-			    vm.article.language = vm.languages[0];
-			}
-		    });
-		ArticleCategoryService.getArticleCategories()
-		    .then(function (data) {
-			vm.articleCategories = data;
-			// assign first page category as default
-			if (vm.articleCategories.length > 0) {
-			    vm.article.category = vm.articleCategories[0];
-			}
-		    });
-		UserGroupService.getUserGroups()
-		    .then(function (data) {
-			vm.userGroups = data;
-			return data;
-		    });
+                LanguageService.getLanguages()
+                    .then(function (data) {
+                        vm.languages = data;
+                        // assign first language as default
+                        if (vm.languages.length > 0) {
+                            vm.article.language = vm.languages[0];
+                        }
+                    });
+                ArticleCategoryService.getArticleCategories()
+                    .then(function (data) {
+                        vm.articleCategories = data;
+                        // assign first page category as default
+                        if (vm.articleCategories.length > 0) {
+                            vm.article.category = vm.articleCategories[0];
+                        }
+                    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                        return data;
+                    });
 
-		return vm.article;
-	    });
+                return vm.article;
+            });
     }
 
     vm.saveArticle = function() {
-	createArticle();
+        createArticle();
     };
 
     function createArticle() {
-	ArticleService.postArticle(vm.article);
+        ArticleService.postArticle(vm.article);
     }
 
     $scope.$watch('vm.article.title', function (currentVal, newVal) {
-	if (undefined === currentVal ||
-	    '' === currentVal) {
-	    return;
-	}
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
 
-	vm.article.url_name = StringService.buildUrlString(currentVal);
+        vm.article.url_name = StringService.buildUrlString(currentVal);
     });
 }
 
 (function (angular) {
     angular
-	.module('cms.controllers')
-	.controller('ArticleController', ArticleController)
-	.controller('ArticleDetailController', ArticleDetailController)
-	.controller('ArticleAddController', ArticleAddController);
+        .module('cms.controllers')
+        .controller('ArticleController', ArticleController)
+        .controller('ArticleDetailController', ArticleDetailController)
+        .controller('ArticleAddController', ArticleAddController);
 
     ArticleController.$inject = ['ArticleService'];
     ArticleDetailController.$inject = ['ArticleService', 'LanguageService', 'ArticleCategoryService', 'UserGroupService', 'StringService', 'NavigationService', '$routeParams', '$scope', '$location'];
@@ -11473,11 +11473,11 @@ function ArticleAddController(ArticleService, LanguageService, ArticleCategorySe
 angular
     .module('cms.controllers')
     .controller('DashboardController', [
-	'NavigationService',
-	'$scope',
+        'NavigationService',
+        '$scope',
 
-	function (NavigationService, $scope) {
-	    NavigationService.getMenuProperty('Dashboard');
+        function (NavigationService, $scope) {
+            NavigationService.getMenuProperty('Dashboard');
 
 
     }]);
@@ -11488,9 +11488,9 @@ angular
 
 function EventDetailController (EventService, LocationService, FileService, NavigationService, UserGroupService, StringService, $scope, $location, $routeParams) {
     var vm = this,
-	eventId = $routeParams.id,
-	startDate,
-	endDate;
+        eventId = $routeParams.id,
+        startDate,
+        endDate;
 
     vm.event = {};
     vm.locations = undefined;
@@ -11501,76 +11501,76 @@ function EventDetailController (EventService, LocationService, FileService, Navi
     activate();
 
     function activate () {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	var elStart = document.getElementById('rome-calendar-start'),
-	    elEnd = document.getElementById('rome-calendar-end'),
-	    optionsStart = {
-		"inputFormat": "DD.MM.YYYY HH:mm",
-		"timeInterval": 900,
-		"dateValidator": rome.val.beforeEq(elEnd)
-	    },
-	    optionsEnd = {
-		"inputFormat": "DD.MM.YYYY HH:mm",
-		"timeInterval": 900,
-		"dateValidator": rome.val.afterEq(elStart)
-	    };
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        var elStart = document.getElementById('rome-calendar-start'),
+            elEnd = document.getElementById('rome-calendar-end'),
+            optionsStart = {
+                "inputFormat": "DD.MM.YYYY HH:mm",
+                "timeInterval": 900,
+                "dateValidator": rome.val.beforeEq(elEnd)
+            },
+            optionsEnd = {
+                "inputFormat": "DD.MM.YYYY HH:mm",
+                "timeInterval": 900,
+                "dateValidator": rome.val.afterEq(elStart)
+            };
 
-	startDate = rome(elStart, optionsStart);
-	endDate = rome(elEnd, optionsEnd);
+        startDate = rome(elStart, optionsStart);
+        endDate = rome(elEnd, optionsEnd);
 
-	EventService.getEvent(eventId)
-	    .then(function (data) {
-		vm.event = data;
+        EventService.getEvent(eventId)
+            .then(function (data) {
+                vm.event = data;
 
-		vm.start_date = moment(vm.event.start_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
-		vm.end_date = moment(vm.event.end_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
+                vm.start_date = moment(vm.event.start_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
+                vm.end_date = moment(vm.event.end_date, moment.ISO_8601).format('DD.MM.YYYY HH:mm');
 
-		startDate.setValue(vm.start_date);
-		startDate.refresh();
-		endDate.setValue(vm.end_date);
-		endDate.refresh();
+                startDate.setValue(vm.start_date);
+                startDate.refresh();
+                endDate.setValue(vm.end_date);
+                endDate.refresh();
 
-		LocationService.getLocations()
-		    .then(function (data) {
-			vm.locations = data;
-		    });
-		FileService.getFiles()
-		    .then(function (data) {
-			vm.files = data;
-		    });
-		UserGroupService.getUserGroups()
-		    .then(function (data) {
-			vm.userGroups = data;
-		    });
-	    });
+                LocationService.getLocations()
+                    .then(function (data) {
+                        vm.locations = data;
+                    });
+                FileService.getFiles()
+                    .then(function (data) {
+                        vm.files = data;
+                    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                    });
+            });
     }
 
 
     vm.saveEvent = function () {
-	saveEvent();
+        saveEvent();
     };
 
     function saveEvent () {
-	vm.event.start_date = startDate.getMoment().utc().format(moment.ISO_8601());
-	vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
-	EventService.putEvent(vm.event);
+        vm.event.start_date = startDate.getMoment().utc().format(moment.ISO_8601());
+        vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
+        EventService.putEvent(vm.event);
     }
 
     $scope.$watch('vm.event.name', function (currentVal, newVal) {
-	if (undefined === currentVal ||
-	    '' === currentVal) {
-	    return;
-	}
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
 
-	vm.event.url_name = StringService.buildUrlString(currentVal);
+        vm.event.url_name = StringService.buildUrlString(currentVal);
     });
 
 }
 
 function EventAddController (EventService, LocationService, FileService, NavigationService, UserGroupService, StringService, $scope, $location) {
     var vm = this,
-	startDate,
-	endDate;
+        startDate,
+        endDate;
 
     vm.event = {};
     vm.locations = undefined;
@@ -11583,68 +11583,68 @@ function EventAddController (EventService, LocationService, FileService, Navigat
 
 
     function activate () {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	EventService.getEmptyEvent()
-	    .then(function (data) {
-		vm.event = data;
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        EventService.getEmptyEvent()
+            .then(function (data) {
+                vm.event = data;
 
-		LocationService.getLocations()
-		    .then(function (data) {
-			vm.locations = data;
-		    });
-		FileService.getFiles()
-		    .then(function (data) {
-			vm.files = data;
-		    });
-		UserGroupService.getUserGroups()
-		    .then(function (data) {
-			vm.userGroups = data;
-		    })
-	    });
+                LocationService.getLocations()
+                    .then(function (data) {
+                        vm.locations = data;
+                    });
+                FileService.getFiles()
+                    .then(function (data) {
+                        vm.files = data;
+                    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                    })
+            });
 
-	var elStart = document.getElementById('rome-calendar-start'),
-	    elEnd = document.getElementById('rome-calendar-end'),
-	    optionsStart = {
-		"inputFormat": "DD.MM.YYYY HH:mm",
-		"timeInterval": 900,
-		"dateValidator": rome.val.beforeEq(elEnd)
-	    },
-	    optionsEnd = {
-		"inputFormat": "DD.MM.YYYY HH:mm",
-		"timeInterval": 900,
-		"dateValidator": rome.val.afterEq(elStart)
-	    };
+        var elStart = document.getElementById('rome-calendar-start'),
+            elEnd = document.getElementById('rome-calendar-end'),
+            optionsStart = {
+                "inputFormat": "DD.MM.YYYY HH:mm",
+                "timeInterval": 900,
+                "dateValidator": rome.val.beforeEq(elEnd)
+            },
+            optionsEnd = {
+                "inputFormat": "DD.MM.YYYY HH:mm",
+                "timeInterval": 900,
+                "dateValidator": rome.val.afterEq(elStart)
+            };
 
-	startDate = rome(elStart, optionsStart);
-	endDate = rome(elEnd, optionsEnd);
+        startDate = rome(elStart, optionsStart);
+        endDate = rome(elEnd, optionsEnd);
     }
 
 
     vm.saveEvent = function () {
-	saveEvent();
+        saveEvent();
     };
 
     function saveEvent () {
-	vm.event.start_date = startDate.getMoment().utc().format(moment.ISO_8601());
-	vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
-	EventService.postEvent(vm.event);
+        vm.event.start_date = startDate.getMoment().utc().format(moment.ISO_8601());
+        vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
+        EventService.postEvent(vm.event);
     }
 
     $scope.$watch('vm.event.name', function (currentVal, newVal) {
-	if (undefined === currentVal ||
-	    '' === currentVal) {
-	    return;
-	}
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
 
-	vm.event.url_name = StringService.buildUrlString(currentVal);
+        vm.event.url_name = StringService.buildUrlString(currentVal);
     });
 }
 
 (function(angular) {
     angular
-	.module('cms.controllers')
-	.controller('EventDetailController', EventDetailController)
-	.controller('EventAddController', EventAddController);
+        .module('cms.controllers')
+        .controller('EventDetailController', EventDetailController)
+        .controller('EventAddController', EventAddController);
 
 
     EventDetailController.$inject = ['EventService', 'LocationService', 'FileService', 'NavigationService', 'UserGroupService', 'StringService', '$scope', '$location', '$routeParams'];
@@ -11667,29 +11667,29 @@ function EventDashboardController (EventService, EventGraphService, LocationServ
     activate();
 
     function activate() {
-	// TODO: get events, locations, funny stats, etc
-	EventService.getEvents()
-	    .then(function (data) {
-		vm.events = data;
+        // TODO: get events, locations, funny stats, etc
+        EventService.getEvents()
+            .then(function (data) {
+                vm.events = data;
 
-		var eventObjects = EventGraphService.buildEventObjects(data),
-		    classifiedEvents = EventGraphService.getClassifiedEvents(eventObjects);
+                var eventObjects = EventGraphService.buildEventObjects(data),
+                    classifiedEvents = EventGraphService.getClassifiedEvents(eventObjects);
 
-		vm.beforeEvents = classifiedEvents.eventsBefore;
-		vm.nextEvent = classifiedEvents.nextEvent;
-		vm.afterEvents = classifiedEvents.eventsAfter;
-	    });
-	LocationService.getLocations()
-	    .then(function (data) {
-		vm.locations = data;
-	    });
+                vm.beforeEvents = classifiedEvents.eventsBefore;
+                vm.nextEvent = classifiedEvents.nextEvent;
+                vm.afterEvents = classifiedEvents.eventsAfter;
+            });
+        LocationService.getLocations()
+            .then(function (data) {
+                vm.locations = data;
+            });
     }
 }
 
 (function(angular){
     angular
-	.module('cms.controllers')
-	.controller('EventDashboardController', EventDashboardController);
+        .module('cms.controllers')
+        .controller('EventDashboardController', EventDashboardController);
 
     EventDashboardController.$inject = ['EventService', 'EventGraphService', 'LocationService']
 })(angular);
@@ -11697,127 +11697,246 @@ function EventDashboardController (EventService, EventGraphService, LocationServ
 
 function LocationDetailController (LocationService, MapService, NavigationService, $location, $routeParams, $scope, $timeout) {
     var vm = this,
-	locationId = $routeParams.id,
-	reloadMapPromise;
+        locationId = $routeParams.id,
+        reloadMapPromise;
 
     vm.location = {};
 
     activate();
 
     function activate() {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	LocationService.getLocation(locationId)
-	    .then(function (data) {
-		vm.location = data;
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        LocationService.getLocation(locationId)
+            .then(function (data) {
+                vm.location = data;
 
-		MapService.initMap('map-canvas', vm.location.latitude, vm.location.longitude, vm.location.address);
-	    });
+                MapService.initMap('map-canvas', vm.location.latitude, vm.location.longitude, vm.location.address);
+            });
     }
 
     vm.saveLocation = function () {
-	saveLocation();
+        saveLocation();
     };
 
     function saveLocation() {
-	LocationService.putLocation(vm.location);
+        LocationService.putLocation(vm.location);
     }
 
     $scope.$watch('vm.location.address', function () {
-	var inputDiff = MapService.calcInputSpeedDiff();
-	if (0 === inputDiff) {
-	    return;
-	}
+        var inputDiff = MapService.calcInputSpeedDiff();
+        if (0 === inputDiff) {
+            return;
+        }
 
-	if (reloadMapPromise) {
-	    // cancel timeout to reload map
-	    $timeout.cancel(reloadMapPromise);
-	}
+        if (reloadMapPromise) {
+            // cancel timeout to reload map
+            $timeout.cancel(reloadMapPromise);
+        }
 
-	if (800 < inputDiff) {
-	    MapService.setMapToAddress(vm.location.address)
-		.then(function (ret) {
-		    vm.location.latitude = ret.lat;
-		    vm.location.longitude = ret.lng;
-		});
-	    return;
-	}
+        if (800 < inputDiff) {
+            MapService.setMapToAddress(vm.location.address)
+                .then(function (ret) {
+                    vm.location.latitude = ret.lat;
+                    vm.location.longitude = ret.lng;
+                });
+            return;
+        }
 
-	reloadMapPromise = $timeout(function () {
-	    MapService.setMapToAddress(vm.location.address)
-		.then(function (ret) {
-		    vm.location.latitude = ret.lat;
-		    vm.location.longitude = ret.lng;
-		});
-	}, 800);
+        reloadMapPromise = $timeout(function () {
+            MapService.setMapToAddress(vm.location.address)
+                .then(function (ret) {
+                    vm.location.latitude = ret.lat;
+                    vm.location.longitude = ret.lng;
+                });
+        }, 800);
     });
 
 }
 
 function LocationAddController (LocationService, MapService, NavigationService, $location, $scope, $timeout) {
     var vm = this,
-	reloadMapPromise;
+        reloadMapPromise;
 
     vm.location = {};
 
     activate();
 
     function activate() {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	LocationService.getEmptyLocation()
-	    .then(function (data) {
-		vm.location = data;
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        LocationService.getEmptyLocation()
+            .then(function (data) {
+                vm.location = data;
 
-		MapService.initMap('map-canvas', 50.0662735, -5.714346400000068, "Land's end");
-	    });
+                MapService.initMap('map-canvas', 50.0662735, -5.714346400000068, "Land's end");
+            });
     }
 
     vm.saveLocation = function () {
-	saveLocation();
+        saveLocation();
     };
 
     function saveLocation() {
-	LocationService.postLocation(vm.location);
+        LocationService.postLocation(vm.location);
     }
 
     $scope.$watch('vm.location.address', function () {
-	var inputDiff = MapService.calcInputSpeedDiff();
-	if (0 === inputDiff) {
-	    return;
-	}
+        var inputDiff = MapService.calcInputSpeedDiff();
+        if (0 === inputDiff) {
+            return;
+        }
 
-	if (reloadMapPromise) {
-	    // cancel timeout to reload map
-	    $timeout.cancel(reloadMapPromise);
-	}
+        if (reloadMapPromise) {
+            // cancel timeout to reload map
+            $timeout.cancel(reloadMapPromise);
+        }
 
-	if (800 < inputDiff) {
-	    MapService.setMapToAddress(vm.location.address)
-		.then(function (ret) {
-		    vm.location.latitude = ret.lat;
-		    vm.location.longitude = ret.lng;
-		});
-	    return;
-	}
+        if (800 < inputDiff) {
+            MapService.setMapToAddress(vm.location.address)
+                .then(function (ret) {
+                    vm.location.latitude = ret.lat;
+                    vm.location.longitude = ret.lng;
+                });
+            return;
+        }
 
-	reloadMapPromise = $timeout(function () {
-	    MapService.setMapToAddress(vm.location.address)
-		.then(function (ret) {
-		    vm.location.latitude = ret.lat;
-		    vm.location.longitude = ret.lng;
-		});
-	}, 800);
+        reloadMapPromise = $timeout(function () {
+            MapService.setMapToAddress(vm.location.address)
+                .then(function (ret) {
+                    vm.location.latitude = ret.lat;
+                    vm.location.longitude = ret.lng;
+                });
+        }, 800);
     });
 }
 
 (function (angular) {
     angular
-	.module('cms.controllers')
-	.controller('LocationAddController', LocationAddController)
-	.controller('LocationDetailController', LocationDetailController);
+        .module('cms.controllers')
+        .controller('LocationAddController', LocationAddController)
+        .controller('LocationDetailController', LocationDetailController);
 
-	LocationDetailController.$inject = ['LocationService', 'MapService', 'NavigationService', '$location', '$routeParams', '$scope', '$timeout'];
-	LocationAddController.$inject = ['LocationService', 'MapService', 'NavigationService', '$location', '$scope', '$timeout'];
+        LocationDetailController.$inject = ['LocationService', 'MapService', 'NavigationService', '$location', '$routeParams', '$scope', '$timeout'];
+        LocationAddController.$inject = ['LocationService', 'MapService', 'NavigationService', '$location', '$scope', '$timeout'];
 }(angular));
+'use strict';
+
+function LoginController (AuthenticationService, $location, $timeout) {
+    var vm = this,
+        dashboardElem = 'dashboard',
+        loginElem = '#login-container',
+        navElem = 'nav',
+        navMarginBefore = {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+        },
+        dashboardMarginBefore = {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+        },
+        blur = {
+            "-webkit-filter": "blur(5px)",
+            "-moz-filter": "blur(5px)",
+            "-ms-filter": "blur(5px)",
+            "filter": "blur(5px)",
+            "transition": "-webkit-filter 0.5s ease-in, -ms-filter 0.5s ease-in, -moz-filter 0.5s ease-in, filter 0.5s ease-in"
+        },
+        unblur = {
+            "-webkit-filter": "blur(0px)",
+            "-moz-filter": "blur(0px)",
+            "-ms-filter": "blur(0px)",
+            "filter": "blur(0px)",
+            "transition": "-webkit-filter 1s ease-out, -ms-filter 1s ease-out, -moz-filter 1s ease-out, filter 1s ease-out"
+        };
+
+    activate();
+
+    vm.login = function () {
+        login();
+    };
+
+    function activate() {
+        applyBlur();
+    }
+
+    function applyBlur() {
+        // save current margin
+        dashboardMarginBefore = saveMarginBefore(dashboardElem);
+        navMarginBefore = saveMarginBefore(navElem);
+
+        $(dashboardElem).css('margin', '-5px');
+        $(navElem).css('margin', '-5px');
+
+        $(dashboardElem).css('z-index', '99').css(blur);
+        $(navElem).css(blur);
+    }
+
+    function removeBlur() {
+        $(dashboardElem).css(unblur);
+        $(navElem).css(unblur);
+        applyMargin(dashboardElem, dashboardMarginBefore);
+        applyMargin(navElem, navMarginBefore);
+    }
+
+    function saveMarginBefore(elem) {
+        var marginBefore = {};
+
+        marginBefore.top = parseInt($(elem).css('marginTop'));
+        marginBefore.right = parseInt($(elem).css('marginRight'));
+        marginBefore.bottom = parseInt($(elem).css('marginBottom'));
+        marginBefore.left = parseInt($(elem).css('marginLeft'));
+
+        return marginBefore;
+    }
+
+    function applyMargin(elem, marginBefore) {
+        $(elem).css('marginTop', marginBefore.top);
+        $(elem).css('marginRight', marginBefore.right);
+        $(elem).css('marginBottom', marginBefore.bottom);
+        $(elem).css('marginLeft', marginBefore.left);
+    }
+
+    function removeLoginContainer() {
+        $(loginElem).css({
+            "opacity": "0", // use opacity instead of visibility or display
+            "transition": "opacity 1s ease-out"
+        });
+    }
+
+
+    function login() {
+        // this prevents storing wrong credentials
+        AuthenticationService.clearCredentials();
+
+        AuthenticationService.login(vm.username, vm.password)
+            .then(function (data) {
+                AuthenticationService.setCredentials(vm.username, vm.password);
+                removeBlur();
+                removeLoginContainer();
+                // wait until transistions are done
+                $timeout(function () {
+
+                    $location.path('/dashboard');
+                }, 750);
+            }).catch( function (data) {
+                console.error(data);
+            });
+    }
+
+}
+
+(function (angular) {
+
+    angular
+        .module('cms.controllers')
+        .controller('LoginController', LoginController);
+
+    LoginController.$inject = ['AuthenticationService', '$location', '$timeout'];
+
+})(angular);
 'use strict';
 
 function MediaController(FileService) {
@@ -11828,31 +11947,31 @@ function MediaController(FileService) {
     activate();
 
     function activate() {
-	FileService.getFiles()
-	    .then(function (data) {
-		// we do have to make some filtering for the thumbnail
-		// @see http://stackoverflow.com/questions/16507040/angular-filter-works-but-causes-10-digest-iterations-reached
+        FileService.getFiles()
+            .then(function (data) {
+                // we do have to make some filtering for the thumbnail
+                // @see http://stackoverflow.com/questions/16507040/angular-filter-works-but-causes-10-digest-iterations-reached
 
-		for (var i=0; i<data.length; i++) {
-		    if (data.hasOwnProperty(i)) {
+                for (var i=0; i<data.length; i++) {
+                    if (data.hasOwnProperty(i)) {
 
-			if (data[i].link.match('(.jpg|.png|.jpeg|.gif|.bmp)')) {
-			    data[i]._preview = '<img src="' + data[i].thumbnail_link + '" width="40">';
-			} else if (data[i].link.match('.pdf')) {
-			    data[i]._preview = '<i class="fa fa-file-pdf-o"></i>';
-			} else if (data[i].link.match('(.mp3|.m4a|.aac)')) {
-			    data[i]._preview = '<i class="fa fa-file-audio-o"></i>';
-			} else if (data[i].link.match('(.mp4|.mpeg)')) {
-			    data[i]._preview = '<i class="fa fa-file-video-o></i>';
-			} else if (data[i].link.match('(.zip|.tar)')) {
-			    data[i]._preview = '<i class="fa fa-file-archive-o"></i>';
-			}
-		    }
-		}
+                        if (data[i].link.match('(.jpg|.png|.jpeg|.gif|.bmp)')) {
+                            data[i]._preview = '<img src="' + data[i].thumbnail_link + '" width="40">';
+                        } else if (data[i].link.match('.pdf')) {
+                            data[i]._preview = '<i class="fa fa-file-pdf-o"></i>';
+                        } else if (data[i].link.match('(.mp3|.m4a|.aac)')) {
+                            data[i]._preview = '<i class="fa fa-file-audio-o"></i>';
+                        } else if (data[i].link.match('(.mp4|.mpeg)')) {
+                            data[i]._preview = '<i class="fa fa-file-video-o></i>';
+                        } else if (data[i].link.match('(.zip|.tar)')) {
+                            data[i]._preview = '<i class="fa fa-file-archive-o"></i>';
+                        }
+                    }
+                }
 
-		vm.files = data;
+                vm.files = data;
 
-	    });
+            });
     }
 
 }
@@ -11868,69 +11987,69 @@ function MediaAddController(FileService, Upload, NavigationService, CONFIG, Logg
     activate();
 
     $scope.$watch('vm.files', function () {
-	vm.upload(vm.files);
+        vm.upload(vm.files);
     });
 
     vm.upload = function (files) {
-	uploadFiles(files);
+        uploadFiles(files);
     };
 
     function activate () {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
     }
 
     function uploadFiles(files) {
-	if (files && files.length) {
-	    for (var i = 0; i < files.length; i++) {
-		var file = files[i];
-		if (!file.$error) {
-		    Upload.upload({
-			url: CONFIG.API_ENDPOINT + '/files',
-			method: 'POST',
-			fields: {
-			    "description": vm.fileDescription
-			},
-			file: file
-		    }).progress(function (evt) {
-			var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-			LoggerService.debug('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-			vm.percent[evt.config.file.name] = progressPercentage;
-		    }).success(function (data, status, headers, config) {
-			LoggerService.debug('Saved file: ' + config.file.name);
-			LoggerService.debug(data);
-		    }).error(function (data, status, headers, config) {
-			gToast.open(data.error + ': ' + data.message);
-			LoggerService.error(data.error + ': ' + data.message);
-		    });
-		}
-	    }
-	}
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                if (!file.$error) {
+                    Upload.upload({
+                        url: CONFIG.API_ENDPOINT + '/files',
+                        method: 'POST',
+                        fields: {
+                            "description": vm.fileDescription
+                        },
+                        file: file
+                    }).progress(function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        LoggerService.debug('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                        vm.percent[evt.config.file.name] = progressPercentage;
+                    }).success(function (data, status, headers, config) {
+                        LoggerService.debug('Saved file: ' + config.file.name);
+                        LoggerService.debug(data);
+                    }).error(function (data, status, headers, config) {
+                        gToast.open(data.error + ': ' + data.message);
+                        LoggerService.error(data.error + ': ' + data.message);
+                    });
+                }
+            }
+        }
     }
 }
 
 function MediaDetailController(FileService, NavigationService, $location, $routeParams) {
     var vm = this,
-	fileId = $routeParams.id;
+        fileId = $routeParams.id;
 
     vm.file = {};
 
     activate();
 
     function activate() {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	FileService.getFile(fileId)
-	    .then(function (data) {
-		vm.file = data;
-	    });
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        FileService.getFile(fileId)
+            .then(function (data) {
+                vm.file = data;
+            });
     }
 }
 
 (function (angular) {
     angular
-	.module('cms.controllers')
-	.controller('MediaController', MediaController)
-	.controller('MediaAddController', MediaAddController)
-	.controller('MediaDetailController', MediaDetailController);
+        .module('cms.controllers')
+        .controller('MediaController', MediaController)
+        .controller('MediaAddController', MediaAddController)
+        .controller('MediaDetailController', MediaDetailController);
 
     MediaController.$inject = ['FileService'];
     MediaAddController.$inject = ['FileService', 'Upload', 'NavigationService', 'CONFIG', 'LoggerService', 'gToast', '$location', '$scope'];
@@ -11941,125 +12060,6 @@ function MediaDetailController(FileService, NavigationService, $location, $route
 
 'use strict';
 
-function LoginController (AuthenticationService, $location, $timeout) {
-    var vm = this,
-	dashboardElem = 'dashboard',
-	loginElem = '#login-container',
-	navElem = 'nav',
-	navMarginBefore = {
-	    "top": "",
-	    "right": "",
-	    "bottom": "",
-	    "left": ""
-	},
-	dashboardMarginBefore = {
-	    "top": "",
-	    "right": "",
-	    "bottom": "",
-	    "left": ""
-	},
-	blur = {
-	    "-webkit-filter": "blur(5px)",
-	    "-moz-filter": "blur(5px)",
-	    "-ms-filter": "blur(5px)",
-	    "filter": "blur(5px)",
-	    "transition": "-webkit-filter 0.5s ease-in, -ms-filter 0.5s ease-in, -moz-filter 0.5s ease-in, filter 0.5s ease-in"
-	},
-	unblur = {
-	    "-webkit-filter": "blur(0px)",
-	    "-moz-filter": "blur(0px)",
-	    "-ms-filter": "blur(0px)",
-	    "filter": "blur(0px)",
-	    "transition": "-webkit-filter 1s ease-out, -ms-filter 1s ease-out, -moz-filter 1s ease-out, filter 1s ease-out"
-	};
-
-    activate();
-
-    vm.login = function () {
-	login();
-    };
-
-    function activate() {
-	applyBlur();
-    }
-
-    function applyBlur() {
-	// save current margin
-	dashboardMarginBefore = saveMarginBefore(dashboardElem);
-	navMarginBefore = saveMarginBefore(navElem);
-
-	$(dashboardElem).css('margin', '-5px');
-	$(navElem).css('margin', '-5px');
-
-	$(dashboardElem).css('z-index', '99').css(blur);
-	$(navElem).css(blur);
-    }
-
-    function removeBlur() {
-	$(dashboardElem).css(unblur);
-	$(navElem).css(unblur);
-	applyMargin(dashboardElem, dashboardMarginBefore);
-	applyMargin(navElem, navMarginBefore);
-    }
-
-    function saveMarginBefore(elem) {
-	var marginBefore = {};
-
-	marginBefore.top = parseInt($(elem).css('marginTop'));
-	marginBefore.right = parseInt($(elem).css('marginRight'));
-	marginBefore.bottom = parseInt($(elem).css('marginBottom'));
-	marginBefore.left = parseInt($(elem).css('marginLeft'));
-
-	return marginBefore;
-    }
-
-    function applyMargin(elem, marginBefore) {
-	$(elem).css('marginTop', marginBefore.top);
-	$(elem).css('marginRight', marginBefore.right);
-	$(elem).css('marginBottom', marginBefore.bottom);
-	$(elem).css('marginLeft', marginBefore.left);
-    }
-
-    function removeLoginContainer() {
-	$(loginElem).css({
-	    "opacity": "0", // use opacity instead of visibility or display
-	    "transition": "opacity 1s ease-out"
-	});
-    }
-
-
-    function login() {
-	// this prevents storing wrong credentials
-	AuthenticationService.clearCredentials();
-
-	AuthenticationService.login(vm.username, vm.password)
-	    .then(function (data) {
-		AuthenticationService.setCredentials(vm.username, vm.password);
-		removeBlur();
-		removeLoginContainer();
-		// wait until transistions are done
-		$timeout(function () {
-
-		    $location.path('/dashboard');
-		}, 750);
-	    }).catch( function (data) {
-		console.error(data);
-	    });
-    }
-
-}
-
-(function (angular) {
-
-    angular
-	.module('cms.controllers')
-	.controller('LoginController', LoginController);
-
-    LoginController.$inject = ['AuthenticationService', '$location', '$timeout'];
-
-})(angular);
-'use strict';
-
 function PageController(PageService) {
     var vm = this;
 
@@ -12068,17 +12068,17 @@ function PageController(PageService) {
     activate();
 
     function activate() {
-	PageService.getPages()
-	    .then(function (data) {
-		vm.pages = data;
-		return vm.pages;
-	    });
+        PageService.getPages()
+            .then(function (data) {
+                vm.pages = data;
+                return vm.pages;
+            });
     }
 }
 
 function PageDetailController(PageService, LanguageService, PageCategoryService, ArticleService, UserGroupService, ArrayService, StringService, NavigationService, $routeParams, $scope, $location) {
     var vm = this,
-	pageId = $routeParams.id;
+        pageId = $routeParams.id;
 
     vm.page = {};
     vm.articles = [];
@@ -12089,57 +12089,57 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
     activate(pageId);
 
     vm.savePage = function() {
-	savePage()
+        savePage()
     };
 
     vm.deletePage = function() {
-	deletePage();
+        deletePage();
     };
 
     vm.addArticleToPage = function (articleId) {
-	addArticleToPage(articleId);
+        addArticleToPage(articleId);
     };
 
     vm.removeArticleFromPage = function (articleId) {
-	removeArticleFromPage(articleId);
+        removeArticleFromPage(articleId);
     };
 
     function activate(pageId) {
-	$scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	PageService.getPage(pageId)
-	    .then(function (data) {
-		vm.page = data;
-		// set unselected articles
-		ArticleService.getArticles()
-		    .then(function (data) {
-			vm.articles = ArrayService.arrayDiff(data, vm.page.articles);
-		    });
+        $scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        PageService.getPage(pageId)
+            .then(function (data) {
+                vm.page = data;
+                // set unselected articles
+                ArticleService.getArticles()
+                    .then(function (data) {
+                        vm.articles = ArrayService.arrayDiff(data, vm.page.articles);
+                    });
 
-		return data;
-	    });
-	LanguageService.getLanguages()
-	    .then(function (data) {
-		vm.languages = data;
-		return data;
-	    });
-	PageCategoryService.getPageCategories()
-	    .then(function (data) {
-		vm.pageCategories = data;
-		return data;
-	    });
-	UserGroupService.getUserGroups()
-	    .then(function (data) {
-		vm.userGroups = data;
-		return data;
-	    });
+                return data;
+            });
+        LanguageService.getLanguages()
+            .then(function (data) {
+                vm.languages = data;
+                return data;
+            });
+        PageCategoryService.getPageCategories()
+            .then(function (data) {
+                vm.pageCategories = data;
+                return data;
+            });
+        UserGroupService.getUserGroups()
+            .then(function (data) {
+                vm.userGroups = data;
+                return data;
+            });
     }
 
     function savePage() {
-	PageService.putPage(vm.page);
+        PageService.putPage(vm.page);
     }
 
     function deletePage() {
-	PageService.deletePage(vm.page.id);
+        PageService.deletePage(vm.page.id);
     }
 
     /**
@@ -12148,12 +12148,12 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
      * @param articleId
      */
     function addArticleToPage(articleId) {
-	var idx = ArrayService.arrayFind(vm.articles, articleId);
-	if (idx > -1) {
-	    // remove element from unselected articles
-	    var removed = vm.articles.splice(idx, 1);
-	    vm.page.articles.push(removed[0]);
-	}
+        var idx = ArrayService.arrayFind(vm.articles, articleId);
+        if (idx > -1) {
+            // remove element from unselected articles
+            var removed = vm.articles.splice(idx, 1);
+            vm.page.articles.push(removed[0]);
+        }
     }
 
     /**
@@ -12161,27 +12161,27 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
      * @param articleId
      */
     function removeArticleFromPage(articleId) {
-	var idx = ArrayService.arrayFind(vm.page.articles, articleId);
-	if (idx > -1) {
-	    // add element back to unselected articles
-	    var removed = vm.page.articles.splice(idx, 1);
-	    vm.articles.push(removed[0]);
-	}
+        var idx = ArrayService.arrayFind(vm.page.articles, articleId);
+        if (idx > -1) {
+            // add element back to unselected articles
+            var removed = vm.page.articles.splice(idx, 1);
+            vm.articles.push(removed[0]);
+        }
     }
 
     $scope.$watch('vm.page.title', function (currentVal, newVal) {
-	if (undefined === currentVal ||
-	    '' === currentVal) {
-	    return;
-	}
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
 
-	vm.page.url_name = StringService.buildUrlString(currentVal);
+        vm.page.url_name = StringService.buildUrlString(currentVal);
     });
 }
 
 function PageAddController(PageService, LanguageService, PageCategoryService, ArticleService, UserGroupService, ArrayService, StringService, NavigationService, $scope, $location) {
     var vm = this,
-	defaultTitle = 'new Page';
+        defaultTitle = 'new Page';
 
     vm.page = {};
     vm.languages = [];
@@ -12191,69 +12191,69 @@ function PageAddController(PageService, LanguageService, PageCategoryService, Ar
     activate();
 
     function activate() {
-	$scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	PageService.getEmptyPage()
-	    .then(function (data) {
-		vm.page = data;
-		vm.page.title = defaultTitle;
+        $scope.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        PageService.getEmptyPage()
+            .then(function (data) {
+                vm.page = data;
+                vm.page.title = defaultTitle;
 
-		// get available articles
-		ArticleService.getArticles()
-		    .then(function (data) {
-			vm.articles = data;
-		    });
+                // get available articles
+                ArticleService.getArticles()
+                    .then(function (data) {
+                        vm.articles = data;
+                    });
 
-		LanguageService.getLanguages()
-		    .then(function (data) {
-			vm.languages = data;
-			// assign first language as default
-			if (vm.languages.length > 0) {
-			    vm.page.language = vm.languages[0];
-			}
-		    });
+                LanguageService.getLanguages()
+                    .then(function (data) {
+                        vm.languages = data;
+                        // assign first language as default
+                        if (vm.languages.length > 0) {
+                            vm.page.language = vm.languages[0];
+                        }
+                    });
 
-		PageCategoryService.getPageCategories()
-		    .then(function (data) {
-			vm.pageCategories = data;
-			// assign first page category as default
-			if (vm.pageCategories.length > 0) {
-			    vm.page.category = vm.pageCategories[0];
-			}
-		    });
+                PageCategoryService.getPageCategories()
+                    .then(function (data) {
+                        vm.pageCategories = data;
+                        // assign first page category as default
+                        if (vm.pageCategories.length > 0) {
+                            vm.page.category = vm.pageCategories[0];
+                        }
+                    });
 
-		UserGroupService.getUserGroups()
-		    .then(function (data) {
-			vm.userGroups = data;
-			return data;
-		    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                        return data;
+                    });
 
-		return data;
-	    });
+                return data;
+            });
     }
 
     $scope.$watch('vm.page.title', function (currentVal, newVal) {
-	if (undefined === currentVal ||
-	    '' === currentVal) {
-	    return;
-	}
+        if (undefined === currentVal ||
+            '' === currentVal) {
+            return;
+        }
 
-	vm.page.url_name = StringService.buildUrlString(currentVal);
+        vm.page.url_name = StringService.buildUrlString(currentVal);
     });
 
     vm.savePage = function () {
-	createPage();
+        createPage();
     };
 
     vm.addArticleToPage = function (articleId) {
-	addArticleToPage(articleId);
+        addArticleToPage(articleId);
     };
 
     vm.removeArticleFromPage = function (articleId) {
-	removeArticleFromPage(articleId);
+        removeArticleFromPage(articleId);
     };
 
     function createPage() {
-	PageService.postPage(vm.page);
+        PageService.postPage(vm.page);
     }
 
     /**
@@ -12262,12 +12262,12 @@ function PageAddController(PageService, LanguageService, PageCategoryService, Ar
      * @param articleId
      */
     function addArticleToPage(articleId) {
-	var idx = ArrayService.arrayFind(vm.articles, articleId);
-	if (idx > -1) {
-	    // remove element from unselected articles
-	    var removed = vm.articles.splice(idx, 1);
-	    vm.page.articles.push(removed[0]);
-	}
+        var idx = ArrayService.arrayFind(vm.articles, articleId);
+        if (idx > -1) {
+            // remove element from unselected articles
+            var removed = vm.articles.splice(idx, 1);
+            vm.page.articles.push(removed[0]);
+        }
     }
 
     /**
@@ -12275,22 +12275,22 @@ function PageAddController(PageService, LanguageService, PageCategoryService, Ar
      * @param articleId
      */
     function removeArticleFromPage(articleId) {
-	var idx = ArrayService.arrayFind(vm.page.articles, articleId);
-	if (idx > -1) {
-	    // add element back to unselected articles
-	    var removed = vm.page.articles.splice(idx, 1);
-	    vm.articles.push(removed[0]);
-	}
+        var idx = ArrayService.arrayFind(vm.page.articles, articleId);
+        if (idx > -1) {
+            // add element back to unselected articles
+            var removed = vm.page.articles.splice(idx, 1);
+            vm.articles.push(removed[0]);
+        }
     }
 }
 
 
 (function () {
     angular
-	.module('cms.controllers')
-	.controller('PageController', PageController)
-	.controller('PageDetailController', PageDetailController)
-	.controller('PageAddController', PageAddController);
+        .module('cms.controllers')
+        .controller('PageController', PageController)
+        .controller('PageDetailController', PageDetailController)
+        .controller('PageAddController', PageAddController);
 
     PageController.$inject = ['PageService'];
     PageDetailController.$inject = ['PageService', 'LanguageService', 'PageCategoryService', 'ArticleService', 'UserGroupService', 'ArrayService', 'StringService', 'NavigationService', '$routeParams', '$scope', '$location'];
@@ -12306,31 +12306,31 @@ function SettingController(SettingService, NavigationService, $location) {
     activate();
 
     vm.saveSettings = function () {
-	saveSettings();
+        saveSettings();
     };
 
     function activate() {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	SettingService.getSettings()
-	    .then(function (data) {
-		vm.settings = data;
-	    });
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        SettingService.getSettings()
+            .then(function (data) {
+                vm.settings = data;
+            });
     }
 
     function saveSettings() {
-	for (var key in vm.settings) {
-	    if (vm.settings.hasOwnProperty(key)) {
-		SettingService.putSetting(vm.settings[key]);
-	    }
-	}
+        for (var key in vm.settings) {
+            if (vm.settings.hasOwnProperty(key)) {
+                SettingService.putSetting(vm.settings[key]);
+            }
+        }
     }
 
 }
 
 (function (angular) {
     angular
-	.module('cms.controllers')
-	.controller('SettingController', SettingController);
+        .module('cms.controllers')
+        .controller('SettingController', SettingController);
 
     SettingController.$inject = ['SettingService', 'NavigationService', '$location'];
 
@@ -12345,17 +12345,17 @@ function UserController (UserService) {
     activate();
 
     function activate() {
-	UserService.getUsers()
-	    .then(function (data) {
-		vm.users = data;
-	    });
+        UserService.getUsers()
+            .then(function (data) {
+                vm.users = data;
+            });
     }
 
 }
 
 function UserDetailController (UserService, UserGroupService, NavigationService, $location, $routeParams) {
     var vm = this,
-	userId = $routeParams.id;
+        userId = $routeParams.id;
 
     vm.user = {};
     vm.userGroups = undefined;
@@ -12363,24 +12363,24 @@ function UserDetailController (UserService, UserGroupService, NavigationService,
     activate();
 
     vm.saveUser = function () {
-	saveUser();
+        saveUser();
     };
 
     function activate() {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	UserService.getUser(userId)
-	    .then(function (data) {
-		vm.user = data;
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        UserService.getUser(userId)
+            .then(function (data) {
+                vm.user = data;
 
-		UserGroupService.getUserGroups()
-		    .then(function (data) {
-			vm.userGroups = data;
-		    });
-	    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                    });
+            });
     }
 
     function saveUser() {
-	UserService.putUser(vm.user);
+        UserService.putUser(vm.user);
     }
 
 }
@@ -12392,37 +12392,37 @@ function UserAddController (UserService, UserGroupService, NavigationService, $l
     vm.userGroups = undefined;
 
     vm.saveUser = function () {
-	saveUser();
+        saveUser();
     };
 
     activate();
 
     function activate () {
-	vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
-	UserService.getEmptyUser()
-	    .then(function (data) {
-		vm.user = data;
-		vm.user.registration_date = moment().format('YYYY-MM-DDTHH:mm:ssZZ');
-		vm.user.last_login_date = moment().format('YYYY-MM-DDTHH:mm:ssZZ');
+        vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
+        UserService.getEmptyUser()
+            .then(function (data) {
+                vm.user = data;
+                vm.user.registration_date = moment().format('YYYY-MM-DDTHH:mm:ssZZ');
+                vm.user.last_login_date = moment().format('YYYY-MM-DDTHH:mm:ssZZ');
 
-		UserGroupService.getUserGroups()
-		    .then(function (data) {
-			vm.userGroups = data;
-		    });
-	    });
+                UserGroupService.getUserGroups()
+                    .then(function (data) {
+                        vm.userGroups = data;
+                    });
+            });
     }
 
     function saveUser() {
-	UserService.postUser(vm.user);
+        UserService.postUser(vm.user);
     }
 }
 
 (function (angular) {
     angular
-	.module('cms.controllers')
-	.controller('UserController', UserController)
-	.controller('UserDetailController', UserDetailController)
-	.controller('UserAddController', UserAddController);
+        .module('cms.controllers')
+        .controller('UserController', UserController)
+        .controller('UserDetailController', UserDetailController)
+        .controller('UserAddController', UserAddController);
 
     UserController.$inject = ['UserService'];
     UserDetailController.$inject = ['UserService', 'UserGroupService', 'NavigationService', '$location', '$routeParams'];
@@ -12433,177 +12433,185 @@ function UserAddController (UserService, UserGroupService, NavigationService, $l
 
 (function(angular) {
     angular
-	.module('cms', [
-	    'ngRoute',
-	    'ngFileUpload',
-	    'cms.services',
-	    'cms.directives',
-	    'cms.controllers',
-	    'ngCkeditor',
-	    'angular-momentjs',
-	    'ngSanitize',
-	    'ngCookies',
-	    'gToast',
-	    'angular-loading-bar',
-	    'ui.codemirror'
-	])
-	.constant('CONFIG', {
-	    "API_ENDPOINT": "http://cmsv4.dev.local/api",
-	    "AUTHENTICATION_ENDPOINT": 'http://cmsv4.dev.local/authenticate'
-	})
-	.config([
-	    '$routeProvider',
-	    '$locationProvider',
-	    '$provide',
-	    '$httpProvider',
-	    'cfpLoadingBarProvider',
-	    function ($routeProvider, $locationProvider, $provide, $httpProvider, cfpLoadingBarProvider) {
+        .module('cms', [
+            'ngRoute',
+            'ngFileUpload',
+            'cms.services',
+            'cms.directives',
+            'cms.controllers',
+            'ngCkeditor',
+            'angular-momentjs',
+            'ngSanitize',
+            'ngCookies',
+            'gToast',
+            'angular-loading-bar',
+            'ui.codemirror'
+        ])
+        .constant('CONFIG', {
+            "API_ENDPOINT": "",
+            "AUTHENTICATION_ENDPOINT": ''
+        })
+        .config([
+            '$routeProvider',
+            '$locationProvider',
+            '$provide',
+            '$httpProvider',
+            'cfpLoadingBarProvider',
+            function ($routeProvider, $locationProvider, $provide, $httpProvider, cfpLoadingBarProvider) {
 
-		$routeProvider.when('/login',  {
-		    templateUrl: 'components/login/login.html',
-		    controller: 'LoginController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/login',  {
+                    templateUrl: 'components/login/login.html',
+                    controller: 'LoginController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/dashboard', {
-		    templateUrl: 'components/dashboard/dashboard.html',
-		    controller: 'DashboardController'
-		});
+                $routeProvider.when('/dashboard', {
+                    templateUrl: 'components/dashboard/dashboard.html',
+                    controller: 'DashboardController'
+                });
 
-		$routeProvider.when('/articles/list', {
-		    templateUrl: 'components/article/articles.html',
-		    controller: 'ArticleController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/articles/list', {
+                    templateUrl: 'components/article/articles.html',
+                    controller: 'ArticleController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/articles/article/:id', {
-		    templateUrl: 'components/article/article.html',
-		    controller: 'ArticleDetailController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/articles/article/:id', {
+                    templateUrl: 'components/article/article.html',
+                    controller: 'ArticleDetailController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/articles/add', {
-		    templateUrl: 'components/article/article.html',
-		    controller: 'ArticleAddController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/articles/add', {
+                    templateUrl: 'components/article/article.html',
+                    controller: 'ArticleAddController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/pages/list', {
-		    templateUrl: 'components/page/pages.html',
-		    controller: 'PageController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/pages/list', {
+                    templateUrl: 'components/page/pages.html',
+                    controller: 'PageController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/pages/page/:id', {
-		    templateUrl: 'components/page/page.html',
-		    controller: 'PageDetailController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/pages/page/:id', {
+                    templateUrl: 'components/page/page.html',
+                    controller: 'PageDetailController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/pages/add', {
-		    templateUrl: 'components/page/page.html',
-		    controller: 'PageAddController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/pages/add', {
+                    templateUrl: 'components/page/page.html',
+                    controller: 'PageAddController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/events/list', {
-		    templateUrl: 'components/event-dashboard/event-dashboard',
-		    controller: 'EventDashboardController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/events/list', {
+                    templateUrl: 'components/event-dashboard/event-dashboard',
+                    controller: 'EventDashboardController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/events/event/:id', {
-		    templateUrl: 'components/event/event.html',
-		    controller: 'EventDetailController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/events/event/:id', {
+                    templateUrl: 'components/event/event.html',
+                    controller: 'EventDetailController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/events/add', {
-		    templateUrl: 'components/event/event.html',
-		    controller: 'EventAddController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/events/add', {
+                    templateUrl: 'components/event/event.html',
+                    controller: 'EventAddController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/locations/location/:id', {
-		    templateUrl: 'components/location/location.html',
-		    controller: 'LocationDetailController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/locations/location/:id', {
+                    templateUrl: 'components/location/location.html',
+                    controller: 'LocationDetailController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/locations/add', {
-		    templateUrl: 'components/location/location.html',
-		    controller: 'LocationAddController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/locations/add', {
+                    templateUrl: 'components/location/location.html',
+                    controller: 'LocationAddController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/files/list', {
-		    templateUrl: 'components/media/media.html',
-		    controller: 'MediaController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/files/list', {
+                    templateUrl: 'components/media/media.html',
+                    controller: 'MediaController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/files/add', {
-		    templateUrl: 'components/media/add-media.html',
-		    controller: 'MediaAddController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/files/add', {
+                    templateUrl: 'components/media/add-media.html',
+                    controller: 'MediaAddController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/files/file/:id', {
-		    templateUrl: 'components/media/media-detail.html',
-		    controller: 'MediaDetailController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/files/file/:id', {
+                    templateUrl: 'components/media/media-detail.html',
+                    controller: 'MediaDetailController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/users/list', {
-		    templateUrl: 'components/user/users.html',
-		    controller: 'UserController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/users/list', {
+                    templateUrl: 'components/user/users.html',
+                    controller: 'UserController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/users/add', {
-		    templateUrl: 'components/user/user.html',
-		    controller: 'UserAddController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/users/add', {
+                    templateUrl: 'components/user/user.html',
+                    controller: 'UserAddController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/users/user/:id', {
-		    templateUrl: 'components/user/user.html',
-		    controller: 'UserDetailController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/users/user/:id', {
+                    templateUrl: 'components/user/user.html',
+                    controller: 'UserDetailController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.when('/settings/list', {
-		    templateUrl: 'components/setting/setting.html',
-		    controller: 'SettingController',
-		    controllerAs: 'vm'
-		});
+                $routeProvider.when('/settings/list', {
+                    templateUrl: 'components/setting/setting.html',
+                    controller: 'SettingController',
+                    controllerAs: 'vm'
+                });
 
-		$routeProvider.otherwise({
-		    redirectTo: '/dashboard'
-		});
+                $routeProvider.otherwise({
+                    redirectTo: '/dashboard'
+                });
 
-		// use HTML5 history API
-		$locationProvider.html5Mode(true);
+                // use HTML5 history API
+                $locationProvider.html5Mode(true);
 
-		// angular-loading-bar
-		cfpLoadingBarProvider.includeSpinner = false;
+                // angular-loading-bar
+                cfpLoadingBarProvider.includeSpinner = false;
 
 
-	    }])
-	.run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
-	    // keep user logged in after page refresh
-	    $rootScope.globals = $cookieStore.get('globals') || {};
-	    if ($rootScope.globals.currentUser) {
-		$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
-	    }
+            }])
+        .run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
+            // keep user logged in after page refresh
+            //$rootScope.globals = $cookieStore.get('globals') || {};
+            //if ($rootScope.globals.currentUser) {
+            //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
+            //}
+            //
+            //// redirect to login page if not logged in
+            //$rootScope.$on('$locationChangeStart', function (event, next, current) {
+            //    if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+            //        $location.path('/login');
+            //    }
+            //});
 
-	    // redirect to login page if not logged in
-	    $rootScope.$on('$locationChangeStart', function (event, next, current) {
-		if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-		    $location.path('/login');
-		}
-	    });
+            $rootScope.globals = {
+                currentUser: {
+                    'username': 'testUser',
+                    'password': 'testPass',
+                    'authData': ''
+                }
+            };
 
-	}]);
+        }]);
 
 })(angular);
