@@ -102,7 +102,7 @@ function LoginController (AuthenticationService, $location, $timeout) {
                     $location.path('/dashboard');
                 }, 750);
             }).catch( function (data) {
-                console.error(data);
+                console.error("Your credentials did not match");
             });
     }
 
