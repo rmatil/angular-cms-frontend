@@ -21,7 +21,8 @@ function ArticleController(ArticleService) {
 
 function ArticleDetailController(ArticleService, LanguageService, ArticleCategoryService, UserGroupService, StringService, NavigationService, $routeParams, $scope, $location) {
     var vm = this,
-        articleId = $routeParams.id;
+        articleId = $routeParams.id,
+        title = document.getElementById('article-title');
 
     vm.article = {};
     vm.article.content = ''; // init this to solve a problem with ckEditor
@@ -67,6 +68,9 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
                 vm.userGroups = data;
                 return data;
             });
+
+        // do not allow edit of title due to changes of url name
+        title.disabled = true;
     }
 
     function saveArticle() {
@@ -76,15 +80,6 @@ function ArticleDetailController(ArticleService, LanguageService, ArticleCategor
     function deleteArticle() {
         ArticleService.deleteArticle(vm.article.id);
     }
-
-    $scope.$watch('vm.article.title', function (currentVal, newVal) {
-        if (undefined === currentVal ||
-            '' === currentVal) {
-            return;
-        }
-
-        vm.article.url_name = StringService.buildUrlString(currentVal);
-    });
 }
 
 function ArticleAddController(ArticleService, LanguageService, ArticleCategoryService, UserGroupService, StringService, NavigationService, $scope, $location) {

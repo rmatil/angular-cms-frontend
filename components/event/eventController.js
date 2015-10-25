@@ -18,6 +18,7 @@ function EventDetailController (EventService, LocationService, FileService, Navi
         vm.backgroundColorClass = NavigationService.getBackgroundColorClass($location.path());
         var elStart = document.getElementById('rome-calendar-start'),
             elEnd = document.getElementById('rome-calendar-end'),
+            title = document.getElementById('event-title'),
             optionsStart = {
                 "inputFormat": "DD.MM.YYYY HH:mm",
                 "timeInterval": 900,
@@ -28,6 +29,9 @@ function EventDetailController (EventService, LocationService, FileService, Navi
                 "timeInterval": 900,
                 "dateValidator": rome.val.afterEq(elStart)
             };
+
+        // do not allow edit of title due to changes of url name
+        title.disabled = true;
 
         startDate = rome(elStart, optionsStart);
         endDate = rome(elEnd, optionsEnd);
@@ -69,15 +73,6 @@ function EventDetailController (EventService, LocationService, FileService, Navi
         vm.event.end_date = endDate.getMoment().utc().format(moment.ISO_8601());
         EventService.putEvent(vm.event);
     }
-
-    $scope.$watch('vm.event.name', function (currentVal, newVal) {
-        if (undefined === currentVal ||
-            '' === currentVal) {
-            return;
-        }
-
-        vm.event.url_name = StringService.buildUrlString(currentVal);
-    });
 
 }
 

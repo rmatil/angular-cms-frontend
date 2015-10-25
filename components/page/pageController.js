@@ -18,7 +18,8 @@ function PageController(PageService) {
 
 function PageDetailController(PageService, LanguageService, PageCategoryService, ArticleService, UserGroupService, ArrayService, StringService, NavigationService, $routeParams, $scope, $location) {
     var vm = this,
-        pageId = $routeParams.id;
+        pageId = $routeParams.id,
+        title = document.getElementById('page-title');
 
     vm.page = {};
     vm.articles = [];
@@ -72,6 +73,9 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
                 vm.userGroups = data;
                 return data;
             });
+
+        // do not allow edit of title due to changes of url name
+        title.disabled = true;
     }
 
     function savePage() {
@@ -108,15 +112,6 @@ function PageDetailController(PageService, LanguageService, PageCategoryService,
             vm.articles.push(removed[0]);
         }
     }
-
-    $scope.$watch('vm.page.title', function (currentVal, newVal) {
-        if (undefined === currentVal ||
-            '' === currentVal) {
-            return;
-        }
-
-        vm.page.url_name = StringService.buildUrlString(currentVal);
-    });
 }
 
 function PageAddController(PageService, LanguageService, PageCategoryService, ArticleService, UserGroupService, ArrayService, StringService, NavigationService, $scope, $location) {
