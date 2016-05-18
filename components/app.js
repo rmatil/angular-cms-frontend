@@ -1,6 +1,6 @@
 'use strict';
 
-(function(angular) {
+(function (angular) {
     angular
         .module('cms', [
             'ngRoute',
@@ -17,8 +17,8 @@
             'ui.codemirror'
         ])
         .constant('CONFIG', {
-            "API_ENDPOINT": "http://cmsv4.dev.local/api",
-            "AUTHENTICATION_ENDPOINT": 'http://cmsv4.dev.local/authenticate'
+            "API_ENDPOINT": "http://dev.cmsv4.rmatil.vagrant/api",
+            "AUTHENTICATION_ENDPOINT": 'http://dev.cmsv4.rmatil.vagrant/authenticate'
         })
         .config([
             '$routeProvider',
@@ -28,7 +28,7 @@
             'cfpLoadingBarProvider',
             function ($routeProvider, $locationProvider, $provide, $httpProvider, cfpLoadingBarProvider) {
 
-                $routeProvider.when('/login',  {
+                $routeProvider.when('/login', {
                     templateUrl: 'components/login/login.html',
                     controller: 'LoginController',
                     controllerAs: 'vm'
